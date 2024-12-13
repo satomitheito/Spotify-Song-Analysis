@@ -3,6 +3,7 @@ title: "Landing page"
 format: 
   html: 
     embed-resources: true
+bibliography: assets/references.bib 
 ---
 # Decoding Song Success: Predicting Song Popularity - an NLP Approach
    - **Headline**: A captivating title introducing the data science theme (e.g., "Unlocking Insights Through Data Stories").
@@ -38,8 +39,35 @@ Music, Lyrics, Natural Language Processing, Supervised Machine Learning, Unsuper
 
 ## Literature review
 
-In this section, please do a literature review and cite at least **3 academic publications** per group member, and include **internal academic citations**.
+To conduct this literature review, we decided to split articles into two categories: research about the musicality of songs in top charts and papers about the lyrics of songs in top charts. While the first topic has a wide range of approaches, studies related to the lyrics are far rarer. 3 articles were found for each category and the results are reported below.
 
-## Additional Ideas for things to include 
+### Musicality
 
-- **Visual/Infographic**: Add a simple graphic or visual element to make the page more dynamic.
+#### Musical trends and predictability of success in contemporary songs in and out of the top charts [@Interiano_Kazemi_Wang_Yang_Yu_Komarova_2018]
+
+In this research article, Interiano et al. uses random forest models to predict whether a song would “make it to the charts” using acoustic features such as mood, danceability, relaxedness, and frequency of male/female singers contributing to the song. They highlighted the trend that songs with fewer male contributors, instrumentals that are considered more “dance-based” music, and brighter sounding songs are strong indicators of the success of a song. The graph below shows this trend over time, with the red dots being songs that are not in the top 100 and blue dots being songs that are in the top 100.
+
+![Source 1 Results](assets/landing_img/source1_img.jpg)
+
+#### Sustainable success in the music industry: Empirical analysis of music preferences [@Kim_Kang_2022]
+
+Kim et al. developed a hierarchical Bayesian logit choice model that takes into account features of the instrumentals of a range of hit songs (such as melody, tempo, harmony, and rhythm) to determine the consumer preference for a specific song. The data was collected through controlled lab tests. They then tried to correlate the resulting preferences to the profits of a song by considering music development costs. Overall, they found that consonant harmony, piano, slow tempo, and irregular rhythm to be more desirable by consumers and to be the most monetarily sustainable choices to include in a song.
+
+#### A comment on survival of the hippest: life at the top of the hot 100 [@Giles_2007]
+
+Hong analyzed songs that have hit the number 1 spot from 1955 to 2003 and used features such as gender, number, and race of the singers of the song to analyze if artist characteristics contributed to the long-term success of a song (i.e. number of weeks that the song would be at the top of the charts). They used parametric estimation of a log-logistic distribution to find that the presence of Black artists contributed to longer runs at the top of the chart (which they contribute to the success of rap songs). They also concluded that, in groups, the gender of the members of the groups did not actually contribute to the song’s success.
+
+### Lyrics
+
+#### The Language of Lyrics: An Analysis of Popular Billboard Songs Across Conditions of Social and Economic Threat [@Pettijohn_Sacco_2009]
+
+
+
+#### The power of repetition: repetitive lyrics in a song increase processing fluency and drive market success [@Nunes_Ordanini_Valsesia_2015]
+
+
+
+#### An Analysis of Common Songwriting and Production Practices in 2014-2015 Billboard Hot 100 Songs [@Tough_2017]
+
+
+
