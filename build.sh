@@ -1,3 +1,13 @@
+read -p 'Would you like to merge main with branch? (y/n)? ' answer
+if [ "$answer" != "${answer#[Yy]}" ] ;then 
+    read -p 'Enter branch name: ' branch
+    git checkout $branch
+    git fetch origin
+    git merge origin/main
+else
+    echo NOT MERGING MAIN TO BRANCH!
+fi
+
 git pull
 # DEFINE PATH
 dir1=${PWD}
@@ -19,7 +29,7 @@ for i in $(find _site -type d); do chmod 755 $i; done
 printf 'Would you like to push to GITHUB? (y/n)? '
 read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then 
-
+    git checkout $branch;
     git config http.postBuffer 20242880000
 
     # PULL CLOUD REPO TO LOCAL
