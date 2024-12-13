@@ -36,7 +36,7 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
     #git push  -u origin w05-draft
 
     # PUSH MAIN BRANCH
-    git push
+    # git push
 
 else
     echo NOT PUSHING TO GTIHUB!
