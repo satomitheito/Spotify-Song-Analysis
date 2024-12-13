@@ -2,46 +2,108 @@
 title: "Progress log"
 ---
 
-Use this page to track your progress and keep a log of your contributions to the project, please update this each time you work on your project, it is generally a good habit to adopt.
+This page was used to track our progress and keep a log of our contributions to the project. We created this after developing our idea to create a running list of the workflow that was needed to complete the project and to demonstrate how each of us contributed to the project.
 
-If you are working as a team, at the end, you can duplicate the project and add it to your individual portfolio websites. If you do, you **MUST** retain attribution to your teammates. Removing attribution would constitute plagiarism.
+## Satomi
+- provide link to about me page
 
-## To-do
+**Contribution log:**
 
-* [ ] Explore possible topics by brainstorming with GPT 
-* [ ] write a technical methods sections for K-means
-* [ ] write a technical methods sections for PCA
+#### Index.qmd Literature Review:
 
-... etc 
+* [ ] Find 3 academic publications analyzing song popularity using data
+* [ ] Analyze publications
+* [ ] Report Findings on Index.qmd page
 
-## Member-1:
+#### Index.qmd:
 
-Provide their name, a link to their "About Me" page.
+* [ ] Create about me page
 
-Also, describe a log of their project roles.
+#### Data Collection:
 
-**Weekly project contribution log:**
+* [ ] Develop code to access top 100 songs playlist from Rolling Stones top 100 songs
+* [ ] Develop code to access spotify api to get data about top 100 songs
+* [ ] Develop code to access spotify api to get data about artists of top 100 songs
+* [ ] Provide comments about process and informative technical markdown cells
 
+#### Data Cleansing:
 
-**T: 10-15-2024** 
+* [ ] Consolodate all raw data csvs into one dataframe
+* [ ] Use VADER to conduct sentiment analysis of lyrics for songs
+* [ ] Use NLP methods to collect other data about lyrics of songs
+* [ ] Find other quantitative data from columns for future analysis
+* [ ] Write all data to a csv file in a processed data folder
+* [ ] Provide comments about process and informative technical markdown cells
 
-* [x] Coordinate with team member to set up weekly meeting time 
+#### Supervised Learning:
 
+* [ ] Conduct classification on ranking of song (top 20 vs not)
+* [ ] Conduct regression on song popularity
+* [ ] Analyze results to determine important features contributing to success of song
+* [ ] Provide comments about process and informative technical markdown cells
 
-**M: 10-14-2024** 
+#### Report:
 
-* [x] Do a first draft of the project landing page 
+* [ ] Write about key findings from Supervised Learning sections
+* [ ] Provide informative visualizations
+* [ ] Write conclusion
 
+#### Overall:
 
-## Member-2
+* [ ] Frequent github pushes
+* [ ] Frequent github pull requests
+* [ ] Comment code and explain decisions in technical-details files
 
-Provide their name, a link to their "About Me" page.
+## Samyu
+- provide link to about me page
 
-Also, describe a log of their project roles.
+**Contribution log:**
 
-**Weekly project contribution log:**
+#### Index.qmd Literature Review:
 
+* [ ] Find 3 academic publications analyzing song popularity using data
+* [ ] Analyze publications
+* [ ] Report Findings on Index.qmd page
 
-**W: 10-16-2024** 
+#### Index.qmd:
 
-* [x] Attend first group meeting
+* [ ] Create Landing page for website following instructions on page
+* [ ] Create about me page
+
+#### Report Introduction:
+
+* [ ] Write Objective
+
+#### Data Collection:
+
+* [ ] Develop code to access collect lyrics for top 100 songs from Genius API
+* [ ] Provide comments about process and informative technical markdown cells
+
+#### EDA:
+
+* [ ] Develop visualizations to analyze distributions of quantitative data
+* [ ] Conduct EDA to understand the characteristics of the most popular songs vs the rest of the songs
+* [ ] Create visualizations to show any correlations in the data
+* [ ] Provide comments about process and informative technical markdown cells
+
+#### Unsupervised Learning:
+
+* [ ] Use clustering algorithms to develop clusters based on quantitative data and understand connection to song ranking or popularity
+* [ ] Analyze results to determine the characteristics of popular songs
+* [ ] Determine if there are clusters that can then be used to make playlists of similar songs
+* [ ] Provide comments about process and informative technical markdown cells
+
+#### Report:
+
+* [ ] Write executive summary
+* [ ] Write about key insights provided by EDA
+* [ ] Write about key insights provided by unsupervised learning
+* [ ] Provide informative visualizations
+* [ ] Write about Business Implications of key findings
+* [ ] Write about Recommendations
+
+#### Overall:
+
+* [ ] Frequent github pushes
+* [ ] Frequent github pull requests
+* [ ] Comment code and explain decisions in technical-details files

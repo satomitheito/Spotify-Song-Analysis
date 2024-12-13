@@ -179,28 +179,21 @@
     "href": "technical-details/llm-usage-log.html",
     "title": "LLM usage log",
     "section": "",
-    "text": "This page can serve as a “catch-all” for LLM use cases that don’t involve content creation, such as reformatting your own ideas, commenting code that you wrote, or proofreading text, PDF summarization.\nLLM tools were used in the following way for the tasks below"
+    "text": "LLM tools were used in the following way for the tasks below"
   },
   {
     "objectID": "technical-details/llm-usage-log.html#brainstorming",
     "href": "technical-details/llm-usage-log.html#brainstorming",
     "title": "LLM usage log",
     "section": "Brainstorming",
-    "text": "Brainstorming\n\nTo create the initial idea, LLM tools were used to brainstorm ideas and provide feedback and refine the project plan."
-  },
-  {
-    "objectID": "technical-details/llm-usage-log.html#writing",
-    "href": "technical-details/llm-usage-log.html#writing",
-    "title": "LLM usage log",
-    "section": "Writing:",
-    "text": "Writing:\n\nReformating text from bulleted lists into proses\nProofreading\nText summarization for literature review"
+    "text": "Brainstorming\n\nBrainstorm ideas for further quantitative columns we could make from the data after finding out the limitations of the Spotify API\nHelp coming up with catchy title for project"
   },
   {
     "objectID": "technical-details/llm-usage-log.html#code",
     "href": "technical-details/llm-usage-log.html#code",
     "title": "LLM usage log",
     "section": "Code:",
-    "text": "Code:\n\nCode commenting and explanatory documentation"
+    "text": "Code:\n\nHelp understand the Genius API and understand how to get a key to search the API\nHelp write webscraping function for Genius Lyric API\nExplanation of github usage through branches and merging"
   },
   {
     "objectID": "technical-details/unsupervised-learning/instructions.html",
@@ -282,28 +275,77 @@
   {
     "objectID": "report/report.html",
     "href": "report/report.html",
-    "title": "Final Report",
+    "title": "Decoding Song Success - Final Report",
     "section": "",
-    "text": "Audio instructions:\nIf you want, you can listen to the instructions:\n\n\n\n Source: Text-to-speech conversion done with Amazon Polly on AWS \nNote: These audio instructions should not be included in your final submission or repository, once you are done wiht them, please delete the files and remove them from the website.\nThis report is designed for a non-technical audience (e.g., the general public, executives, marketing teams, or clients), focusing on high-level insights, actionable results, and visualizations to convey the impact without requiring technical knowledge. The goal is to highlight how a model affects business strategy or revenue without diving into complex methods.\n\n\n\nClear Purpose: Define the core message or objective early on.\nKnow Your Audience: Adjust language, tone, and detail based on the audience’s understanding.\nStrong Opening: Start with a hook that sets context and stakes.\nLogical Flow: Structure with a clear beginning, middle, and end.\nKey Insights: Highlight the most important points; avoid unnecessary details or jargon.\nData Support: Use data to enhance the narrative without overwhelming.\nVisuals: Incorporate charts to simplify ideas and engage the audience.\nActionable Takeaways: Conclude with recommendations or next steps.\nAuthenticity: Use storytelling to make the content engaging and relatable.\nRevise: Edit for clarity and impact, removing unnecessary content.\n\n\n\n\nThese are just examples, you can use any structure that is suitable for your project.\n\n\n\nIntroduction: Provide an accessible overview and explain the motivation and importance of the research. Example: “This study explores how climate change affects local ecosystems, vital for wildlife conservation.”\nObjective: Clearly define the research goal and relate it to real-world challenges. Example: “We aim to analyze the effects of air pollution on public health in urban areas.”\nKey Findings: Present insights without technical terms, focusing on the impact. Example: “Air pollution increases the risk of respiratory diseases by 20%.”\nMethodology Overview: Briefly explain relevant methods. Example: “We analyzed air quality data from 50 cities and surveyed 10,000 residents.”\nVisualizations: Use simple graphs and infographics to convey findings. Example: A map showing pollution levels and a bar chart of health risks.\nSocietal Implications: Highlight the broader impact. Example: “This study highlights the need for better air quality policies.”\nCall to Action: Offer recommendations based on findings. Example: “We recommend city planners invest in green spaces.”\nConclusion: Recap the main findings and societal impact. Example: “Understanding pollution’s health impacts will help create healthier cities.”\n\n\n\n\n\nExecutive Summary: Summarize key findings and their relevance to business goals. Example: “This report predicts customer churn and offers strategies to reduce churn by 15%.”\nObjective: Define the problem or question addressed. Example: “This project aims to identify the drivers of customer churn.”\nKey Insights: Present the most important, actionable insights. Example: “Customers who interact with support twice within 30 days are 25% less likely to churn.”\nVisualizations: Use clear graphs to convey key insights. Example: A bar chart showing churn likelihood based on engagement.\nBusiness Implications: Explain how findings impact business outcomes and offer specific recommendations. Example: “Focus retention efforts on low-engagement customers.”\nRecommendations: Provide clear, actionable steps with projections. Example: “Implement an automated retention campaign, reducing churn by 10%.”\nConclusion: Summarize findings and suggest next steps. Example: “Addressing churn drivers can reduce loss and improve profitability.”\nAppendix (Optional): Additional charts or explanations for further insights.\n\n\n\n\n\n\nSimplicity: Avoid jargon; focus on business-relevant insights.\nVisual Focus: Prioritize charts and graphs over dense text.\nEmphasize Impact: Always link data insights to business outcomes."
+    "text": "Summarize key findings and their relevance to business goals. Example: “This report predicts customer churn and offers strategies to reduce churn by 15%.”\n\n\n\nDefine the problem or question addressed. Example: “This project aims to identify the drivers of customer churn.”\n\n\n\nPresent the most important, actionable insights. Example: “Customers who interact with support twice within 30 days are 25% less likely to churn.”\n\n\n\nUse clear graphs to convey key insights. Example: A bar chart showing churn likelihood based on engagement.\n\n\n\nExplain how findings impact business outcomes and offer specific recommendations. Example: “Focus retention efforts on low-engagement customers.”\n\n\n\nProvide clear, actionable steps with projections. Example: “Implement an automated retention campaign, reducing churn by 10%.”\n\n\n\nSummarize findings and suggest next steps. Example: “Addressing churn drivers can reduce loss and improve profitability.”\n\n\n\n(Optional): Additional charts or explanations for further insights.\n\n\n\n\nClear Purpose: Define the core message or objective early on.\nKnow Your Audience: Adjust language, tone, and detail based on the audience’s understanding.\nStrong Opening: Start with a hook that sets context and stakes.\nLogical Flow: Structure with a clear beginning, middle, and end.\nKey Insights: Highlight the most important points; avoid unnecessary details or jargon.\nData Support: Use data to enhance the narrative without overwhelming.\nVisuals: Incorporate charts to simplify ideas and engage the audience.\nActionable Takeaways: Conclude with recommendations or next steps.\nAuthenticity: Use storytelling to make the content engaging and relatable.\nRevise: Edit for clarity and impact, removing unnecessary content.\n\n\n\n\n\nSimplicity: Avoid jargon; focus on business-relevant insights.\nVisual Focus: Prioritize charts and graphs over dense text.\nEmphasize Impact: Always link data insights to business outcomes."
+  },
+  {
+    "objectID": "report/report.html#executive-summary",
+    "href": "report/report.html#executive-summary",
+    "title": "Decoding Song Success - Final Report",
+    "section": "",
+    "text": "Summarize key findings and their relevance to business goals. Example: “This report predicts customer churn and offers strategies to reduce churn by 15%.”"
+  },
+  {
+    "objectID": "report/report.html#objective",
+    "href": "report/report.html#objective",
+    "title": "Decoding Song Success - Final Report",
+    "section": "",
+    "text": "Define the problem or question addressed. Example: “This project aims to identify the drivers of customer churn.”"
+  },
+  {
+    "objectID": "report/report.html#key-insights",
+    "href": "report/report.html#key-insights",
+    "title": "Decoding Song Success - Final Report",
+    "section": "",
+    "text": "Present the most important, actionable insights. Example: “Customers who interact with support twice within 30 days are 25% less likely to churn.”"
+  },
+  {
+    "objectID": "report/report.html#visualizations",
+    "href": "report/report.html#visualizations",
+    "title": "Decoding Song Success - Final Report",
+    "section": "",
+    "text": "Use clear graphs to convey key insights. Example: A bar chart showing churn likelihood based on engagement."
+  },
+  {
+    "objectID": "report/report.html#business-implications",
+    "href": "report/report.html#business-implications",
+    "title": "Decoding Song Success - Final Report",
+    "section": "",
+    "text": "Explain how findings impact business outcomes and offer specific recommendations. Example: “Focus retention efforts on low-engagement customers.”"
+  },
+  {
+    "objectID": "report/report.html#recommendations",
+    "href": "report/report.html#recommendations",
+    "title": "Decoding Song Success - Final Report",
+    "section": "",
+    "text": "Provide clear, actionable steps with projections. Example: “Implement an automated retention campaign, reducing churn by 10%.”"
+  },
+  {
+    "objectID": "report/report.html#conclusion",
+    "href": "report/report.html#conclusion",
+    "title": "Decoding Song Success - Final Report",
+    "section": "",
+    "text": "Summarize findings and suggest next steps. Example: “Addressing churn drivers can reduce loss and improve profitability.”"
+  },
+  {
+    "objectID": "report/report.html#appendix",
+    "href": "report/report.html#appendix",
+    "title": "Decoding Song Success - Final Report",
+    "section": "",
+    "text": "(Optional): Additional charts or explanations for further insights."
   },
   {
     "objectID": "report/report.html#guidelines-for-creating-a-good-narrative",
     "href": "report/report.html#guidelines-for-creating-a-good-narrative",
-    "title": "Final Report",
+    "title": "Decoding Song Success - Final Report",
     "section": "",
     "text": "Clear Purpose: Define the core message or objective early on.\nKnow Your Audience: Adjust language, tone, and detail based on the audience’s understanding.\nStrong Opening: Start with a hook that sets context and stakes.\nLogical Flow: Structure with a clear beginning, middle, and end.\nKey Insights: Highlight the most important points; avoid unnecessary details or jargon.\nData Support: Use data to enhance the narrative without overwhelming.\nVisuals: Incorporate charts to simplify ideas and engage the audience.\nActionable Takeaways: Conclude with recommendations or next steps.\nAuthenticity: Use storytelling to make the content engaging and relatable.\nRevise: Edit for clarity and impact, removing unnecessary content."
   },
   {
-    "objectID": "report/report.html#report-content",
-    "href": "report/report.html#report-content",
-    "title": "Final Report",
-    "section": "",
-    "text": "These are just examples, you can use any structure that is suitable for your project.\n\n\n\nIntroduction: Provide an accessible overview and explain the motivation and importance of the research. Example: “This study explores how climate change affects local ecosystems, vital for wildlife conservation.”\nObjective: Clearly define the research goal and relate it to real-world challenges. Example: “We aim to analyze the effects of air pollution on public health in urban areas.”\nKey Findings: Present insights without technical terms, focusing on the impact. Example: “Air pollution increases the risk of respiratory diseases by 20%.”\nMethodology Overview: Briefly explain relevant methods. Example: “We analyzed air quality data from 50 cities and surveyed 10,000 residents.”\nVisualizations: Use simple graphs and infographics to convey findings. Example: A map showing pollution levels and a bar chart of health risks.\nSocietal Implications: Highlight the broader impact. Example: “This study highlights the need for better air quality policies.”\nCall to Action: Offer recommendations based on findings. Example: “We recommend city planners invest in green spaces.”\nConclusion: Recap the main findings and societal impact. Example: “Understanding pollution’s health impacts will help create healthier cities.”\n\n\n\n\n\nExecutive Summary: Summarize key findings and their relevance to business goals. Example: “This report predicts customer churn and offers strategies to reduce churn by 15%.”\nObjective: Define the problem or question addressed. Example: “This project aims to identify the drivers of customer churn.”\nKey Insights: Present the most important, actionable insights. Example: “Customers who interact with support twice within 30 days are 25% less likely to churn.”\nVisualizations: Use clear graphs to convey key insights. Example: A bar chart showing churn likelihood based on engagement.\nBusiness Implications: Explain how findings impact business outcomes and offer specific recommendations. Example: “Focus retention efforts on low-engagement customers.”\nRecommendations: Provide clear, actionable steps with projections. Example: “Implement an automated retention campaign, reducing churn by 10%.”\nConclusion: Summarize findings and suggest next steps. Example: “Addressing churn drivers can reduce loss and improve profitability.”\nAppendix (Optional): Additional charts or explanations for further insights."
-  },
-  {
     "objectID": "report/report.html#final-tips",
     "href": "report/report.html#final-tips",
-    "title": "Final Report",
+    "title": "Decoding Song Success - Final Report",
     "section": "",
     "text": "Simplicity: Avoid jargon; focus on business-relevant insights.\nVisual Focus: Prioritize charts and graphs over dense text.\nEmphasize Impact: Always link data insights to business outcomes."
   },
@@ -537,13 +579,6 @@
     "title": "Data Collection",
     "section": "",
     "text": "Your data must be relevant to the project’s overall goals and help solve your research questions.\nYou must use at least one API to collect your data.\nEnsure you have at least one regression target: a continuous quantity that can be used for regression prediction with other features.\nEnsure you have at least one binary classification target: a two-class (A,B) label that can be predicted using other features.\nEnsure you have at least one multiclass-classification target: a multi-class (A,B,C …) label that can be predicted using other features.\nDo not use a Kaggle topic—this project is meant to simulate a real-world project. Kaggle datasets are typically too clean and have already been prepped for analysis, which doesn’t align with the project’s goals.\n\nFocus on data that tells a compelling story and supports the techniques covered in the class (e.g., clustering, classification, regression)."
-  },
-  {
-    "objectID": "technical-details/data-collection/main.html#example",
-    "href": "technical-details/data-collection/main.html#example",
-    "title": "Data Collection",
-    "section": "Example",
-    "text": "Example\nIn the following code, we first utilized the requests library to retrieve the HTML content from the Wikipedia page. Afterward, we employed BeautifulSoup to parse the HTML and locate the specific table of interest by using the find function. Once the table was identified, we extracted the relevant data by iterating through its rows, gathering country names and their respective populations. Finally, we used Pandas to store the collected data in a DataFrame, allowing for easy analysis and visualization. The data could also be optionally saved as a CSV file for further use.\n\nimport requests\nfrom bs4 import BeautifulSoup\nimport pandas as pd\n\n# Step 1: Send a request to Wikipedia page\nurl = 'https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population'\nresponse = requests.get(url)\n\n# Step 2: Parse the page content using BeautifulSoup\nsoup = BeautifulSoup(response.content, 'html.parser')\n\n# Step 3: Find the table containing the data (usually the first table for such lists)\ntable = soup.find('table', {'class': 'wikitable'})\n\n# Step 4: Extract data from the table rows\ncountries = []\npopulations = []\n\n# Iterate over the table rows\nfor row in table.find_all('tr')[1:]:  # Skip the header row\n    cells = row.find_all('td')\n    if len(cells) &gt; 1:\n        country = cells[1].text.strip()  # The country name is in the second column\n        population = cells[2].text.strip()  # The population is in the third column\n        countries.append(country)\n        populations.append(population)\n\n# Step 5: Create a DataFrame to store the results\ndata = pd.DataFrame({\n    'Country': countries,\n    'Population': populations\n})\n\n# Display the scraped data\nprint(data)\n\n# Optionally save to CSV\ndata.to_csv('../../data/raw-data/countries_population.csv', index=False)\n\n                                 Country     Population\n0                                  World  8,119,000,000\n1                                  China  1,409,670,000\n2                          1,404,910,000          17.3%\n3                          United States    335,893,238\n4                              Indonesia    281,603,800\n..                                   ...            ...\n235                   Niue (New Zealand)          1,681\n236                Tokelau (New Zealand)          1,647\n237                         Vatican City            764\n238  Cocos (Keeling) Islands (Australia)            593\n239                Pitcairn Islands (UK)             35\n\n[240 rows x 2 columns]"
   },
   {
     "objectID": "technical-details/data-collection/main.html#challenges",
@@ -858,55 +893,62 @@
     "href": "index.html",
     "title": "Landing page",
     "section": "",
-    "text": "Audio instructions:\nIf you want, you can listen to the instructions:\nSource: Text-to-speech conversion done with Amazon Polly on AWS\nNote: These audio instructions should not be included in your final submission or repository, once you are done wiht them, please delete the files and remove them from the website."
+    "text": "Headline: A captivating title introducing the data science theme (e.g., “Unlocking Insights Through Data Stories”).\n\n\n\nMusic, Lyrics, Natural Language Processing, Supervised Machine Learning, Unsupervised Machine Learning, Sentiment Analysis - Key Topics: List the main focus areas (e.g., machine learning, data visualization, predictive modeling).\n\n\n\n\nSummarize your topic, its significance, related work, and the questions you plan to explore.\n\nA brief, engaging overview of what the website offers (e.g., data-driven stories, insights, or case studies).\nAudience: Who is this for? Data professionals, businesses, researchers, or curious readers.\n\n\n\n\n\n\nMotivation: Explain why this topic matters, highlighting the importance of data in solving real-world problems.\nUse Cases/Examples: A brief teaser of compelling stories or case studies you’ve worked on.\n\n\n\n\n\nDraft an introduction with at least 5 research questions. These may evolve as your project progresses, since data science is an iterative process.\n\n\n\n\n\nInclude your data science questions on this page.\n\n\n\n\n\nCall to Action: Invite visitors to explore the content, follow along, or contact you for more information.\n\n\n\n\n\n\nDevelop your “About You” page. You can reuse content from previous assignments.\nYou can include the content here or on a separate page.\n\nIt’s recommended to create one “About You” page for all DSAN projects, with links to your various class projects.\n\n\n\n\n\nIn this section, please do a literature review and cite at least 3 academic publications per group member, and include internal academic citations.\n\n\n\n\nVisual/Infographic: Add a simple graphic or visual element to make the page more dynamic."
   },
   {
-    "objectID": "index.html#getting-started",
-    "href": "index.html#getting-started",
+    "objectID": "index.html#key-topics",
+    "href": "index.html#key-topics",
     "title": "Landing page",
-    "section": "Getting Started",
-    "text": "Getting Started\nTo begin the project, first read the instruction document (click here). This document is also accessible from the navigation bar.\nOnce you’ve completed that, you can proceed with the instructions found throughout the website."
+    "section": "",
+    "text": "Music, Lyrics, Natural Language Processing, Supervised Machine Learning, Unsupervised Machine Learning, Sentiment Analysis - Key Topics: List the main focus areas (e.g., machine learning, data visualization, predictive modeling)."
   },
   {
-    "objectID": "index.html#what-to-include-on-this-page",
-    "href": "index.html#what-to-include-on-this-page",
+    "objectID": "index.html#project-introduction",
+    "href": "index.html#project-introduction",
     "title": "Landing page",
-    "section": "What to Include on This Page",
-    "text": "What to Include on This Page\nThis is the landing page for your project. Content from this page can be reused in sections of your final report.\n\nCreate an “About You” Page\n\nDevelop your “About You” page. You can reuse content from previous assignments.\nYou can include the content here or on a separate page.\n\nIt’s recommended to create one “About You” page for all DSAN projects, with links to your various class projects.\n\n\n\n\nCreate a Landing Page for Your Project\n\nSummarize your topic, its significance, related work, and the questions you plan to explore.\nDraft an introduction with at least 5 research questions. These may evolve as your project progresses, since data science is an iterative process.\nInclude your data science questions on this page.\n\n\n\nLiterature review\nOnce you decide on a topic, you should ALWAYS START WITH A LITERATURE REVIEW, this is particularly important for academic projects.\nThe literature review is the most important part of most projects.\nIt allows you to;\n\n\nDetermine what is already known and what has already been tried, so that you don't re-invent the wheel.\n\n\nIt makes you more of a subject matter expert, allowing you to ask the right questions, target impactful projects, and communicate with other professionals.\n\n\n\nDoing a project that you think will change the world, only to find at the end that a very similar version of your project was already done in the 1980’s, isn’t a great use of time.\n\nIn this section, please do a literature review and cite at least 3 academic publications per group member, and include internal academic citations.\nOptional: Consider using LLM tools to 10X your literature review, e.g. instead of focusing on 3 papers, aim for 30 or more\nBy following these steps, you can 10X the efficiency of your literature review process, gaining more insights while minimizing the time spent on manual reading.\n\nExpand Your Literature Search\nAim to gather a larger pool of papers. Use academic databases (Google Scholar, arXiv, etc.) to find relevant studies and ensure a broad scope.\nSkim the Abstracts\nRead the abstracts of each paper to quickly understand their focus and identify those most relevant to your topic. Prioritize these papers for deeper analysis.\nUse LLM Tools for Summarization\nUpload the selected papers to an LLM tool capable of text summarization. Have it condense the main points of each paper into a concise, manageable summary (e.g., condense hundreds of pages into a 10-page summary). Carefully review this summary to absorb the key insights.\nLeverage Interactive LLM Tools\nUse tools like NotebookLM or other AI-based text digesters to ask specific, targeted questions about the papers:\n\nExample questions:\n\n“In the papers uploaded, did any of them explore XYZ?”\n“Which paper is most closely related to the following project idea: [explain idea]?” These tools will help you quickly extract relevant information without re-reading entire papers."
+    "section": "",
+    "text": "Summarize your topic, its significance, related work, and the questions you plan to explore.\n\nA brief, engaging overview of what the website offers (e.g., data-driven stories, insights, or case studies).\nAudience: Who is this for? Data professionals, businesses, researchers, or curious readers.\n\n\n\n\n\n\nMotivation: Explain why this topic matters, highlighting the importance of data in solving real-world problems.\nUse Cases/Examples: A brief teaser of compelling stories or case studies you’ve worked on.\n\n\n\n\n\nDraft an introduction with at least 5 research questions. These may evolve as your project progresses, since data science is an iterative process.\n\n\n\n\n\nInclude your data science questions on this page.\n\n\n\n\n\nCall to Action: Invite visitors to explore the content, follow along, or contact you for more information."
+  },
+  {
+    "objectID": "index.html#about-the-authors",
+    "href": "index.html#about-the-authors",
+    "title": "Landing page",
+    "section": "",
+    "text": "Develop your “About You” page. You can reuse content from previous assignments.\nYou can include the content here or on a separate page.\n\nIt’s recommended to create one “About You” page for all DSAN projects, with links to your various class projects."
+  },
+  {
+    "objectID": "index.html#literature-review",
+    "href": "index.html#literature-review",
+    "title": "Landing page",
+    "section": "",
+    "text": "In this section, please do a literature review and cite at least 3 academic publications per group member, and include internal academic citations."
   },
   {
     "objectID": "index.html#additional-ideas-for-things-to-include",
     "href": "index.html#additional-ideas-for-things-to-include",
     "title": "Landing page",
-    "section": "Additional Ideas for things to include",
-    "text": "Additional Ideas for things to include\n\nAudience: Who is this for? Data professionals, businesses, researchers, or curious readers.\nHeadline: A captivating title introducing the data science theme (e.g., “Unlocking Insights Through Data Stories”).\nIntroduction: A brief, engaging overview of what the website offers (e.g., data-driven stories, insights, or case studies).\nQuestions You Are Addressing: What do you hope to learn?\nMotivation: Explain why this topic matters, highlighting the importance of data in solving real-world problems.\nKey Topics: List the main focus areas (e.g., machine learning, data visualization, predictive modeling).\nUse Cases/Examples: A brief teaser of compelling stories or case studies you’ve worked on.\nCall to Action: Invite visitors to explore the content, follow along, or contact you for more information.\nVisual/Infographic: Add a simple graphic or visual element to make the page more dynamic."
+    "section": "",
+    "text": "Visual/Infographic: Add a simple graphic or visual element to make the page more dynamic."
   },
   {
     "objectID": "technical-details/progress-log.html",
     "href": "technical-details/progress-log.html",
     "title": "Progress log",
     "section": "",
-    "text": "Use this page to track your progress and keep a log of your contributions to the project, please update this each time you work on your project, it is generally a good habit to adopt.\nIf you are working as a team, at the end, you can duplicate the project and add it to your individual portfolio websites. If you do, you MUST retain attribution to your teammates. Removing attribution would constitute plagiarism."
+    "text": "This page was used to track our progress and keep a log of our contributions to the project. We created this after developing our idea to create a running list of the workflow that was needed to complete the project and to demonstrate how each of us contributed to the project."
   },
   {
-    "objectID": "technical-details/progress-log.html#to-do",
-    "href": "technical-details/progress-log.html#to-do",
+    "objectID": "technical-details/progress-log.html#satomi",
+    "href": "technical-details/progress-log.html#satomi",
     "title": "Progress log",
-    "section": "To-do",
-    "text": "To-do\n\nExplore possible topics by brainstorming with GPT\nwrite a technical methods sections for K-means\nwrite a technical methods sections for PCA\n\n… etc"
+    "section": "Satomi",
+    "text": "Satomi\n\nprovide link to about me page\n\nContribution log:\n\nIndex.qmd Literature Review:\n\nFind 3 academic publications analyzing song popularity using data\nAnalyze publications\nReport Findings on Index.qmd page\n\n\n\nIndex.qmd:\n\nCreate about me page\n\n\n\nData Collection:\n\nDevelop code to access top 100 songs playlist from Rolling Stones top 100 songs\nDevelop code to access spotify api to get data about top 100 songs\nDevelop code to access spotify api to get data about artists of top 100 songs\nProvide comments about process and informative technical markdown cells\n\n\n\nData Cleansing:\n\nConsolodate all raw data csvs into one dataframe\nUse VADER to conduct sentiment analysis of lyrics for songs\nUse NLP methods to collect other data about lyrics of songs\nFind other quantitative data from columns for future analysis\nWrite all data to a csv file in a processed data folder\nProvide comments about process and informative technical markdown cells\n\n\n\nSupervised Learning:\n\nConduct classification on ranking of song (top 20 vs not)\nConduct regression on song popularity\nAnalyze results to determine important features contributing to success of song\nProvide comments about process and informative technical markdown cells\n\n\n\nReport:\n\nWrite about key findings from Supervised Learning sections\nProvide informative visualizations\nWrite conclusion\n\n\n\nOverall:\n\nFrequent github pushes\nFrequent github pull requests\nComment code and explain decisions in technical-details files"
   },
   {
-    "objectID": "technical-details/progress-log.html#member-1",
-    "href": "technical-details/progress-log.html#member-1",
+    "objectID": "technical-details/progress-log.html#samyu",
+    "href": "technical-details/progress-log.html#samyu",
     "title": "Progress log",
-    "section": "Member-1:",
-    "text": "Member-1:\nProvide their name, a link to their “About Me” page.\nAlso, describe a log of their project roles.\nWeekly project contribution log:\nT: 10-15-2024\n\nCoordinate with team member to set up weekly meeting time\n\nM: 10-14-2024\n\nDo a first draft of the project landing page"
-  },
-  {
-    "objectID": "technical-details/progress-log.html#member-2",
-    "href": "technical-details/progress-log.html#member-2",
-    "title": "Progress log",
-    "section": "Member-2",
-    "text": "Member-2\nProvide their name, a link to their “About Me” page.\nAlso, describe a log of their project roles.\nWeekly project contribution log:\nW: 10-16-2024\n\nAttend first group meeting"
+    "section": "Samyu",
+    "text": "Samyu\n\nprovide link to about me page\n\nContribution log:\n\nIndex.qmd Literature Review:\n\nFind 3 academic publications analyzing song popularity using data\nAnalyze publications\nReport Findings on Index.qmd page\n\n\n\nIndex.qmd:\n\nCreate Landing page for website following instructions on page\nCreate about me page\n\n\n\nReport Introduction:\n\nWrite Objective\n\n\n\nData Collection:\n\nDevelop code to access collect lyrics for top 100 songs from Genius API\nProvide comments about process and informative technical markdown cells\n\n\n\nEDA:\n\nDevelop visualizations to analyze distributions of quantitative data\nConduct EDA to understand the characteristics of the most popular songs vs the rest of the songs\nCreate visualizations to show any correlations in the data\nProvide comments about process and informative technical markdown cells\n\n\n\nUnsupervised Learning:\n\nUse clustering algorithms to develop clusters based on quantitative data and understand connection to song ranking or popularity\nAnalyze results to determine the characteristics of popular songs\nDetermine if there are clusters that can then be used to make playlists of similar songs\nProvide comments about process and informative technical markdown cells\n\n\n\nReport:\n\nWrite executive summary\nWrite about key insights provided by EDA\nWrite about key insights provided by unsupervised learning\nProvide informative visualizations\nWrite about Business Implications of key findings\nWrite about Recommendations\n\n\n\nOverall:\n\nFrequent github pushes\nFrequent github pull requests\nComment code and explain decisions in technical-details files"
   }
 ]

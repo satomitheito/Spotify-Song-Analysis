@@ -151,9 +151,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#to-do" id="toc-to-do" class="nav-link active" data-scroll-target="#to-do">To-do</a></li>
-  <li><a href="#member-1" id="toc-member-1" class="nav-link" data-scroll-target="#member-1">Member-1:</a></li>
-  <li><a href="#member-2" id="toc-member-2" class="nav-link" data-scroll-target="#member-2">Member-2</a></li>
+  <li><a href="#satomi" id="toc-satomi" class="nav-link active" data-scroll-target="#satomi">Satomi</a></li>
+  <li><a href="#samyu" id="toc-samyu" class="nav-link" data-scroll-target="#samyu">Samyu</a></li>
   </ul>
 </nav>
     </div>
@@ -179,42 +178,146 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Use this page to track your progress and keep a log of your contributions to the project, please update this each time you work on your project, it is generally a good habit to adopt.</p>
-<p>If you are working as a team, at the end, you can duplicate the project and add it to your individual portfolio websites. If you do, you <strong>MUST</strong> retain attribution to your teammates. Removing attribution would constitute plagiarism.</p>
-<section id="to-do" class="level2">
-<h2 class="anchored" data-anchor-id="to-do">To-do</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">Explore possible topics by brainstorming with GPT</label></li>
-<li><label><input type="checkbox">write a technical methods sections for K-means</label></li>
-<li><label><input type="checkbox">write a technical methods sections for PCA</label></li>
+<p>This page was used to track our progress and keep a log of our contributions to the project. We created this after developing our idea to create a running list of the workflow that was needed to complete the project and to demonstrate how each of us contributed to the project.</p>
+<section id="satomi" class="level2">
+<h2 class="anchored" data-anchor-id="satomi">Satomi</h2>
+<ul>
+<li>provide link to about me page</li>
 </ul>
-<p>… etc</p>
-</section>
-<section id="member-1" class="level2">
-<h2 class="anchored" data-anchor-id="member-1">Member-1:</h2>
-<p>Provide their name, a link to their “About Me” page.</p>
-<p>Also, describe a log of their project roles.</p>
-<p><strong>Weekly project contribution log:</strong></p>
-<p><strong>T: 10-15-2024</strong></p>
+<p><strong>Contribution log:</strong></p>
+<section id="index.qmd-literature-review" class="level4">
+<h4 class="anchored" data-anchor-id="index.qmd-literature-review">Index.qmd Literature Review:</h4>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Coordinate with team member to set up weekly meeting time</label></li>
-</ul>
-<p><strong>M: 10-14-2024</strong></p>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Do a first draft of the project landing page</label></li>
+<li><label><input type="checkbox">Find 3 academic publications analyzing song popularity using data</label></li>
+<li><label><input type="checkbox">Analyze publications</label></li>
+<li><label><input type="checkbox">Report Findings on Index.qmd page</label></li>
 </ul>
 </section>
-<section id="member-2" class="level2">
-<h2 class="anchored" data-anchor-id="member-2">Member-2</h2>
-<p>Provide their name, a link to their “About Me” page.</p>
-<p>Also, describe a log of their project roles.</p>
-<p><strong>Weekly project contribution log:</strong></p>
-<p><strong>W: 10-16-2024</strong></p>
+<section id="index.qmd" class="level4">
+<h4 class="anchored" data-anchor-id="index.qmd">Index.qmd:</h4>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Attend first group meeting</label></li>
+<li><label><input type="checkbox">Create about me page</label></li>
+</ul>
+</section>
+<section id="data-collection" class="level4">
+<h4 class="anchored" data-anchor-id="data-collection">Data Collection:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Develop code to access top 100 songs playlist from Rolling Stones top 100 songs</label></li>
+<li><label><input type="checkbox">Develop code to access spotify api to get data about top 100 songs</label></li>
+<li><label><input type="checkbox">Develop code to access spotify api to get data about artists of top 100 songs</label></li>
+<li><label><input type="checkbox">Provide comments about process and informative technical markdown cells</label></li>
+</ul>
+</section>
+<section id="data-cleansing" class="level4">
+<h4 class="anchored" data-anchor-id="data-cleansing">Data Cleansing:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Consolodate all raw data csvs into one dataframe</label></li>
+<li><label><input type="checkbox">Use VADER to conduct sentiment analysis of lyrics for songs</label></li>
+<li><label><input type="checkbox">Use NLP methods to collect other data about lyrics of songs</label></li>
+<li><label><input type="checkbox">Find other quantitative data from columns for future analysis</label></li>
+<li><label><input type="checkbox">Write all data to a csv file in a processed data folder</label></li>
+<li><label><input type="checkbox">Provide comments about process and informative technical markdown cells</label></li>
+</ul>
+</section>
+<section id="supervised-learning" class="level4">
+<h4 class="anchored" data-anchor-id="supervised-learning">Supervised Learning:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Conduct classification on ranking of song (top 20 vs not)</label></li>
+<li><label><input type="checkbox">Conduct regression on song popularity</label></li>
+<li><label><input type="checkbox">Analyze results to determine important features contributing to success of song</label></li>
+<li><label><input type="checkbox">Provide comments about process and informative technical markdown cells</label></li>
+</ul>
+</section>
+<section id="report" class="level4">
+<h4 class="anchored" data-anchor-id="report">Report:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Write about key findings from Supervised Learning sections</label></li>
+<li><label><input type="checkbox">Provide informative visualizations</label></li>
+<li><label><input type="checkbox">Write conclusion</label></li>
+</ul>
+</section>
+<section id="overall" class="level4">
+<h4 class="anchored" data-anchor-id="overall">Overall:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Frequent github pushes</label></li>
+<li><label><input type="checkbox">Frequent github pull requests</label></li>
+<li><label><input type="checkbox">Comment code and explain decisions in technical-details files</label></li>
+</ul>
+</section>
+</section>
+<section id="samyu" class="level2">
+<h2 class="anchored" data-anchor-id="samyu">Samyu</h2>
+<ul>
+<li>provide link to about me page</li>
+</ul>
+<p><strong>Contribution log:</strong></p>
+<section id="index.qmd-literature-review-1" class="level4">
+<h4 class="anchored" data-anchor-id="index.qmd-literature-review-1">Index.qmd Literature Review:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Find 3 academic publications analyzing song popularity using data</label></li>
+<li><label><input type="checkbox">Analyze publications</label></li>
+<li><label><input type="checkbox">Report Findings on Index.qmd page</label></li>
+</ul>
+</section>
+<section id="index.qmd-1" class="level4">
+<h4 class="anchored" data-anchor-id="index.qmd-1">Index.qmd:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Create Landing page for website following instructions on page</label></li>
+<li><label><input type="checkbox">Create about me page</label></li>
+</ul>
+</section>
+<section id="report-introduction" class="level4">
+<h4 class="anchored" data-anchor-id="report-introduction">Report Introduction:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Write Objective</label></li>
+</ul>
+</section>
+<section id="data-collection-1" class="level4">
+<h4 class="anchored" data-anchor-id="data-collection-1">Data Collection:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Develop code to access collect lyrics for top 100 songs from Genius API</label></li>
+<li><label><input type="checkbox">Provide comments about process and informative technical markdown cells</label></li>
+</ul>
+</section>
+<section id="eda" class="level4">
+<h4 class="anchored" data-anchor-id="eda">EDA:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Develop visualizations to analyze distributions of quantitative data</label></li>
+<li><label><input type="checkbox">Conduct EDA to understand the characteristics of the most popular songs vs the rest of the songs</label></li>
+<li><label><input type="checkbox">Create visualizations to show any correlations in the data</label></li>
+<li><label><input type="checkbox">Provide comments about process and informative technical markdown cells</label></li>
+</ul>
+</section>
+<section id="unsupervised-learning" class="level4">
+<h4 class="anchored" data-anchor-id="unsupervised-learning">Unsupervised Learning:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Use clustering algorithms to develop clusters based on quantitative data and understand connection to song ranking or popularity</label></li>
+<li><label><input type="checkbox">Analyze results to determine the characteristics of popular songs</label></li>
+<li><label><input type="checkbox">Determine if there are clusters that can then be used to make playlists of similar songs</label></li>
+<li><label><input type="checkbox">Provide comments about process and informative technical markdown cells</label></li>
+</ul>
+</section>
+<section id="report-1" class="level4">
+<h4 class="anchored" data-anchor-id="report-1">Report:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Write executive summary</label></li>
+<li><label><input type="checkbox">Write about key insights provided by EDA</label></li>
+<li><label><input type="checkbox">Write about key insights provided by unsupervised learning</label></li>
+<li><label><input type="checkbox">Provide informative visualizations</label></li>
+<li><label><input type="checkbox">Write about Business Implications of key findings</label></li>
+<li><label><input type="checkbox">Write about Recommendations</label></li>
+</ul>
+</section>
+<section id="overall-1" class="level4">
+<h4 class="anchored" data-anchor-id="overall-1">Overall:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Frequent github pushes</label></li>
+<li><label><input type="checkbox">Frequent github pull requests</label></li>
+<li><label><input type="checkbox">Comment code and explain decisions in technical-details files</label></li>
 </ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
