@@ -11,23 +11,32 @@ bibliography: assets/references.bib
 Music, Lyrics, Hot 100 chart, hit songs, popular music research, Natural Language Processing, Supervised Machine Learning, Unsupervised Machine Learning, Sentiment Analysis
 
 ## Project Introduction
-- Summarize your topic, its significance, related work, and the questions you plan to explore.
-   - A brief, engaging overview of what the website offers (e.g., data-driven stories, insights, or case studies).
-   - **Audience**: Who is this for? Data professionals, businesses, researchers, or curious readers.
-   - 
+
+Decoding Song Success uses data science to uncover insights from the Rolling Stones Top 100 Songs. We bridged NLP and song metadata to analyze features like the characteristics of the lyrics of hits by running sentiment analysis, the popularity of the song, the popularity of the artist, and the genre. We hope to investigate how these features interact to shape the top hits. This website offers a data driven report, informative visualizations, and predictive models to convey the makings of a hit song.
 
 ### Motivation
-- **Motivation**: Explain why this topic matters, highlighting the importance of data in solving real-world problems.
-- **Use Cases/Examples**: A brief teaser of compelling stories or case studies you’ve worked on.
 
-### Research Questions
-- Draft an introduction with at least **5 research questions**. These may evolve as your project progresses, since data science is an iterative process.
+Music is an important part of popular culture with implications in everything from social contexts to consumerism. What makes a song a hit lies in complex emotional and commercial relationships. Analyzing the data about the songs that are considered successful can reveal connections between the lyrical sentiment, the song's characteristics, and audience preferences. This project highlights these patterns to help inform rising artists and predict commerciall success in the music industry. Some use cases of this analysis include helping songwriters decide whether explicit songs differ significantly from not explicit songs, cluster songs by features to offer recommendations, and help industry professionals predict whether a song will be a hit as they make investment decisions.
 
 ### Data Science Question
-- Include your data science questions on this page.
+
+The overall driving question of this exploration is as follows:
+
+What makes a song more popular with audiences, and how do lyrical and musical factors shape its success?
+
+### Research Questions
+
+As we conducted our investigation of music data, we aimed to answer the following questions:
+
+1. How does lyric sentiment influence a song's popularity? Do other lyric features (such as length) have an influence?
+2. Does lyric sentiment differ across genres, and does the trend between sentiment and popularity change between genres?
+3. How does profanity in a song impact it's sentiment and popularity?
+4. Can we use unsupervised learning techniques to identify clusters and create playlists of songs that someone may like based on liking a hit song?
+5. Does collaboration between artists produce more popular songs? How does individual artist popularity impact this?
 
 ### Conclusion
-- **Call to Action**: Invite visitors to explore the content, follow along, or contact you for more information.
+
+This project provides an in-depth study of the connection between data science and music. As you explore the visualizations, predictive models, and business report, we hop you learn more about what makes a song a hit!
 
 ## About the Authors  
 
