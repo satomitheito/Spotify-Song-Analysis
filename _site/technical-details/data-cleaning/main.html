@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -151,12 +185,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a>
-  <ul class="collapse">
-  <li><a href="#suggested-page-structure" id="toc-suggested-page-structure" class="nav-link" data-scroll-target="#suggested-page-structure">Suggested page structure</a></li>
-  <li><a href="#general-comments" id="toc-general-comments" class="nav-link" data-scroll-target="#general-comments">General comments:</a></li>
-  <li><a href="#what-to-address" id="toc-what-to-address" class="nav-link" data-scroll-target="#what-to-address">What to address</a></li>
-  </ul></li>
+  <li><a href="#introduction-to-data-cleaning" id="toc-introduction-to-data-cleaning" class="nav-link active" data-scroll-target="#introduction-to-data-cleaning">Introduction to Data Cleaning</a></li>
   <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
   </ul>
 </nav>
@@ -183,78 +212,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!-- After digesting the instructions, you can delete this cell, these are assignment instructions and do not need to be included in your final submission.  -->
-<section id="instructions" class="level1">
-<h1>Instructions</h1>
-<p><code>Note</code>: You should remove these instructions once you have read and understood them. They should not be included in your final submission.</p>
-<p><code>Remember:</code> Exactly what do you on this page will be specific you your project and data. Some things might “make more sense” on other pages, depending on your workflow, for example, you might feel that normalization and scaling should be included in a later section, dealing with machine learning, rather than here, that is totally fine. Organize your project in the way that makes the most sense to you.</p>
-<section id="suggested-page-structure" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-page-structure">Suggested page structure</h2>
-<p>Here’s one suggested structure for organizing your technical pages. You can adjust this as needed:</p>
-<p><code>Audience</code>:Remember that these are written for a technical audience. Assume they have completed the DSAN program, but would appreciate refreshers of the important concepts.</p>
-<ul>
-<li><strong>Introduction and Motivation:</strong> Briefly outline your plan. What are you doing on this page, and why? Provide context and explain the goals of your analysis.</li>
-<li><strong>Overview of Methods:</strong> Give a concise explanation of the methods used. For example, if using K-Means clustering, describe what it is, how it works, the inputs and outputs, and key hyperparameters.</li>
-<li><strong>Code:</strong> Include the code you used to implement your workflow.</li>
-<li><strong>Summary and Interpretation of Results:</strong> Summarize your findings, interpret the results, and discuss their technical implications.</li>
-</ul>
-</section>
-<section id="general-comments" class="level2">
-<h2 class="anchored" data-anchor-id="general-comments">General comments:</h2>
-<ul>
-<li><strong>Iterative Process</strong>: Data cleaning is often not a one-time process. As your analysis progresses, you may need to revisit the cleaning phase, and re-run the code, to adjust to new insights or requirements.</li>
-<li><strong>Clarity and Reproducibility</strong>: Ensure your documentation is clear and thorough. Others should be able to follow your steps and achieve the same results.</li>
-<li><strong>Visualizations</strong>: Use before-and-after visualizations to illustrate the impact of your cleaning steps, making the process more intuitive and transparent.</li>
-</ul>
-<p>By the end of this phase, your cleaned data should be well-documented and ready for further stages, such as <strong>Exploratory Data Analysis (EDA)</strong> and <strong>Machine Learning</strong>.</p>
-</section>
-<section id="what-to-address" class="level2">
-<h2 class="anchored" data-anchor-id="what-to-address">What to address</h2>
-<p>The following is a list of some of the things you should address on this page. This list is not exhaustive, and you should use your judgment to decide what is most relevant to your project.</p>
-<p>The <strong>Data Cleaning</strong> page of your portfolio is where you document the process of transforming your raw data into a usable format. Data cleaning is essential for ensuring the quality of your analysis, and this page should serve as a clear and reproducible guide for anyone reviewing your work. It also provides transparency, allowing others to trace the steps you took to prepare your data.</p>
-<p>The following is a guide to help you get started with possible thing to address on this page .</p>
-<ul>
-<li><strong>Description of the Data Cleaning Process</strong>: Explain the steps you took to clean and preprocess the data.</li>
-<li><strong>Code Documentation</strong>: Provide the code used in the data cleaning process (link to GitHub or embed the code directly).</li>
-<li><strong>Provide examples of data before and after cleaning</strong>: e.g.&nbsp;with df.head() or df.describe()</li>
-<li><strong>Raw and Cleaned Data Links</strong>: Ensure your page links to both the original (raw) dataset and the cleaned dataset. (please keep organized and store the cleaned data in <code>data/processed-data</code>, or similar location which doesn’t get synced to GitHub)</li>
-</ul>
-<p>Possible things to include:</p>
-<p><strong>Introduction to Data Cleaning</strong>:</p>
-<ul>
-<li>Provide a brief explanation of the data cleaning phase, its importance in preparing the data for further analysis (EDA, modeling), and its iterative nature.</li>
-<li>Mention that data cleaning may need to be revisited as the project evolves and analysis goals change.</li>
-</ul>
-<p><strong>Managing Missing Data</strong>:</p>
-<ul>
-<li><strong>Identify Missing Values</strong>: Explain how you identified missing data and where it occurred.</li>
-<li><strong>Handling Missing Data</strong>: Describe how missing values were addressed (e.g., imputation, removal of rows/columns).</li>
-<li><strong>Visualize Missing Data</strong>: Include visualizations (e.g., heatmaps) showing missing values before and after handling them.</li>
-</ul>
-<p><strong>Outlier Detection and Treatment</strong>:</p>
-<ul>
-<li><strong>Identify Outliers</strong>: Describe the methods you used to detect outliers in the dataset.</li>
-<li><strong>Addressing Outliers</strong>: Explain how outliers were treated (e.g., removal, transformation, or retaining them for analysis).</li>
-<li><strong>Visualize Outliers</strong>: Use visualizations (e.g., box plots) to show how outliers were managed.</li>
-</ul>
-<p><strong>Data Type Correction and Formatting</strong>:</p>
-<ul>
-<li><strong>Review Data Types</strong>: Summarize the types of variables (numerical, categorical, date-time, etc.) and ensure they are correctly formatted.</li>
-<li><strong>Transformation</strong>: Document any transformations performed, such as converting date formats, handling categorical variables, or encoding labels.</li>
-<li><strong>Impact of Changes</strong>: Briefly explain why these changes were necessary for accurate analysis.</li>
-</ul>
-<p><strong>Normalization and Scaling</strong>:</p>
-<ul>
-<li><strong>Data Distribution Analysis</strong>: Check and discuss the distribution of numerical variables (e.g., skewness).</li>
-<li><strong>Normalization Techniques</strong>: Describe any normalization or scaling techniques used (e.g., min-max scaling, z-score normalization).</li>
-<li><strong>Before-and-After Visualizations</strong>: Provide visualizations comparing the data before and after scaling or normalization.</li>
-</ul>
-<p><strong>Subsetting the Data</strong>:</p>
-<ul>
-<li><strong>Data Filtering</strong>: Explain any subsetting or filtering of the data (e.g., selecting quantitative or qualitative columns).</li>
-<li><strong>Rationale</strong>: Justify why you chose to work with a particular subset of the data.</li>
-</ul>
-</section>
+<section id="introduction-to-data-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-data-cleaning">Introduction to Data Cleaning</h2>
+<p>Data cleaning is a critical step in ensuring the quality and usability of data for analysis. In this project, the data cleaning process involved merging data frames, creating more-indepth columns, handling missing variables, and coverting data types.</p>
+<p>Since we want to analyze artists, songs, and lyrics, we conducted several changes such as adding song ranking, one hot encoding the genres, conducting sentiment analysis on the lyrics, and looking into artists features in a song. These will help streamline the EDA process as well as our analysis.</p>
 </section>
 <section id="code" class="level1">
 <h1>Code</h1>
@@ -262,6 +223,131 @@ ul.task-list li input[type="checkbox"] {
 <p>If you’re using a package for code organization, you can import it at this point. However, make sure that the <strong>actual workflow steps</strong>—including data processing, analysis, and other key tasks—are conducted and clearly demonstrated on this page. The goal is to show the technical flow of your project, highlighting how the code is executed to achieve your results.</p>
 <p>If relevant, link to additional documentation or external references that explain any complex components. This section should give readers a clear view of how the project is implemented from a technical perspective.</p>
 <p>Remember, this page is a technical narrative, NOT just a notebook with a collection of code cells, include in-line Prose, to describe what is going on.</p>
+<div id="cell-3" class="cell" data-execution_count="466">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-4" class="cell" data-execution_count="467">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Read in all the raw-data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>artists_data <span class="op">=</span> pd.read_csv(<span class="st">'../../data/raw-data/artists_data.csv'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>rolling_stone <span class="op">=</span> pd.read_csv(<span class="st">'../../data/raw-data/rolling_stone_top_100.csv'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>songs_lyrics <span class="op">=</span> pd.read_csv(<span class="st">'../../data/raw-data/songs_lyrics.csv'</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>tracks_data <span class="op">=</span> pd.read_csv(<span class="st">'../../data/raw-data/tracks_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-5" class="cell" data-execution_count="468">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#The rolling_stone dataset has all the songs from rank 1-100 but tracks_data has two songs missing due to it not being found in the collection stage.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#We are creating blank rows so that we can input the song rank column into the tracks_data</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>empty_row <span class="op">=</span> pd.Series(dtype<span class="op">=</span><span class="st">'object'</span>) </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>tracks_data <span class="op">=</span> pd.concat(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    [tracks_data.iloc[:<span class="dv">72</span>], empty_row.to_frame().T, tracks_data.iloc[<span class="dv">72</span>:]],</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    ignore_index<span class="op">=</span><span class="va">True</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>tracks_data <span class="op">=</span> pd.concat(</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    [tracks_data.iloc[:<span class="dv">74</span>], empty_row.to_frame().T, tracks_data.iloc[<span class="dv">74</span>:]],</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    ignore_index<span class="op">=</span><span class="va">True</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#We add the song rank into tracks_data</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>tracks_data[<span class="st">'Song Rank'</span>] <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">101</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#Drop the empty columns as they will not be used. We just made them initially so that the ranking would not be wrong in tracks_data</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>tracks_data <span class="op">=</span> tracks_data.dropna().reset_index(drop<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="469">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Rename columns</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>artists_data <span class="op">=</span> artists_data.rename(columns<span class="op">=</span>{<span class="st">'Name'</span>: <span class="st">'Artists'</span>})</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>tracks_data <span class="op">=</span> tracks_data.rename(columns<span class="op">=</span>{<span class="st">'Popularity'</span>: <span class="st">'Song Popularity'</span>})</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>tracks_data <span class="op">=</span> tracks_data.rename(columns<span class="op">=</span>{<span class="st">'Release Date'</span>: <span class="st">'Song Release Date'</span>})</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>tracks_data <span class="op">=</span> tracks_data.rename(columns<span class="op">=</span>{<span class="st">'Artist'</span>: <span class="st">'Artists'</span>})</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>artists_data <span class="op">=</span> artists_data.rename(columns<span class="op">=</span>{<span class="st">'Release Date'</span>: <span class="st">'Album Release Date'</span>})</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Merge column so we get artist and song info into one dataframe</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>artists_tracks_data <span class="op">=</span> pd.merge(tracks_data, artists_data, on<span class="op">=</span><span class="st">'Artists'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-7" class="cell" data-execution_count="470">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#We want to see how many artists were features on a song </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>songs_lyrics[<span class="st">'Total Artists On Song'</span>] <span class="op">=</span> songs_lyrics[<span class="st">'Artists'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">len</span>(<span class="bu">str</span>(x).split(<span class="st">'&amp;'</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-8" class="cell" data-execution_count="471">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Merge the lyrics dataframe with the artist/song masterlist dataframe</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>artists_tracks_data <span class="op">=</span> pd.merge(artists_tracks_data, songs_lyrics, on<span class="op">=</span><span class="st">'Track Name'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-9" class="cell" data-execution_count="472">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Rename and drop redundant columns</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>artists_tracks_data <span class="op">=</span> artists_tracks_data.drop(columns <span class="op">=</span> [<span class="st">'Artists_y'</span>])</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>artists_tracks_data <span class="op">=</span> artists_tracks_data.rename(columns<span class="op">=</span>{<span class="st">'Artists_x'</span>: <span class="st">'Artists'</span>})</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>artists_tracks_data <span class="op">=</span> artists_tracks_data.rename(columns<span class="op">=</span>{<span class="st">'lyrics'</span>: <span class="st">'Lyrics'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-10" class="cell" data-execution_count="473">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Get the length of the lyrics </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>artists_tracks_data[<span class="st">'Lyrics Word Count'</span>] <span class="op">=</span> artists_tracks_data[<span class="st">'Lyrics'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">len</span>(<span class="bu">str</span>(x).split()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-11" class="cell" data-execution_count="474">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Conducting sentimental analysis through VADER.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> vaderSentiment.vaderSentiment <span class="im">import</span> SentimentIntensityAnalyzer</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>analyzer <span class="op">=</span> SentimentIntensityAnalyzer()</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Created a function reads in the lyrics through VADER</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> analyze_sentiment(text):</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    sentiment <span class="op">=</span> analyzer.polarity_scores(<span class="bu">str</span>(text))</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sentiment</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>artists_tracks_data[<span class="st">'Sentiment (VADER)'</span>] <span class="op">=</span> artists_tracks_data[<span class="st">'Lyrics'</span>].<span class="bu">apply</span>(analyze_sentiment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-12" class="cell" data-execution_count="475">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Conducting TF-IDF on lyrics</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> TfidfVectorizer</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Initialize/tokenize </span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>tfidf_vectorizer <span class="op">=</span> TfidfVectorizer(</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Remove english stop words</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    stop_words<span class="op">=</span><span class="st">'english'</span>, </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#We want to just look at single words </span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    ngram_range<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>)     </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>tfidf_matrix <span class="op">=</span> tfidf_vectorizer.fit_transform(artists_tracks_data[<span class="st">'Lyrics'</span>].fillna(<span class="st">''</span>))</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Convert TF-IDF into a dataframe</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>tfidf_df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    tfidf_matrix.toarray(),</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Use TF-IDF feature as column headers</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>tfidf_vectorizer.get_feature_names_out(),</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>artists_tracks_data.index</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>tfidf_df.to_csv(<span class="st">'../../data/processed-data/tfidf.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-13" class="cell" data-execution_count="476">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MultiLabelBinarizer</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>artists_tracks_data[<span class="st">'Genres'</span>] <span class="op">=</span> artists_tracks_data[<span class="st">'Genres'</span>].fillna(<span class="st">''</span>).astype(<span class="bu">str</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plit genres into a list as there could be multiple generes in a single cell </span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>artists_tracks_data[<span class="st">'Genres Split'</span>] <span class="op">=</span> artists_tracks_data[<span class="st">'Genres'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: [genre.strip() <span class="cf">for</span> genre <span class="kw">in</span> x.split(<span class="st">','</span>)])</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>mlb <span class="op">=</span> MultiLabelBinarizer()</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Fit the mlb to the split genres</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>mlb.fit(artists_tracks_data[<span class="st">'Genres Split'</span>])</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a list of column names based on the genres</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>genre_columns <span class="op">=</span> []</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> mlb.classes_:</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    genre_columns.append(<span class="ss">f"Genre_</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">#One hot encode on the seperated genres</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>genre_one_hot <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    mlb.fit_transform(artists_tracks_data[<span class="st">'Genres Split'</span>]),</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>genre_columns,  </span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>artists_tracks_data.index</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co">#Concatenate one hot encoded columns into artists_tracks_data </span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>artists_tracks_data <span class="op">=</span> pd.concat([artists_tracks_data, genre_one_hot], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>artists_tracks_data <span class="op">=</span> artists_tracks_data.drop(columns<span class="op">=</span>[<span class="st">'Genres Split'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-14" class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>artists_tracks_data.to_csv(<span class="st">'../../data/processed-data/artist_song_masterlist.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>

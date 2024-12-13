@@ -185,23 +185,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a>
-  <ul class="collapse">
-  <li><a href="#suggested-page-structure" id="toc-suggested-page-structure" class="nav-link" data-scroll-target="#suggested-page-structure">Suggested page structure</a></li>
-  <li><a href="#what-to-address" id="toc-what-to-address" class="nav-link" data-scroll-target="#what-to-address">What to address</a></li>
-  <li><a href="#start-collecting-data" id="toc-start-collecting-data" class="nav-link" data-scroll-target="#start-collecting-data">Start collecting data:</a></li>
-  <li><a href="#saving-the-raw-data" id="toc-saving-the-raw-data" class="nav-link" data-scroll-target="#saving-the-raw-data">Saving the raw data</a></li>
-  <li><a href="#requirements" id="toc-requirements" class="nav-link" data-scroll-target="#requirements">Requirements:</a></li>
-  </ul></li>
-  <li><a href="#what-do-include-on-this-page" id="toc-what-do-include-on-this-page" class="nav-link" data-scroll-target="#what-do-include-on-this-page">What do include on this page</a></li>
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#data-source-information" id="toc-data-source-information" class="nav-link active" data-scroll-target="#data-source-information">Data Source Information</a></li>
+  <li><a href="#data-collection-method" id="toc-data-collection-method" class="nav-link" data-scroll-target="#data-collection-method">Data Collection Method</a></li>
+  <li><a href="#data-structure-and-format" id="toc-data-structure-and-format" class="nav-link" data-scroll-target="#data-structure-and-format">Data Structure and Format</a></li>
+  <li><a href="#linking-to-data" id="toc-linking-to-data" class="nav-link" data-scroll-target="#linking-to-data">Linking to Data</a></li>
+  <li><a href="#goals" id="toc-goals" class="nav-link" data-scroll-target="#goals">Goals</a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
-  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a>
   <ul class="collapse">
   <li><a href="#challenges" id="toc-challenges" class="nav-link" data-scroll-target="#challenges">Challenges</a></li>
   <li><a href="#benchmarks" id="toc-benchmarks" class="nav-link" data-scroll-target="#benchmarks">Benchmarks</a></li>
-  <li><a href="#conclusion-and-future-steps" id="toc-conclusion-and-future-steps" class="nav-link" data-scroll-target="#conclusion-and-future-steps">Conclusion and Future Steps</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion:</a></li>
+  <li><a href="#future-steps" id="toc-future-steps" class="nav-link" data-scroll-target="#future-steps">Future Steps:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -228,102 +225,96 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="instructions" class="level1">
-<h1>Instructions</h1>
-<p><code>Note</code>: You should remove these instruction once you have read and understood them. They should not be included in your final submission.</p>
-<p><code>Remember:</code> Exactly what do you put on this page will be specific you your project and data. Some things might “make more sense” on one page rather than another, depending on your workflow. Organize your project in a logical way that makes the most sense to you.</p>
-<section id="suggested-page-structure" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-page-structure">Suggested page structure</h2>
-<p>Here’s one suggested structure for organizing your technical pages. You can adjust this as needed:</p>
-<p><code>Audience</code>:Remember that these are written for a technical audience. Assume they have completed the DSAN program, but would appreciate refreshers of the important concepts.</p>
+<section id="data-source-information" class="level2">
+<h2 class="anchored" data-anchor-id="data-source-information">Data Source Information</h2>
 <ul>
-<li><strong>Introduction and Motivation:</strong> Briefly outline your plan. What are you doing on this page, and why? Provide context and explain the goals of your analysis.</li>
-<li><strong>Overview of Methods:</strong> Give a concise explanation of the methods used. For example, if using K-Means clustering, describe what it is, how it works, the inputs and outputs, and key hyperparameters.</li>
-<li><strong>Code:</strong> Include the code you used to implement your workflow.</li>
-<li><strong>Summary and Interpretation of Results:</strong> Summarize your findings, interpret the results, and discuss their technical implications.</li>
+<li><strong>Spotify API</strong>: Used to collect information about songs and artists.
+<ul>
+<li><a href="https://developer.spotify.com/documentation/web-api">Spotify API Documentation</a></li>
+</ul></li>
+<li><strong>Genius API</strong>: Used to retrieve song lyrics.
+<ul>
+<li><a href="https://docs.genius.com/">Genius API Documentation</a></li>
+</ul></li>
 </ul>
-<p>In the provide repo, these subsections have been included in the <code>data-collection</code> file as separate <code>.qmd</code> files that can be embedded using the <code>{{&lt; include  &gt;}}</code> tag.</p>
+<p>Spotify API provides detailed metada about tracks and artists, which is important as we want to look at the song details, artist details, and popularity. Genius API provies lyrics which can be used for word analysis.</p>
 </section>
-<section id="what-to-address" class="level2">
-<h2 class="anchored" data-anchor-id="what-to-address">What to address</h2>
-<p>The following is a list of some of the things you should address on this page. This list is not exhaustive, and you should use your judgment to decide what is most relevant to your project.</p>
-<p>On this page, you will focus on <strong>data collection</strong>, which is an essential step for future analysis. You should have already selected a specific data-science question that can be addressed in a data-driven way.</p>
-<p>It is recommended that you focus on one or two of the following data formats, <strong>text</strong>, <strong>tabular</strong>, <strong>image</strong>, <strong>geospatial</strong>, or <strong>network</strong> data.</p>
-<p><strong>Tabular</strong> (e.g.&nbsp;CSV files) and <strong>text</strong> formats are highly recommended, as these are covered most thoroughly in the course. Deviating from these formats may require additional work on your end. Please avoid <strong>timeseries</strong> data formats, as these require special methods not covered in the course. You can include as many additional formats as you want. Your project will revolve around the data you gather and will include data collection, analysis, visualization, and storytelling.</p>
-</section>
-<section id="start-collecting-data" class="level2">
-<h2 class="anchored" data-anchor-id="start-collecting-data">Start collecting data:</h2>
-<p>Begin gathering your data and document the methods and sources on the <strong>Data Collection</strong> page of your project. Include screenshots or example tables to illustrate the data collection process without displaying entire datasets. Ensure <strong>transparency</strong> so anyone can replicate your work.</p>
-</section>
-<section id="saving-the-raw-data" class="level2">
-<h2 class="anchored" data-anchor-id="saving-the-raw-data">Saving the raw data</h2>
+<section id="data-collection-method" class="level2">
+<h2 class="anchored" data-anchor-id="data-collection-method">Data Collection Method</h2>
 <ul>
-<li>During the collection phase, save the collected data locally to the <code>data/raw-data</code> folder, in the root of the project, for later processing. (Do not sync this folder to GitHub.)</li>
-<li>Remember, the “raw data” should typically be left “pristine”, to ensure replicability.</li>
-<li>Later when you clean the data, you should save the cleaned data to the <code>data/processed-data</code> folder, in the root of the project.</li>
-<li>You should also save files you download manually from online to this folder</li>
+<li><strong>Spotify API</strong>
+<ul>
+<li>Used spotipy library to authenticate client ID and client secret.</li>
+<li>After pulling the songs from Rolling Stone’s spotify Top 100 playlist, we pullled all the information of the artists and the tracks into seperate csvs.</li>
+</ul></li>
+<li><strong>Genius API</strong>
+<ul>
+<li>Authenticated using client access token.</li>
+<li>Got the lyrics url for each song by querying Genius for song details.</li>
+<li>Used BeautifulSoup to scrape lyrics from the url.
+<ul>
+<li>BeautifulSoup is a Python library used for web scraping. It allows us to get data from HTML and XML files.</li>
+</ul></li>
+</ul></li>
 </ul>
 </section>
-<section id="requirements" class="level2">
-<h2 class="anchored" data-anchor-id="requirements">Requirements:</h2>
+<section id="data-structure-and-format" class="level2">
+<h2 class="anchored" data-anchor-id="data-structure-and-format">Data Structure and Format</h2>
 <ul>
-<li>Your data must be relevant to the project’s overall goals and help solve your research questions.</li>
-<li>You must use <strong>at least one API</strong> to collect your data.</li>
-<li>Ensure you have at least one <strong>regression target</strong>: a continuous quantity that can be used for regression prediction with other features.</li>
-<li>Ensure you have at least one <strong>binary classification target</strong>: a two-class (A,B) label that can be predicted using other features.</li>
-<li>Ensure you have at least one <strong>multiclass-classification target</strong>: a multi-class (A,B,C …) label that can be predicted using other features.</li>
-<li><strong>Do not use a Kaggle topic</strong>—this project is meant to simulate a real-world project. Kaggle datasets are typically too clean and have already been prepped for analysis, which doesn’t align with the project’s goals.</li>
+<li>artists_data.csv
+<ul>
+<li>Rows represent individual artists with columns: Artist ID, Name, Genres, Followers, Popularity.</li>
+</ul></li>
+<li>rolling_stone_top_100,csv
+<ul>
+<li>Rows represent each song with columns: Track Name, Artists.</li>
+</ul></li>
+<li>song_lyrics.csv
+<ul>
+<li>Rows represent each song with columns: Track Name, Artists, lyrics.</li>
+</ul></li>
+<li>tracks_data.csv
+<ul>
+<li>Rows represent each song with columns: Track ID, Track Name, Popularity, Album, Release Date, Duration (ms), Artist, Explicit.</li>
+</ul></li>
 </ul>
-<p>Focus on data that tells a compelling story and supports the techniques covered in the class (e.g., clustering, classification, regression).</p>
 </section>
-</section>
-<section id="what-do-include-on-this-page" class="level1">
-<h1>What do include on this page</h1>
-<p>To ensure clarity and transparency throughout your project, your data collection documentation should include the following:</p>
-<ol start="0" type="1">
-<li><p><strong>Include all code used for data collection</strong> in the notebook below</p></li>
-<li><p><strong>Data Source Information</strong></p>
+<section id="linking-to-data" class="level2">
+<h2 class="anchored" data-anchor-id="linking-to-data">Linking to Data</h2>
 <ul>
-<li>Specify where the data comes from, whether public datasets, APIs, or original collection.</li>
-<li>Provide links to datasets or API documentation and explain their relevance to the project.</li>
-</ul></li>
-<li><p><strong>Data Collection Methods</strong></p>
-<ul>
-<li>If you used an API or web scraping, explain the tools (e.g., <code>BeautifulSoup</code>, <code>Selenium</code>) and the process.</li>
-<li>Include links to your code for replicating data collection.</li>
-</ul></li>
-<li><p><strong>Data Structure and Format</strong></p>
-<ul>
-<li>Describe the structure of your raw data (e.g., rows, columns, data types) and its format (CSV, JSON, etc.).</li>
-</ul></li>
-<li><p><strong>Linking to Data</strong></p>
-<ul>
-<li>Include links to the <strong>raw dataset</strong>, ensuring transparency and allowing replication.</li>
-</ul></li>
-<li><p><strong>Code and Reproducibility</strong></p>
-<ul>
-<li>Link to all relevant code, including data collection , with clear documentation to enable replication.</li>
-</ul></li>
-<li><p><strong>Transparency and Replicability</strong></p>
-<ul>
-<li>Ensure your entire workflow is transparent and reproducible by linking all data, code, and documentation. This allows others to follow your process from start to finish.</li>
-</ul></li>
-</ol>
-</section>
-<section id="overview" class="level1">
-<h1>Overview</h1>
-<p>In this section, provide a high-level overview for technical staff, summarizing the key tasks and processes carried out here. Include the following elements:</p>
-<ul>
-<li><strong>Goals</strong>: Clearly define the purpose of the tasks or analysis being conducted.</li>
-<li><strong>Motivation</strong>: Explain the reasoning behind the work, such as solving a specific problem, improving a system, or optimizing performance.</li>
-<li><strong>Objectives</strong>: Outline the specific outcomes you aim to achieve, whether it’s implementing a solution, analyzing data, or building a model.</li>
+<li><a href="../../data/raw-data/artists_data.csv">artists_data.csv</a></li>
+<li><a href="../../data/raw-data/rolling_stone_top_100.csv">rolling_stone_top_100,csv</a></li>
+<li><a href="../../data/raw-data/songs_lyrics.csv">songs_lyrics.csv</a></li>
+<li><a href="../../data/raw-data/tracks_data.csv">tracks_data.csv</a></li>
 </ul>
-<p>This overview should give technical staff a clear understanding of the context and importance of the work, while guiding them on what to focus on in the details that follow.</p>
 </section>
-<section id="methods" class="level1">
-<h1>Methods</h1>
-<p>In this section, provide an overview summary of the methods used on this page. This should include a brief description of the key techniques, algorithms, tools, or processes employed in your work. Make sure to outline the approach taken for data collection, processing, analysis, or any specific technical steps relevant to the project.</p>
-<p>If you are developing a package, include a reference to the relevant documentation and provide a link here for easy access. Ensure that the package details are properly documented in its dedicated section, but mentioned and connected here for a complete understanding of the methods used in this project.</p>
+<section id="goals" class="level2">
+<h2 class="anchored" data-anchor-id="goals">Goals</h2>
+<p>The primary goal of this notebook is to colelct, process and analyze song metadata and lyrics from multiple APIS (Spotify and Genius) to analyze song popularity and its predictors. We can acheive this by acuiring data from songs that are already considered the top 100 of 2024, cleaning the dataset, conduting exploratory data analysis, machine learning analysis, and predictive analysis.</p>
+</section>
+<section id="motivation" class="level2">
+<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
+<p>This work is motivated by the need to bridge the gap between song qualities, artist features, and their impact on song popularity. By combining metadata with lyrical analysis, we aim to illustrate patterns that can better enhance music recommendations, audience targeting strategies, and creative decision-making for artists.</p>
+</section>
+<section id="objectives" class="level2">
+<h2 class="anchored" data-anchor-id="objectives">Objectives</h2>
+<ul>
+<li>Retrieve song and artist details using the Spotify API.</li>
+<li>Extract lyrics using the Genius API and BeautifulSoup.</li>
+<li>Normalize and clean the collected data.</li>
+<li>Structure datasets for exploratory data analysis (EDA) and machine learning workflows.</li>
+<li>Identify key features.</li>
+</ul>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<p>This project utilizes a combination of API, web scraping, and data processing techniques to collect and prepare song metadata and lyrics for analysis.</p>
+<ul>
+<li><strong>Data Collection</strong>: Song metadata was retrieved using the Spotify API with <code>spotipy</code>, while lyrics were obtained through the Genius API and scraped with <code>BeautifulSoup</code>.</li>
+<li><strong>Data Processing</strong>: Data was cleaned, normalized, and merged.</li>
+<li><strong>Tools Used</strong>: Libraries such as <code>spotipy</code>, <code>requests</code>, <code>BeautifulSoup</code>, and <code>pandas</code> were employed for API interaction, HTML parsing, and data manipulation.</li>
+</ul>
+<p>These methods provides a foundation for preparing the data for analysis and modeling tasks.</p>
 </section>
 <section id="code" class="level1">
 <h1>Code</h1>
@@ -332,22 +323,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Ensure that the code is well-commented to enhance readability and understanding for others who may review or use it. If relevant, link to additional documentation or external references that explain any complex components. This section should give readers a clear view of how the project is implemented from a technical perspective.</p>
 <p>This page is a technical narrative, NOT just a notebook with a collection of code cells, include in-line Prose, to describe what is going on.</p>
 <p>In the following code….</p>
-<div id="cell-6" class="cell" data-execution_count="78">
+<div id="cell-6" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> spotipy</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> spotipy.oauth2 <span class="im">import</span> SpotifyClientCredentials</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Read in the json file that has Spotify api credentials </span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'info/info.json'</span>, <span class="st">'r'</span>) <span class="im">as</span> info_file:</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    info <span class="op">=</span> json.load(info_file)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>client_id <span class="op">=</span> info[<span class="st">'client_id'</span>] </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>client_secret <span class="op">=</span> info[<span class="st">'client_secret'</span>]</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Set up Spotify client credentials manager using clientID and cleint secret</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>client_credentials_manager <span class="op">=</span> SpotifyClientCredentials(client_id<span class="op">=</span>client_id, client_secret<span class="op">=</span>client_secret)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Create Spotify client object</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>sp <span class="op">=</span> spotipy.Spotify(client_credentials_manager<span class="op">=</span>client_credentials_manager)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Read in the json file that has Spotify api credentials </span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'info/info.json'</span>, <span class="st">'r'</span>) <span class="im">as</span> info_file:</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    info <span class="op">=</span> json.load(info_file)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>client_id <span class="op">=</span> info[<span class="st">'client_id'</span>] </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>client_secret <span class="op">=</span> info[<span class="st">'client_secret'</span>]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Set up Spotify client credentials manager using clientID and cleint secret</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>client_credentials_manager <span class="op">=</span> SpotifyClientCredentials(client_id<span class="op">=</span>client_id, client_secret<span class="op">=</span>client_secret)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#Create Spotify client object</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>sp <span class="op">=</span> spotipy.Spotify(client_credentials_manager<span class="op">=</span>client_credentials_manager)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-7" class="cell" data-execution_count="79">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tracks_data <span class="op">=</span> []</span>
@@ -377,252 +372,280 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Exit loop</span></span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    playlist_tracks <span class="op">=</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-8" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Genius API access token</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'/Users/samyu/.api-keys.json'</span>) <span class="im">as</span> f:</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    keys <span class="op">=</span> json.load(f)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ACCESS_TOKEN <span class="op">=</span> keys[<span class="st">'genius_api'</span>]</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Base URL for the Genius API</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>BASE_URL <span class="op">=</span> <span class="st">"https://api.genius.com"</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to search for a song</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_song(song_title, artist_name<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    headers <span class="op">=</span> {<span class="st">"Authorization"</span>: <span class="ss">f"Bearer </span><span class="sc">{</span>ACCESS_TOKEN<span class="sc">}</span><span class="ss">"</span>}</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    search_url <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>BASE_URL<span class="sc">}</span><span class="ss">/search"</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    params <span class="op">=</span> {<span class="st">"q"</span>: song_title}</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(search_url, headers<span class="op">=</span>headers, params<span class="op">=</span>params)</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Parse search results</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> response.json()</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        hits <span class="op">=</span> data.get(<span class="st">"response"</span>, {}).get(<span class="st">"hits"</span>, [])</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Try to match the artist name, if provided</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> hit <span class="kw">in</span> hits:</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> hit.get(<span class="st">"result"</span>, {})</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> artist_name:</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> artist_name.lower() <span class="kw">in</span> result.get(<span class="st">"primary_artist"</span>, {}).get(<span class="st">"name"</span>, <span class="st">""</span>).lower():</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">return</span> result</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> result  <span class="co"># Return the first result if artist is not specified</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error: </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>response<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to extract lyrics from the Genius webpage</span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_lyrics(song_title, artist_name<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    song <span class="op">=</span> search_song(song_title, artist_name)</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> song:</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Song not found!"</span>)</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    song_url <span class="op">=</span> song.get(<span class="st">"url"</span>)</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> song_url:</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Lyrics URL: </span><span class="sc">{</span>song_url<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Scrape lyrics using BeautifulSoup</span></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> requests.get(song_url)</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>        soup <span class="op">=</span> BeautifulSoup(response.text, <span class="st">"html.parser"</span>)</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Lyrics are usually in a &lt;div&gt; with a specific class</span></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>        lyrics <span class="op">=</span> soup.find(<span class="st">"div"</span>, class_<span class="op">=</span><span class="st">"Lyrics-sc-1bcc94c6-1 bzTABU"</span>)</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> lyrics:</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> lyrics.get_text(<span class="st">" "</span>)</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">'Intro'</span>, <span class="st">''</span>)</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">'Refrain'</span>, <span class="st">''</span>)</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">'Verse 1'</span>, <span class="st">''</span>)</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">'Verse 2'</span>, <span class="st">''</span>)</span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">'Pre-Chorus'</span>, <span class="st">''</span>)</span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">'Chorus'</span>, <span class="st">''</span>)</span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">':'</span>, <span class="st">''</span>)</span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">'['</span>, <span class="st">''</span>)</span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">']'</span>, <span class="st">''</span>)</span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> artist_name:</span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="st">'&amp;'</span> <span class="kw">in</span> artist_name:</span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>                    artists <span class="op">=</span> artist_name.split(<span class="st">'&amp;'</span>)</span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>                    artists <span class="op">=</span> [artist_name]</span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> a <span class="kw">in</span> artists:</span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>                    ly <span class="op">=</span> ly.replace(a, <span class="st">''</span>)</span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> ly</span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="st">"Lyrics not found!"</span></span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Lyrics URL not found!"</span>)</span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> top_100_song_lyrics(tracks_data, delay<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> track <span class="kw">in</span> tracks_data:</span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>        song_title <span class="op">=</span> track[<span class="dv">0</span>]</span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>        artist_name <span class="op">=</span> track[<span class="dv">1</span>]</span>
-<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>        track[<span class="dv">2</span>] <span class="op">=</span> get_lyrics(song_title, artist_name)</span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>        time.sleep(delay)</span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tracks_data</span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>tracks_data <span class="op">=</span> top_100_song_lyrics(tracks_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-8" class="cell" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create csv path </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>csv_file_path <span class="op">=</span> <span class="st">'../../data/raw-data/rolling_stone_top_100.csv'</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Creates the csv file and writes into it</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(csv_file_path, mode<span class="op">=</span><span class="st">'w'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Creates csv wrriter</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    writer <span class="op">=</span> csv.writer(<span class="bu">file</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Write headers</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    writer.writerow([<span class="st">'Track Name'</span>, <span class="st">'Artists'</span>, <span class="st">'Lyrics'</span>])</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Add in tracks_data into the rows </span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    writer.writerows(tracks_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="80">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create csv path </span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>csv_file_path <span class="op">=</span> <span class="st">'../../data/raw-data/rolling_stone_top_100.csv'</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Creates the csv file and writes into it</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(csv_file_path, mode<span class="op">=</span><span class="st">'w'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Creates csv wrriter</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    writer <span class="op">=</span> csv.writer(<span class="bu">file</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Write headers</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    writer.writerow([<span class="st">'Track Name'</span>, <span class="st">'Artists'</span>, <span class="st">'Lyrics'</span>])</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Add in tracks_data into the rows </span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    writer.writerows(tracks_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-10" class="cell" data-execution_count="81">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Intialize lists</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tracks_info <span class="op">=</span> []</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>artists_info <span class="op">=</span> {}</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Iterate over each tack in tracks_Data</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> tracks_data:</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Grabs the track name</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    track_name <span class="op">=</span> item[<span class="dv">0</span>]  </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Grabs the artist name</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    artists <span class="op">=</span> item[<span class="dv">1</span>]  </span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Initialize</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    track_info <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Uses Spotify API to search track</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    track <span class="op">=</span> sp.search(q<span class="op">=</span><span class="ss">f"track:</span><span class="sc">{</span>track_name<span class="sc">}</span><span class="ss">"</span>, <span class="bu">type</span><span class="op">=</span><span class="st">'track'</span>, limit<span class="op">=</span><span class="dv">50</span>)</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> track:</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Iterate through all the search results</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> search_result <span class="kw">in</span> track[<span class="st">'tracks'</span>][<span class="st">'items'</span>]:</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>            search_result_artists <span class="op">=</span> []</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> artist <span class="kw">in</span> search_result[<span class="st">'artists'</span>]:</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                <span class="co">#Extract the names of artists that was found in the search result into a list</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                search_result_artists.append(artist[<span class="st">'name'</span>])</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>            <span class="co">#Check if the artists from tracks_data are a subset of search_result_artists</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">set</span>(artists.split(<span class="st">' &amp; '</span>)).issubset(search_result_artists):</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>                <span class="co">#Check if the artists from tracks_data are a subset of search_result_artists</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>                track_info <span class="op">=</span> search_result</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Break the outer loop if a match has been found</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> track_info:</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        <span class="co">#If next page available and song not found, go to the next page of results </span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> track[<span class="st">'tracks'</span>][<span class="st">'next'</span>]:</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>            track <span class="op">=</span> sp.<span class="bu">next</span>(track[<span class="st">'tracks'</span>])</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>            track <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Even after all the searching, if song not found, </span></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> track_info:</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"No matching track found for: </span><span class="sc">{</span>track_name<span class="sc">}</span><span class="ss"> by </span><span class="sc">{</span>artists<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Create dictionary with desired info about the track</span></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>    track_details <span class="op">=</span> {</span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>        <span class="st">'track_id'</span>: track_info[<span class="st">'id'</span>],</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>        <span class="st">'name'</span>: track_info[<span class="st">'name'</span>],</span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>        <span class="st">'popularity'</span>: track_info[<span class="st">'popularity'</span>],</span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>        <span class="st">'album'</span>: track_info[<span class="st">'album'</span>][<span class="st">'name'</span>],</span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>        <span class="st">'release_date'</span>: track_info[<span class="st">'album'</span>][<span class="st">'release_date'</span>],</span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>        <span class="st">'duration_ms'</span>: track_info[<span class="st">'duration_ms'</span>],</span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>        <span class="st">'artist'</span>: track_info[<span class="st">'artists'</span>][<span class="dv">0</span>][<span class="st">'name'</span>],</span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>        <span class="st">'explicit'</span>: track_info[<span class="st">'explicit'</span>]</span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>    tracks_info.append(track_details)</span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Iterates through the artists associated with the tracks</span></span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> artist <span class="kw">in</span> track_info[<span class="st">'artists'</span>]:</span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Get artist ID</span></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>        artist_id <span class="op">=</span> artist[<span class="st">'id'</span>]</span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Checks for duplicates </span></span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> artist_id <span class="kw">not</span> <span class="kw">in</span> artists_info:  </span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>            <span class="co">#Uses the artist ID to get info about the artists</span></span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>            artist_info <span class="op">=</span> sp.artist(artist_id)</span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>            <span class="co">#Adds the information to the created dictionary</span></span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>            artists_info[artist_id] <span class="op">=</span> {</span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>                <span class="st">'id'</span>: artist_info[<span class="st">'id'</span>],</span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>                <span class="st">'name'</span>: artist_info[<span class="st">'name'</span>],</span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>                <span class="st">'genres'</span>: artist_info[<span class="st">'genres'</span>],</span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>                <span class="st">'followers'</span>: artist_info[<span class="st">'followers'</span>][<span class="st">'total'</span>],</span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>                <span class="st">'popularity'</span>: artist_info[<span class="st">'popularity'</span>],</span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>            }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-9" class="cell" data-execution_count="81">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Intialize lists</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tracks_info <span class="op">=</span> []</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>artists_info <span class="op">=</span> {}</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Iterate over each tack in tracks_Data</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> tracks_data:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Grabs the track name</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    track_name <span class="op">=</span> item[<span class="dv">0</span>]  </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Grabs the artist name</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    artists <span class="op">=</span> item[<span class="dv">1</span>]  </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Initialize</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    track_info <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Uses Spotify API to search track</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    track <span class="op">=</span> sp.search(q<span class="op">=</span><span class="ss">f"track:</span><span class="sc">{</span>track_name<span class="sc">}</span><span class="ss">"</span>, <span class="bu">type</span><span class="op">=</span><span class="st">'track'</span>, limit<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> track:</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Iterate through all the search results</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> search_result <span class="kw">in</span> track[<span class="st">'tracks'</span>][<span class="st">'items'</span>]:</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>            search_result_artists <span class="op">=</span> []</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> artist <span class="kw">in</span> search_result[<span class="st">'artists'</span>]:</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>                <span class="co">#Extract the names of artists that was found in the search result into a list</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>                search_result_artists.append(artist[<span class="st">'name'</span>])</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>            <span class="co">#Check if the artists from tracks_data are a subset of search_result_artists</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">set</span>(artists.split(<span class="st">' &amp; '</span>)).issubset(search_result_artists):</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>                <span class="co">#Check if the artists from tracks_data are a subset of search_result_artists</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>                track_info <span class="op">=</span> search_result</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Break the outer loop if a match has been found</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> track_info:</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>        <span class="co">#If next page available and song not found, go to the next page of results </span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> track[<span class="st">'tracks'</span>][<span class="st">'next'</span>]:</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>            track <span class="op">=</span> sp.<span class="bu">next</span>(track[<span class="st">'tracks'</span>])</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>            track <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Even after all the searching, if song not found, </span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> track_info:</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"No matching track found for: </span><span class="sc">{</span>track_name<span class="sc">}</span><span class="ss"> by </span><span class="sc">{</span>artists<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Create dictionary with desired info about the track</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    track_details <span class="op">=</span> {</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        <span class="st">'track_id'</span>: track_info[<span class="st">'id'</span>],</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>        <span class="st">'name'</span>: track_info[<span class="st">'name'</span>],</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>        <span class="st">'popularity'</span>: track_info[<span class="st">'popularity'</span>],</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>        <span class="st">'album'</span>: track_info[<span class="st">'album'</span>][<span class="st">'name'</span>],</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>        <span class="st">'release_date'</span>: track_info[<span class="st">'album'</span>][<span class="st">'release_date'</span>],</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>        <span class="st">'duration_ms'</span>: track_info[<span class="st">'duration_ms'</span>],</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>        <span class="st">'artist'</span>: track_info[<span class="st">'artists'</span>][<span class="dv">0</span>][<span class="st">'name'</span>],</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>        <span class="st">'explicit'</span>: track_info[<span class="st">'explicit'</span>]</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>    tracks_info.append(track_details)</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Iterates through the artists associated with the tracks</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> artist <span class="kw">in</span> track_info[<span class="st">'artists'</span>]:</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Get artist ID</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>        artist_id <span class="op">=</span> artist[<span class="st">'id'</span>]</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Checks for duplicates </span></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> artist_id <span class="kw">not</span> <span class="kw">in</span> artists_info:  </span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>            <span class="co">#Uses the artist ID to get info about the artists</span></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>            artist_info <span class="op">=</span> sp.artist(artist_id)</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>            <span class="co">#Adds the information to the created dictionary</span></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>            artists_info[artist_id] <span class="op">=</span> {</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>                <span class="st">'id'</span>: artist_info[<span class="st">'id'</span>],</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>                <span class="st">'name'</span>: artist_info[<span class="st">'name'</span>],</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>                <span class="st">'genres'</span>: artist_info[<span class="st">'genres'</span>],</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>                <span class="st">'followers'</span>: artist_info[<span class="st">'followers'</span>][<span class="st">'total'</span>],</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>                <span class="st">'popularity'</span>: artist_info[<span class="st">'popularity'</span>],</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>            }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>No matching track found for: Forever by Hovvdy
 No matching track found for: Fun! by May Rio &amp; Elegant Ensemble</code></pre>
 </div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="82">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create csv paths</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tracks_csv_path <span class="op">=</span> <span class="st">'../../data/raw-data/tracks_data.csv'</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>artists_csv_path <span class="op">=</span> <span class="st">'../../data/raw-data/artists_data.csv'</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Creates the csv file and writes into it</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(tracks_csv_path, mode<span class="op">=</span><span class="st">'w'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> tracks_file:</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Creates csv wrriter</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    writer <span class="op">=</span> csv.writer(tracks_file)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Write headers</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    writer.writerow([<span class="st">'Track ID'</span>, <span class="st">'Track Name'</span>, <span class="st">'Popularity'</span>, <span class="st">'Album'</span>, <span class="st">'Release Date'</span>, <span class="st">'Duration (ms)'</span>, <span class="st">'Artist'</span>, <span class="st">'Explicit'</span>])</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Loops through dictionary to write into into csv</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> track <span class="kw">in</span> tracks_info:</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        writer.writerow([</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>            track[<span class="st">'track_id'</span>],</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>            track[<span class="st">'name'</span>],</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>            track[<span class="st">'popularity'</span>],</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>            track[<span class="st">'album'</span>],</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>            track[<span class="st">'release_date'</span>],</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>            track[<span class="st">'duration_ms'</span>],</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>            track[<span class="st">'artist'</span>],</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>            track[<span class="st">'explicit'</span>]</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        ])</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">#Creates the csv file and writes into it</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(artists_csv_path, mode<span class="op">=</span><span class="st">'w'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> artists_file:</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Creates csv wrriter</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    writer <span class="op">=</span> csv.writer(artists_file)</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Write headers</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    writer.writerow([<span class="st">'Artist ID'</span>, <span class="st">'Name'</span>, <span class="st">'Genres'</span>, <span class="st">'Followers'</span>, <span class="st">'Popularity'</span>])</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Loops through dictionary to write into into csv</span></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> artist_id, artist <span class="kw">in</span> artists_info.items():</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>        writer.writerow([</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>            artist[<span class="st">'id'</span>],</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>            artist[<span class="st">'name'</span>],</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>            <span class="st">', '</span>.join(artist[<span class="st">'genres'</span>]), </span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>            artist[<span class="st">'followers'</span>],</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>            artist[<span class="st">'popularity'</span>]</span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>        ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-10" class="cell" data-execution_count="82">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create csv paths</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>tracks_csv_path <span class="op">=</span> <span class="st">'../../data/raw-data/tracks_data.csv'</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>artists_csv_path <span class="op">=</span> <span class="st">'../../data/raw-data/artists_data.csv'</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Creates the csv file and writes into it</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(tracks_csv_path, mode<span class="op">=</span><span class="st">'w'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> tracks_file:</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Creates csv wrriter</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    writer <span class="op">=</span> csv.writer(tracks_file)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Write headers</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    writer.writerow([<span class="st">'Track ID'</span>, <span class="st">'Track Name'</span>, <span class="st">'Popularity'</span>, <span class="st">'Album'</span>, <span class="st">'Release Date'</span>, <span class="st">'Duration (ms)'</span>, <span class="st">'Artist'</span>, <span class="st">'Explicit'</span>])</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Loops through dictionary to write into into csv</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> track <span class="kw">in</span> tracks_info:</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        writer.writerow([</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            track[<span class="st">'track_id'</span>],</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>            track[<span class="st">'name'</span>],</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>            track[<span class="st">'popularity'</span>],</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>            track[<span class="st">'album'</span>],</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>            track[<span class="st">'release_date'</span>],</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>            track[<span class="st">'duration_ms'</span>],</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>            track[<span class="st">'artist'</span>],</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>            track[<span class="st">'explicit'</span>]</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        ])</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co">#Creates the csv file and writes into it</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(artists_csv_path, mode<span class="op">=</span><span class="st">'w'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> artists_file:</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Creates csv wrriter</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    writer <span class="op">=</span> csv.writer(artists_file)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Write headers</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    writer.writerow([<span class="st">'Artist ID'</span>, <span class="st">'Name'</span>, <span class="st">'Genres'</span>, <span class="st">'Followers'</span>, <span class="st">'Popularity'</span>])</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Loops through dictionary to write into into csv</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> artist_id, artist <span class="kw">in</span> artists_info.items():</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>        writer.writerow([</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>            artist[<span class="st">'id'</span>],</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>            artist[<span class="st">'name'</span>],</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>            <span class="st">', '</span>.join(artist[<span class="st">'genres'</span>]), </span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>            artist[<span class="st">'followers'</span>],</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>            artist[<span class="st">'popularity'</span>]</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>        ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="summary" class="level1">
-<h1>Summary</h1>
-<p>This section should be written for a <strong>technical audience</strong>, focusing on detailed analysis, factual reporting, and clear presentation of data. The following serves as a guide, but feel free to adjust as needed.</p>
+<div id="cell-11" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Open Genius API access token</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'/Users/samyu/.api-keys.json'</span>) <span class="im">as</span> f:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    keys <span class="op">=</span> json.load(f)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ACCESS_TOKEN <span class="op">=</span> keys[<span class="st">'genius_api'</span>]</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Base URL for the Genius API</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>BASE_URL <span class="op">=</span> <span class="st">"https://api.genius.com"</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Search for the song using Genius API</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#If artist is given then the song will try tp match the artist </span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_song(song_title, artist_name<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    headers <span class="op">=</span> {<span class="st">"Authorization"</span>: <span class="ss">f"Bearer </span><span class="sc">{</span>ACCESS_TOKEN<span class="sc">}</span><span class="ss">"</span>}</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    search_url <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>BASE_URL<span class="sc">}</span><span class="ss">/search"</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    params <span class="op">=</span> {<span class="st">"q"</span>: song_title}</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(search_url, headers<span class="op">=</span>headers, params<span class="op">=</span>params)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Successful API response</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> response.json()</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Extract the search results</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        hits <span class="op">=</span> data.get(<span class="st">"response"</span>, {}).get(<span class="st">"hits"</span>, [])</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Match the artist name</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> hit <span class="kw">in</span> hits:</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> hit.get(<span class="st">"result"</span>, {})</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> artist_name:</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> artist_name.lower() <span class="kw">in</span> result.get(<span class="st">"primary_artist"</span>, {}).get(<span class="st">"name"</span>, <span class="st">""</span>).lower():</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>                    <span class="co">#Return the matched result</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">return</span> result</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>                <span class="co">#Return the first result if artist is not specified</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> result  </span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error: </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>response<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="co">#Function to extract lyrics from the Genius webpage</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_lyrics(song_title, artist_name<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Search for the song using the search_song function</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    song <span class="op">=</span> search_song(song_title, artist_name)</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> song:</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Song not found!"</span>)</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Extract the song URL from the search result</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>    song_url <span class="op">=</span> song.get(<span class="st">"url"</span>)</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> song_url:</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Lyrics URL: </span><span class="sc">{</span>song_url<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Scrape the lyrics from the url</span></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> requests.get(song_url)</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>        soup <span class="op">=</span> BeautifulSoup(response.text, <span class="st">"html.parser"</span>)</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Lyrics are usually in a &lt;div&gt; with a specific class</span></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>        lyrics <span class="op">=</span> soup.find(<span class="st">"div"</span>, class_<span class="op">=</span><span class="st">"Lyrics-sc-1bcc94c6-1 bzTABU"</span>)</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> lyrics:</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>            <span class="co">#Clean the extracted lyrics </span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> lyrics.get_text(<span class="st">" "</span>)</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">'Intro'</span>, <span class="st">''</span>)</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">'Refrain'</span>, <span class="st">''</span>)</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">'Verse 1'</span>, <span class="st">''</span>)</span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">'Verse 2'</span>, <span class="st">''</span>)</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">'Pre-Chorus'</span>, <span class="st">''</span>)</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">'Chorus'</span>, <span class="st">''</span>)</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">':'</span>, <span class="st">''</span>)</span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">'['</span>, <span class="st">''</span>)</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>            ly <span class="op">=</span> ly.replace(<span class="st">']'</span>, <span class="st">''</span>)</span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>            <span class="co">#Remove artist names from lyrics if provided</span></span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> artist_name:</span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>                <span class="co">#Handles multiple artists</span></span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="st">'&amp;'</span> <span class="kw">in</span> artist_name:</span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>                    artists <span class="op">=</span> artist_name.split(<span class="st">'&amp;'</span>)</span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>                    artists <span class="op">=</span> [artist_name]</span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> a <span class="kw">in</span> artists:</span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>                    ly <span class="op">=</span> ly.replace(a, <span class="st">''</span>)</span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> ly</span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="st">"Lyrics not found!"</span></span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Lyrics URL not found!"</span>)</span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a><span class="co">#Function to fetch and process lyrics from tracks_data</span></span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> top_100_song_lyrics(tracks_data, delay<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> track <span class="kw">in</span> tracks_data:</span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>        song_title <span class="op">=</span> track[<span class="dv">0</span>]</span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>        artist_name <span class="op">=</span> track[<span class="dv">1</span>]</span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>        track[<span class="dv">2</span>] <span class="op">=</span> get_lyrics(song_title, artist_name)</span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Delay between API calls to avoid rate-limiting</span></span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>        time.sleep(delay)</span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tracks_data</span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>tracks_data <span class="op">=</span> top_100_song_lyrics(tracks_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-12" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Saves df to a new csv </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(tracks_data, columns<span class="op">=</span>[<span class="st">"Track Name"</span>, <span class="st">"Artists"</span>, <span class="st">"yrics"</span>])</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">"../../data/raw-data/song_lyrics.csv"</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>df.to_csv(file_path, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <section id="challenges" class="level2">
 <h2 class="anchored" data-anchor-id="challenges">Challenges</h2>
 <ul>
-<li>Discuss any technical challenges faced during the project, such as data limitations, computational issues, or obstacles encountered during analysis.</li>
-<li>Explain unexpected results and their technical implications.</li>
-<li>Identify areas for future work, including potential optimizations, further analysis, or scaling solutions.</li>
+<li><strong>Data Retrieval</strong>:
+<ul>
+<li><strong>Spotify API</strong>: Spotify API does not let you handle more than 50 requests.</li>
+<li><strong>Genius API</strong>: Inconsistencies in matching song titles and artists between Spotify and Genius.</li>
+</ul></li>
+<li><strong>Web Scraping</strong>:
+<ul>
+<li>Page structures on Genius required fine-tuning of <code>BeautifulSoup</code> parsing logic to extract lyrics.</li>
+<li>Some songs were purely instrumental so lyrics are missing.</li>
+</ul></li>
+<li><strong>Data Integration</strong>:
+<ul>
+<li>Differences in naming conventions and formats across APIs required additional care.</li>
+<li>Since some songs have artists features, the amount of artists extracted are more than the amount of songs extracted.</li>
+</ul></li>
 </ul>
 </section>
 <section id="benchmarks" class="level2">
 <h2 class="anchored" data-anchor-id="benchmarks">Benchmarks</h2>
 <ul>
-<li>Compare your findings to relevant research, industry benchmarks, or intuitive expectations, if applicable.</li>
+<li>Spotify’s popularity scores align with expected trends, serving as a basis for analysis.</li>
+<li>Spotify metadata and Genius lyrics offers a strong foundation for future analysis.</li>
 </ul>
 </section>
-<section id="conclusion-and-future-steps" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion-and-future-steps">Conclusion and Future Steps</h2>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion:</h2>
 <ul>
-<li>Summarize the key technical points and outcomes of the project.</li>
-<li>Suggest potential improvements or refinements to this part of the project.</li>
-<li>Based on the results, provide actionable recommendations for further research or optimization efforts.</li>
+<li>The project successfully gathered song metadata and lyrics.</li>
+<li>The resulting datasets are comprehensive and ready for exploratory data analysis, clustering, and predictive modeling.</li>
+</ul>
+</section>
+<section id="future-steps" class="level2">
+<h2 class="anchored" data-anchor-id="future-steps">Future Steps:</h2>
+<ul>
+<li><p>Develop solutions for handling mismatched data between Spotify and Genius.</p></li>
+<li><p>Include additional playlists or genres for in-depth analysis.</p></li>
+<li><p>Conduct sentiment analysis on song lyrics and compare results with Spotify’s popularity scores.</p></li>
+<li><p>Conduct machine learning models to identify patterns and predictors of song popularity.</p></li>
 </ul>
 
 
