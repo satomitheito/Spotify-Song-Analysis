@@ -6,11 +6,9 @@ format:
 bibliography: assets/references.bib 
 ---
 # Decoding Song Success: Predicting Song Popularity - an NLP Approach
-   - **Headline**: A captivating title introducing the data science theme (e.g., "Unlocking Insights Through Data Stories").
 
 ## Key Topics
-Music, Lyrics, Natural Language Processing, Supervised Machine Learning, Unsupervised Machine Learning, Sentiment Analysis
-- **Key Topics**: List the main focus areas (e.g., machine learning, data visualization, predictive modeling).
+Music, Lyrics, Hot 100 chart, hit songs, popular music research, Natural Language Processing, Supervised Machine Learning, Unsupervised Machine Learning, Sentiment Analysis
 
 ## Project Introduction
 - Summarize your topic, its significance, related work, and the questions you plan to explore.
@@ -61,13 +59,16 @@ Hong analyzed songs that have hit the number 1 spot from 1955 to 2003 and used f
 
 #### The Language of Lyrics: An Analysis of Popular Billboard Songs Across Conditions of Social and Economic Threat [@Pettijohn_Sacco_2009]
 
-
+Pettijohn et al. conducted an analysis on the changes in the subjects of the lyrics of Billboard number 1 songs between 1955-2003 using the LIWC program for NLP which produces a series of psychometric features of songs, such as a focus on the future, meaningfulness, comfort, and romance. They then correlated this with US economic conditions collected from various psychology studies regarding the social reaction to US presidents and politics. In the end, they found that songs that were more romantic and comforting, as well as songs with more words per sentence and more mentions of social processes were more common during years that they considered to have more “threatening” conditions.
 
 #### The power of repetition: repetitive lyrics in a song increase processing fluency and drive market success [@Nunes_Ordanini_Valsesia_2015]
 
-
+Study 3 in the paper by Nunes et al. considered songs from Billboard’s top 100 singles between 1958-2012 and studied how repetitive they are (such as how many times the chorus is repeated). They determined that more repetitive lyrics correlate strongly with the position at which a song debuts (top 40 or not) and how many weeks it takes for the song to reach the number 1 spot. This understanding of the structure of lyrics is a novel approach to studying the popularity of music and informed some of the questions we asked about our dataset.
 
 #### An Analysis of Common Songwriting and Production Practices in 2014-2015 Billboard Hot 100 Songs [@Tough_2017]
 
+This report by Tough introduces a new set of features regarding the songwriting procedures of Billboard Hot 100 songs between 2014-2015, including repeating the title in the song, intro length, the presence of archetypes (i.e. the Innocent, the Lover, the Everyman, the Ruler), and song subject. The results include showing that a song in the top 100 is more likely to have an 11-15 second intro, start with a chorus or hook, and have the lover archetype (followed by the warrior archetype). They also find that specific combinations of archetypes (including the warrior/ruler pairing) are more common in the top 100 songs. The below charts show some of these results.
 
+![Source 6 Results - Intro Length](assets/landing_img/Source6_1.png)
 
+![Source 6 Results - Intro Length](assets/landing_img/Source6_2.png)
