@@ -20,6 +20,7 @@ printf 'Would you like to push to GITHUB? (y/n)? '
 read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then 
 
+    git switch samyu
     git config http.postBuffer 20242880000
 
     # PULL CLOUD REPO TO LOCAL
@@ -36,7 +37,7 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
     #git push  -u origin w05-draft
 
     # PUSH MAIN BRANCH
-    # git push
+    git push
 
 else
     echo NOT PUSHING TO GTIHUB!
