@@ -8,9 +8,11 @@ LLM tools were used in the following way for the tasks below
 
 * Brainstorm ideas for further quantitative columns we could make from the data after finding out the limitations of the Spotify API
 * Help coming up with catchy title for project
+* Ideas for multivariate eda graph types given the variables that I wanted to compare
 
 ## Code: 
 
 * Help understand the Genius API and understand how to get a key to search the API
 * Help write webscraping function for Genius Lyric API
 * Explanation of github usage through branches and merging
+* Grouping genres into simplified groups for analysis
