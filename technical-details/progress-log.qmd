@@ -5,7 +5,8 @@ title: "Progress log"
 This page was used to track our progress and keep a log of our contributions to the project. We created this after developing our idea to create a running list of the workflow that was needed to complete the project and to demonstrate how each of us contributed to the project.
 
 ## Satomi
-- provide link to about me page
+[Satomi's About Me Page](../index.qmd#satomi-aboutme)
+
 
 **Contribution log:**
 
@@ -17,13 +18,14 @@ This page was used to track our progress and keep a log of our contributions to 
 
 #### Index.qmd:
 
-* [ ] Create about me page
+* [x] Create about me page
 
 #### Data Collection:
 
 * [x] Develop code to access top 100 songs playlist from Rolling Stones top 100 songs
 * [x] Develop code to access spotify api to get data about top 100 songs
 * [x] Develop code to access spotify api to get data about artists of top 100 songs
+* [x] Provide comments about process and informative technical markdown cells
 * [x] Provide comments about process and informative technical markdown cells
 
 #### Data Cleansing:
@@ -34,27 +36,29 @@ This page was used to track our progress and keep a log of our contributions to 
 * [x] Find other quantitative data from columns for future analysis
 * [x] Write all data to a csv file in a processed data folder
 * [x] Provide comments about process and informative technical markdown cells
+* [x] Provide comments about process and informative technical markdown cells
 
 #### Supervised Learning:
 
+* [x] Conduct classification on ranking of song (top 20 vs not)
 * [x] Conduct regression on song popularity
 * [x] Analyze results to determine important features contributing to success of song
 * [x] Provide comments about process and informative technical markdown cells
 
 #### Report:
 
-* [ ] Write about key findings from Supervised Learning sections
-* [ ] Provide informative visualizations
+* [x] Write about key findings from Supervised Learning sections
+* [x] Provide informative visualizations
 * [ ] Write conclusion
 
 #### Overall:
 
-* [ ] Frequent github pushes
-* [ ] Frequent github pull requests
-* [ ] Comment code and explain decisions in technical-details files
+* [x] Frequent github pushes
+* [x] Frequent github pull requests
+* [x] Comment code and explain decisions in technical-details files
 
 ## Samyu
-- provide link to about me page
+[Samyu's About Me Page](../index.qmd#samyu-aboutme)
 
 **Contribution log:**
 
@@ -66,8 +70,8 @@ This page was used to track our progress and keep a log of our contributions to 
 
 #### Index.qmd:
 
-* [ ] Create Landing page for website following instructions on page
-* [ ] Create about me page
+* [x] Create Landing page for website following instructions on page
+* [x] Create about me page
 
 #### Report Introduction:
 
@@ -75,15 +79,15 @@ This page was used to track our progress and keep a log of our contributions to 
 
 #### Data Collection:
 
-* [ ] Develop code to access collect lyrics for top 100 songs from Genius API
-* [ ] Provide comments about process and informative technical markdown cells
+* [x] Develop code to access collect lyrics for top 100 songs from Genius API
+* [x] Provide comments about process and informative technical markdown cells
 
 #### EDA:
 
-* [ ] Develop visualizations to analyze distributions of quantitative data
-* [ ] Conduct EDA to understand the characteristics of the most popular songs vs the rest of the songs
-* [ ] Create visualizations to show any correlations in the data
-* [ ] Provide comments about process and informative technical markdown cells
+* [x] Develop visualizations to analyze distributions of quantitative data
+* [x] Conduct EDA to understand the characteristics of the most popular songs vs the rest of the songs
+* [x] Create visualizations to show any correlations in the data
+* [x] Provide comments about process and informative technical markdown cells
 
 #### Unsupervised Learning:
 
@@ -103,6 +107,6 @@ This page was used to track our progress and keep a log of our contributions to 
 
 #### Overall:
 
-* [ ] Frequent github pushes
-* [ ] Frequent github pull requests
-* [ ] Comment code and explain decisions in technical-details files
+* [x] Frequent github pushes
+* [x] Frequent github pull requests
+* [x] Comment code and explain decisions in technical-details files
