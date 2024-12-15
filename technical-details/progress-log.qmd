@@ -24,7 +24,7 @@ This page was used to track our progress and keep a log of our contributions to 
 * [x] Develop code to access top 100 songs playlist from Rolling Stones top 100 songs
 * [x] Develop code to access spotify api to get data about top 100 songs
 * [x] Develop code to access spotify api to get data about artists of top 100 songs
-* [ ] Provide comments about process and informative technical markdown cells
+* [x] Provide comments about process and informative technical markdown cells
 
 #### Data Cleansing:
 
@@ -33,14 +33,13 @@ This page was used to track our progress and keep a log of our contributions to 
 * [x] Use NLP methods to collect other data about lyrics of songs
 * [x] Find other quantitative data from columns for future analysis
 * [x] Write all data to a csv file in a processed data folder
-* [ ] Provide comments about process and informative technical markdown cells
+* [x] Provide comments about process and informative technical markdown cells
 
 #### Supervised Learning:
 
-* [ ] Conduct classification on ranking of song (top 20 vs not)
-* [ ] Conduct regression on song popularity
-* [ ] Analyze results to determine important features contributing to success of song
-* [ ] Provide comments about process and informative technical markdown cells
+* [x] Conduct regression on song popularity
+* [x] Analyze results to determine important features contributing to success of song
+* [x] Provide comments about process and informative technical markdown cells
 
 #### Report:
 
