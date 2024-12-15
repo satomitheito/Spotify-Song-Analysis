@@ -38,11 +38,78 @@ As we conducted our investigation of music data, we aimed to answer the followin
 
 This project provides an in-depth study of the connection between data science and music. As you explore the visualizations, predictive models, and business report, we hop you learn more about what makes a song a hit!
 
-## About the Authors  
+## About the Authors
 
-- Develop your "About You" page. You can reuse content from previous assignments.
-- You can include the content here or on a separate page.
-   - It’s recommended to create one "About You" page for all DSAN projects, with links to your various class projects.
+### Satomi Ito {#satomi-aboutme}
+
+#### Professional Overview
+Hello! I’m **Satomi Ito**, an aspiring data scientist with a passion for making data-driven decisions. I am currently a  Data Science Master’s student at Georgetown University, where I explore the intersection of data-driven insights and impactful solutions.
+
+#### Skills and Expertise
+- **Programming Languages**: Python, R, MATLAB, SQL
+- **Technical Competencies**: Predictive Modeling, Statistical Analysis, Data Visualization
+-
+My background in **Cognitive Science** equips me with a multidisciplinary approach to technical development, blending human understanding and machine learning.
+
+#### Professional Journey
+My professional journey began with a Bachelor’s degree in **Cognitive Science** at the **University of California, San Diego**, where I developed a deep interest in understanding complex systems and patterns. 
+
+- After graduation, I took a year working in research. During my time at a neurology research lab at Zuckerberg General Hospital, I worked on developing **predictive models** to analyze and interpret neurological data. This experience honed my technical skills and reinforced my passion for solving real-world problems using data.
+
+#### Work Philosophy
+I approach challenges with a problem-solving mindset, leveraging data to uncover actionable insights. I enjoy collaboration and think that it’s an impact way to grow and learn. 
+
+#### Educational Background
+- **M.S. in Data Science and Analytics**, Georgetown University (Current)
+- **B.S. in Cognitive Science**, University of California, San Diego 2019 - 2023
+
+#### Personal Interests
+Outside of my academic and professional work, I enjoy:
+- **Climbing**: Rope and bouldering 
+- **DIY Projects**: I am currently building a shelf from scratch. 
+
+- **LinkedIn**: [Satomi Ito](https://www.linkedin.com/in/satomitheito/)
+- **GitHub**: [satomitheito](https://github.com/satomitheito)
+
+### Samyu Vakkalanka {#samyu-aboutme}
+
+#### Professional Overview
+Welcome to our site! My name is Samyukta (Samyu) Vakkalanka. I am a first year master's student in the Data Science and Analytics program at Georgetown University. I have experience in government research applying machine learning to cybersecurity and in business intelligence working in marketing analysis. I am interested in academic research in data science, especially as it relates to sustainibility and climate studies.
+
+#### Skills and Expertise
+- **Programming Languages**: Python, R, MATLAB, HTML/CSS/JavaScript, Java, SQL
+- **Technical Competencies**: Machine Learning, Natural Language Processing, Data Visualization, Statistics, Applied Mathematics
+-
+My background in mathematics and statistics uniquely allows me to approach data science problems with a strong foundation in theory, enabling me to develop robust models, apply advanced statistical methodologies, and extract meaningful insights from complex datasets.
+
+#### Professional Journey
+My professional journey began with my undergraduate degrees from the University of Southern California. I studied Data Science and Applied and Computational Mathematics, where I developed a passion for bridging theoretical statistics and the real world applications of data science.
+
+During my time at USC, I completed an internship at Lawrence Livermore National Laboratory. My work consisted of developing novel statistical models and machine learning applications to study industrial control system networks and isolate suspicious behavior. I then worked at Comcast with the marketing and sales channel analytics teams. Here, I used supervised ML models to understand the variance in regions of churn and penetration. I directly continued into my Master's program, where I now work in the AI Measurement and Development lab studying student computational skills and attention using eye tracking technology.
+
+#### Work Philosophy
+My approach to work combines attention to detail, creativity, and adaptability. I believe breaking down problems into manageable steps is extremely important and allows me to get feedback at every step. I have a strong focus on collaboration and strong communication, where I tailor my presentation of my work for the audience that I am working with.
+
+#### Educational Background
+- **M.S. in Data Science and Analytics**, Georgetown University 2024 - 2026 (expected)
+- **B.A. in Data Science**, University of Southern California 2020 - 2024
+- **B.A. in Applied and Computational Mathematics**, University of Southern California 2020 - 2024
+
+#### Achievements and Recognitions
+- Merit Scholarship Award Recipient - Georgetown University 2024-2025
+- Athena Hacks Winner - Best Use of Google Cloud 2023
+- Google Cloud Student Innovator - 2023-2024
+- National Merit Scholarship Finalist and Presidential Scholarship Recipient - 2020-2024
+
+#### Personal Interests
+Outside of my academic and professional work, I enjoy:
+- **Music**: I have played the piano and violin for 10+ years
+- **Baking**: I believe I have officially perfected the art of the chocolate chip cookie (thin, salted, and crispy is the way to go!)
+
+#### Reach out to me!
+- **LinkedIn**: [Samyukta Vakkalanka](https://www.linkedin.com/in/samyukta-vakkalanka/)
+- **GitHub**: [samyu-vakkalanka](https://github.com/samyu-vakkalanka)
+
 
 ## Literature review
 
