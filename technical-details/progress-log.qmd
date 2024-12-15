@@ -49,7 +49,7 @@ This page was used to track our progress and keep a log of our contributions to 
 
 * [x] Write about key findings from Supervised Learning sections
 * [x] Provide informative visualizations
-* [ ] Write conclusion
+* [x] Write conclusion
 
 #### Overall:
 
