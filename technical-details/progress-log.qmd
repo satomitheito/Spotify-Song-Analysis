@@ -26,6 +26,7 @@ This page was used to track our progress and keep a log of our contributions to 
 * [x] Develop code to access spotify api to get data about top 100 songs
 * [x] Develop code to access spotify api to get data about artists of top 100 songs
 * [x] Provide comments about process and informative technical markdown cells
+* [x] Provide comments about process and informative technical markdown cells
 
 #### Data Cleansing:
 
@@ -34,6 +35,7 @@ This page was used to track our progress and keep a log of our contributions to 
 * [x] Use NLP methods to collect other data about lyrics of songs
 * [x] Find other quantitative data from columns for future analysis
 * [x] Write all data to a csv file in a processed data folder
+* [x] Provide comments about process and informative technical markdown cells
 * [x] Provide comments about process and informative technical markdown cells
 
 #### Supervised Learning:
