@@ -75,7 +75,7 @@ This page was used to track our progress and keep a log of our contributions to 
 
 #### Report Introduction:
 
-* [ ] Write Objective
+* [x] Write Objective
 
 #### Data Collection:
 
@@ -91,10 +91,10 @@ This page was used to track our progress and keep a log of our contributions to 
 
 #### Unsupervised Learning:
 
-* [ ] Use clustering algorithms to develop clusters based on quantitative data and understand connection to song ranking or popularity
-* [ ] Analyze results to determine the characteristics of popular songs
-* [ ] Determine if there are clusters that can then be used to make playlists of similar songs
-* [ ] Provide comments about process and informative technical markdown cells
+* [x] Use clustering algorithms to develop clusters based on quantitative data and understand connection to song ranking or popularity
+* [x] Analyze results to determine the characteristics of popular songs
+* [x] Determine if there are clusters that can then be used to make playlists of similar songs
+* [x] Provide comments about process and informative technical markdown cells
 
 #### Report:
 
