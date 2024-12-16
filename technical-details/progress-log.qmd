@@ -17,7 +17,7 @@ This page was used to track our progress and keep a log of our contributions to 
 
 #### Index.qmd:
 
-* [ ] Create about me page
+* [x] Create about me page
 
 #### Data Collection:
 
@@ -43,15 +43,15 @@ This page was used to track our progress and keep a log of our contributions to 
 
 #### Report:
 
-* [ ] Write about key findings from Supervised Learning sections
-* [ ] Provide informative visualizations
-* [ ] Write conclusion
+* [x] Write about key findings from Supervised Learning sections
+* [x] Provide informative visualizations
+* [x] Write conclusion
 
 #### Overall:
 
-* [ ] Frequent github pushes
-* [ ] Frequent github pull requests
-* [ ] Comment code and explain decisions in technical-details files
+* [x] Frequent github pushes
+* [x] Frequent github pull requests
+* [x] Comment code and explain decisions in technical-details files
 
 ## Samyu
 - provide link to about me page
