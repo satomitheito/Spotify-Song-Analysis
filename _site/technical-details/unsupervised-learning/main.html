@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -101,6 +101,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -224,20 +227,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="code" class="level2">
 <h2 class="anchored" data-anchor-id="code">Code</h2>
-<div id="cell-4" class="cell" data-execution_count="2">
+<div id="cell-4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.manifold <span class="im">import</span> TSNE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.manifold <span class="im">import</span> TSNE</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans, DBSCAN, AgglomerativeClustering</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> silhouette_score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="dimensionality-reduction" class="level3">
 <h3 class="anchored" data-anchor-id="dimensionality-reduction">Dimensionality Reduction</h3>
 <p>The objective of this section is to explore and demonstrate the effectiveness of PCA and t-SNE in reducing the dimensionality of complex data while preserving essential information and improving visualization.</p>
 <p>For the dimension reduction algorithms, I wanted to alter the genres that I recorded. Previously, only the first genre was recorded. The following functioln records more general genre categories for each of the genres listed for the song. I will then apply one hot encoding to the lists of the simplified genres so I can use it in a clustering algorithm.</p>
 <p>This code then applies the OHE to the data and removes the non numeric columns. This cleans the data so that we can then apply dimensionality reduction and clustering to the data.</p>
-<div id="cell-8" class="cell">
+<div id="cell-8" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> map_genres_to_categories(genres):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define the mapping of specific genres to broader categories</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    genre_mapping <span class="op">=</span> {</span>
@@ -296,37 +301,203 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> categories</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-9" class="cell">
+<div id="cell-9" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>songs <span class="op">=</span> pd.read_csv(<span class="st">'../../data/processed-data/transformed_data.csv'</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>songs <span class="op">=</span> songs[[<span class="st">'Genres'</span>, <span class="st">'Song Popularity'</span> ,<span class="st">'Popularity'</span>, <span class="st">'Explicit'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'Duration (ms)_transf'</span>, <span class="st">'Followers_transf'</span>, <span class="st">'Lyrics Word Count_transf'</span>, <span class="st">'neg'</span>, <span class="st">'neu'</span>, <span class="st">'pos'</span>, <span class="st">'compound'</span>, <span class="st">'Ranking Group'</span>, <span class="st">'Top 10 Song'</span>]]</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>songs[<span class="st">'Simplified Genre'</span>] <span class="op">=</span> songs[<span class="st">'Genres'</span>].<span class="bu">apply</span>(map_genres_to_categories)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>songs_num <span class="op">=</span> songs[[<span class="st">'Genres'</span>, <span class="st">'Song Popularity'</span> ,<span class="st">'Popularity'</span>, <span class="st">'Explicit'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'Duration (ms)_transf'</span>, <span class="st">'Followers_transf'</span>, <span class="st">'Lyrics Word Count_transf'</span>, <span class="st">'neg'</span>, <span class="st">'neu'</span>, <span class="st">'pos'</span>, <span class="st">'compound'</span>, <span class="st">'Ranking Group'</span>, <span class="st">'Top 10 Song'</span>]]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>songs_num[<span class="st">'Simplified Genre'</span>] <span class="op">=</span> songs_num[<span class="st">'Genres'</span>].<span class="bu">apply</span>(map_genres_to_categories)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># One-Hot Encoding the 'Simplified Genre' column</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>songs_num <span class="op">=</span> songs.drop(columns<span class="op">=</span>[<span class="st">'Ranking Group'</span>, <span class="st">'Top 10 Song'</span>])</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>songs_num <span class="op">=</span> songs_num.drop(columns<span class="op">=</span>[<span class="st">'Ranking Group'</span>, <span class="st">'Top 10 Song'</span>])</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>songs_num_encoded <span class="op">=</span> songs_num[<span class="st">'Simplified Genre'</span>].explode().<span class="bu">str</span>.get_dummies().groupby(level<span class="op">=</span><span class="dv">0</span>).<span class="bu">sum</span>()</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Join the encoded genres back to the original dataframe</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>songs_num <span class="op">=</span> pd.concat([songs_num, songs_num_encoded], axis<span class="op">=</span><span class="dv">1</span>).drop(columns<span class="op">=</span>[<span class="st">'Genres'</span>, <span class="st">'Simplified Genre'</span>])</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>songs_num.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/p2/bg9x0srx2dl9dp4nrwmw4nrc0000gn/T/ipykernel_10132/2605016882.py:3: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  songs_num['Simplified Genre'] = songs_num['Genres'].apply(map_genres_to_categories)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Song Popularity</th>
+<th data-quarto-table-cell-role="th">Popularity</th>
+<th data-quarto-table-cell-role="th">Explicit</th>
+<th data-quarto-table-cell-role="th">Total Artists On Song</th>
+<th data-quarto-table-cell-role="th">Duration (ms)_transf</th>
+<th data-quarto-table-cell-role="th">Followers_transf</th>
+<th data-quarto-table-cell-role="th">Lyrics Word Count_transf</th>
+<th data-quarto-table-cell-role="th">neg</th>
+<th data-quarto-table-cell-role="th">neu</th>
+<th data-quarto-table-cell-role="th">pos</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Country</th>
+<th data-quarto-table-cell-role="th">Electronic/Experimental</th>
+<th data-quarto-table-cell-role="th">Hip Hop/Rap</th>
+<th data-quarto-table-cell-role="th">Indie/Alternative</th>
+<th data-quarto-table-cell-role="th">K-pop</th>
+<th data-quarto-table-cell-role="th">Latin</th>
+<th data-quarto-table-cell-role="th">Other</th>
+<th data-quarto-table-cell-role="th">Pop</th>
+<th data-quarto-table-cell-role="th">R&amp;B</th>
+<th data-quarto-table-cell-role="th">Rock</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.93</td>
+<td>0.88</td>
+<td>False</td>
+<td>1.0</td>
+<td>0.445229</td>
+<td>0.704413</td>
+<td>0.724382</td>
+<td>0.121</td>
+<td>0.454</td>
+<td>0.426</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.88</td>
+<td>0.97</td>
+<td>True</td>
+<td>1.0</td>
+<td>0.616143</td>
+<td>0.887910</td>
+<td>0.782405</td>
+<td>0.170</td>
+<td>0.719</td>
+<td>0.111</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.86</td>
+<td>0.81</td>
+<td>True</td>
+<td>1.0</td>
+<td>0.262534</td>
+<td>0.565953</td>
+<td>0.726920</td>
+<td>0.085</td>
+<td>0.840</td>
+<td>0.076</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.88</td>
+<td>0.94</td>
+<td>True</td>
+<td>1.0</td>
+<td>0.280604</td>
+<td>0.820911</td>
+<td>0.739738</td>
+<td>0.017</td>
+<td>0.864</td>
+<td>0.118</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.96</td>
+<td>0.96</td>
+<td>False</td>
+<td>1.0</td>
+<td>0.417005</td>
+<td>0.981764</td>
+<td>0.701252</td>
+<td>0.150</td>
+<td>0.727</td>
+<td>0.123</td>
+<td>...</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 22 columns</p>
+</div>
+</div>
 </div>
 <section id="pca-principal-component-analysis" class="level4">
 <h4 class="anchored" data-anchor-id="pca-principal-component-analysis">PCA (Principal Component Analysis)</h4>
 <p>The following function for graphing the results of the dimensionality reduction algorithm has been adapted from lab 4.2 from DSAN 5000. The function takes in the converted features and plots the first 2 features against each other in a scatter plot and uses a label to color the plots.</p>
-<div id="cell-12" class="cell" data-execution_count="96">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # UTILITY PLOTTING FUNCTION</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_2D(X,color_vector, dim_red_model):</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    ax.scatter(X[:,<span class="dv">0</span>], X[:,<span class="dv">1</span>],c<span class="op">=</span>color_vector, alpha<span class="op">=</span><span class="fl">0.5</span>) <span class="co">#, c=y</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    ax.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'Feature 1 '</span>, ylabel<span class="op">=</span><span class="st">'Feature 2'</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span> dim_red_model <span class="op">+</span> <span class="st">' results'</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    ax.grid()</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-12" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # UTILITY PLOTTING FUNCTION</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_2D(X,color_vector, dim_red_model):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    ax.scatter(X[:,<span class="dv">0</span>], X[:,<span class="dv">1</span>],c<span class="op">=</span>color_vector, alpha<span class="op">=</span><span class="fl">0.5</span>) <span class="co">#, c=y</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    ax.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'Feature 1 '</span>, ylabel<span class="op">=</span><span class="st">'Feature 2'</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span> dim_red_model <span class="op">+</span> <span class="st">' results'</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    ax.grid()</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This code takes in the songs_num df without the Song Popularity column (I wanted to use this opportunity to see if clusters naturally occur regardless of the song’s popularity) and the total artist’s on the song (a non standardized column).</p>
-<div id="cell-14" class="cell" data-execution_count="97">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">10</span>)  <span class="co"># 95% of variance</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>pca_result <span class="op">=</span> pca.fit_transform(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>]))</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ranking_group <span class="op">=</span> songs[<span class="st">'Top 10 Song'</span>].astype(<span class="st">'category'</span>).cat.codes</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plot_2D(pca_result, ranking_group, <span class="st">'PCA'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-14" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">10</span>)  <span class="co"># 95% of variance</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pca_result <span class="op">=</span> pca.fit_transform(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>]))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ranking_group <span class="op">=</span> songs[<span class="st">'Top 10 Song'</span>].astype(<span class="st">'category'</span>).cat.codes</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plot_2D(pca_result, ranking_group, <span class="st">'PCA'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -336,10 +507,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>I colored the points by whether they were a top 10 song or not. I’m not seeing any clustering with those particular songs, but I am seeing two bigger clusters separated by a diagonal line down the middle, which is interesting. I am not sure what these clusters are indicative of, however.</p>
-<div id="cell-16" class="cell" data-execution_count="83">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pca1 <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">10</span>)  <span class="co"># 95% of variance</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pca_result_1 <span class="op">=</span> pca1.fit_transform(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>]))</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plot_2D(pca_result_1, ranking_group, <span class="st">'PCA'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-16" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pca1 <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">10</span>)  <span class="co"># 95% of variance</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>pca_result_1 <span class="op">=</span> pca1.fit_transform(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>]))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plot_2D(pca_result_1, ranking_group, <span class="st">'PCA'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -350,19 +521,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Interestingly, when I remove the compound score from the sentiment analysis (leaving the positive, negative, neutral scores) I get much clearer clusters (still separated by the diagonal line) with all but 2 of the top songs in the top left cluster.</p>
 <p>The following code has been adapted from lab 4.2. It takes in a pca model and plots the ratio of explained variance by each principal component. It then plots this.</p>
-<div id="cell-19" class="cell" data-execution_count="99">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_variance_explained(pca):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Variance explained by each principal component:"</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(pca.explained_variance_ratio_[<span class="dv">0</span>:<span class="dv">10</span>])</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    plt.plot(<span class="bu">range</span>(<span class="bu">len</span>(pca.explained_variance_ratio_)), pca.explained_variance_ratio_, <span class="st">'-o'</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'Mumber of components'</span>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'Explained variance ratio'</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">'Variance Explained by Different PCA Components'</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>plot_variance_explained(pca)</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>plot_variance_explained(pca1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-19" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_variance_explained(pca):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Variance explained by each principal component:"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(pca.explained_variance_ratio_[<span class="dv">0</span>:<span class="dv">10</span>])</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    plt.plot(<span class="bu">range</span>(<span class="bu">len</span>(pca.explained_variance_ratio_)), pca.explained_variance_ratio_, <span class="st">'-o'</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'Mumber of components'</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'Explained variance ratio'</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">'Variance Explained by Different PCA Components'</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>plot_variance_explained(pca)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>plot_variance_explained(pca1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Variance explained by each principal component:
 [0.32070283 0.15954468 0.11482478 0.06969029 0.05864162 0.05514703
@@ -392,11 +563,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="t-sne" class="level4">
 <h4 class="anchored" data-anchor-id="t-sne">T-SNE</h4>
-<div id="cell-22" class="cell" data-execution_count="88">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> perplexity <span class="kw">in</span> [<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">50</span>]:</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    tsne <span class="op">=</span> TSNE(n_components<span class="op">=</span><span class="dv">2</span>, perplexity<span class="op">=</span>perplexity, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    X_tsne <span class="op">=</span> tsne.fit_transform(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>]))</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    plot_2D(X_tsne, ranking_group, <span class="ss">f'T-SNE (perplexity=</span><span class="sc">{</span>perplexity<span class="sc">}</span><span class="ss">)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-22" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> perplexity <span class="kw">in</span> [<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">50</span>]:</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    tsne <span class="op">=</span> TSNE(n_components<span class="op">=</span><span class="dv">2</span>, perplexity<span class="op">=</span>perplexity, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    X_tsne <span class="op">=</span> tsne.fit_transform(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>]))</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    plot_2D(X_tsne, ranking_group, <span class="ss">f'T-SNE (perplexity=</span><span class="sc">{</span>perplexity<span class="sc">}</span><span class="ss">)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -427,11 +598,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>After running t-sne with several different perplexity values, I’m not seeing very many clear clusters. The best option is the first one with a perplexity of 5. I will try again taking out the compound score to see if that improves it.</p>
-<div id="cell-24" class="cell" data-execution_count="89">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> perplexity <span class="kw">in</span> [<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">50</span>]:</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    tsne <span class="op">=</span> TSNE(n_components<span class="op">=</span><span class="dv">2</span>, perplexity<span class="op">=</span>perplexity, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    X_tsne <span class="op">=</span> tsne.fit_transform(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>]))</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    plot_2D(X_tsne, ranking_group, <span class="ss">f'T-SNE (perplexity=</span><span class="sc">{</span>perplexity<span class="sc">}</span><span class="ss">)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-24" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> perplexity <span class="kw">in</span> [<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">50</span>]:</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    tsne <span class="op">=</span> TSNE(n_components<span class="op">=</span><span class="dv">2</span>, perplexity<span class="op">=</span>perplexity, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    X_tsne <span class="op">=</span> tsne.fit_transform(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>]))</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    plot_2D(X_tsne, ranking_group, <span class="ss">f'T-SNE (perplexity=</span><span class="sc">{</span>perplexity<span class="sc">}</span><span class="ss">)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -465,27 +636,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="comparison" class="level4">
 <h4 class="anchored" data-anchor-id="comparison">Comparison</h4>
-<div id="cell-27" class="cell" data-execution_count="100">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># PCA</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>X_pca <span class="op">=</span> pca.fit_transform(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>]))</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].scatter(X_pca[:, <span class="dv">0</span>], X_pca[:, <span class="dv">1</span>], c<span class="op">=</span>ranking_group, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">'PCA results'</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">'PC1'</span>)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">'PC2'</span>)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># t-SNE</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>tsne <span class="op">=</span> TSNE(n_components<span class="op">=</span><span class="dv">2</span>, perplexity<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>X_tsne <span class="op">=</span> tsne.fit_transform(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>]))</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].scatter(X_tsne[:, <span class="dv">0</span>], X_tsne[:, <span class="dv">1</span>], c<span class="op">=</span>ranking_group, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">'t-SNE results'</span>)</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_xlabel(<span class="st">'Feature 1'</span>)</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_ylabel(<span class="st">'Feature 2'</span>)</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-27" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># PCA</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>X_pca <span class="op">=</span> pca.fit_transform(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>]))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].scatter(X_pca[:, <span class="dv">0</span>], X_pca[:, <span class="dv">1</span>], c<span class="op">=</span>ranking_group, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">'PCA results'</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">'PC1'</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">'PC2'</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># t-SNE</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>tsne <span class="op">=</span> TSNE(n_components<span class="op">=</span><span class="dv">2</span>, perplexity<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>X_tsne <span class="op">=</span> tsne.fit_transform(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>]))</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].scatter(X_tsne[:, <span class="dv">0</span>], X_tsne[:, <span class="dv">1</span>], c<span class="op">=</span>ranking_group, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">'t-SNE results'</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_xlabel(<span class="st">'Feature 1'</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_ylabel(<span class="st">'Feature 2'</span>)</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -497,6 +668,1053 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>I decided to put the two graphs together on the same subplot. This view of both methods shows that T-SNE did a much better job at visualizing clusters. The clusters are closer together and farther apart from each other. However, PCA did a better job of finding the top-10 songs grouped together (other than the 2 outliers) with T-SNE having 1-3 top 10 songs in each cluster.</p>
 <p>In terms of preseriving the data structure, the fact that PCA kept the top-10 grouping as well as the characteristics of the method itself of projecting data in directions of max variance, I am led to believe that it does a good job of preserving the overall trends and variance but not as good of a job on a local level. This, instead, is where T-SNE does better. This might mean that T-SNE will do a better job showing groupings between songs (perhaps functioning as a recommendation system). Visually, T-SNE has more distinct clusters compared to PCA. However, the axes in PCA are more informative because they show the features produced with the greatest variance. Also, the PCA graph seems to have some underlying linearity which is intersting.</p>
 <p>The tradeoffs between PCA and T-SNE include the interpretability (with PCA results being meaningful interpretations of the data and T-SNE features being more abstract), dimensionality (PCA can have any number of features while T-SNE is limited to 2-3), and visualization (T-SNE has clearer clusters while PCA’s are more linear) - Source - ChatGPT.</p>
+</section>
+<section id="k-means" class="level4">
+<h4 class="anchored" data-anchor-id="k-means">K-Means</h4>
+<p>K Means clustering is a form of unsupervised learning that looks for the underlying patterns within the data without trying to predict pre determined labels. K Means creates K clusters that group together the points that are closest to the means of the clusters. The goal is that by finding the means of the clusters, data that is very similar to each other will all be grouped together and that there will be separations between the different groups. This is ultimately accomplished by minimizing the sum of squares within each cluster. Usually, we have to find the optimal number of K for the data.</p>
+<p>The way that it works is by starting out with randomly assigned cluster centroids (means). It then puts each item in the group with it’s closest mean. A new mean is found for the clusters and the points are all reassigned to their nearest centroid. This repeated a given number of times, with the clusters becoming more clear and closer together with each iteration. The method stops when either the centroids stop moving with each iteration or we have hit the maximum number of iterations. The means are calculated using Euclidean distance between all of the input features. The goal is to minimize the sum of squared distances between points and their centroids.</p>
+<p>To find the optimal number of clusters, we can use the elbow method, where we graph the inertia vs the num clusters and then pick the elbow point, or where the rate of decrease of the inertia slows down significantly. This will give us the optimal number of clusters before we start losing information. Another option is the silhouette score. The score calculates how good of a match each point is with its cluster as opposed to other clusters. A score close to 1 means the point is close to other points in its own cluster and far away from other clusters. A score of 0 means the point is on the boundary between clusters. A score of -1 means a point is in the wrong cluster. The highest average silhouette score is chosen as the optimal number of clusters because it makes the best-defined clusters.</p>
+<p>Source: <a href="https://www.geeksforgeeks.org/k-means-clustering-introduction/">Geeks for Geeks</a></p>
+<p>The following code was adapted from lab 4.2. The methods were altered to only handle kmeans and produce final graphs for pca and t-sne based on the above results to visualize the clusters.</p>
+<div id="cell-32" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># source: James' lab demonstration</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># function to create different models and fit model to data. Returns model inertia and labels</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> kmean_fit(k, df):</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    kmeans<span class="op">=</span>KMeans(n_clusters<span class="op">=</span>k)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    kmeans.fit(df)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> kmeans.inertia_, kmeans.labels_</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># empty lists to store info about different versions of models to graph</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>ks<span class="op">=</span>[]</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>inertias<span class="op">=</span>[]</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>silhouette_scores <span class="op">=</span> []</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Test different numbers of clusters</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>,<span class="dv">20</span>):</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    inertia, labels <span class="op">=</span> kmean_fit(k, songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>])) <span class="co"># build and fit model</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    ks.append(k) <span class="co"># keep track of number of clusters</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    inertias.append(inertia)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    silhouette_avg <span class="op">=</span> silhouette_score(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>]), labels) <span class="co"># calculate silhouette score</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    silhouette_scores.append(silhouette_avg)</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co"># graph num clusters vs inertia</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>plt.plot(ks,inertias,<span class="st">"-o"</span>)</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Number of Clusters, k"</span>)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Inertia"</span>)</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Elbow Method for Optimal k"</span>)</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="co"># graph num clusters vs silhouette</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>plt.plot(ks, silhouette_scores, <span class="st">"-o"</span>)</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Number of Clusters, k"</span>)</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Silhouette Score"</span>)</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Silhouette Score for Optimal k"</span>)</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a><span class="co"># choose optimal nclusters of 2 (highest silhouette, inertia)</span></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>kmeans<span class="op">=</span>KMeans(n_clusters<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>kmeans.fit(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>]))</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>kmeans_labels <span class="op">=</span> kmeans.predict(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>])) <span class="co"># predict labels</span></span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>X_pca <span class="op">=</span> pca.fit_transform(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>]))</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>plot_2D(X_pca, kmeans_labels, <span class="st">'PCA'</span>)</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>tsne <span class="op">=</span> TSNE(n_components<span class="op">=</span><span class="dv">2</span>, perplexity<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>X_tsne <span class="op">=</span> tsne.fit_transform(songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>]))</span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>plot_2D(X_tsne, kmeans_labels, <span class="st">'T-SNE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-12-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-12-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-12-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Based on the silhouette score and elbow graph, I decided to choose 8 clusters as the optimal number of clusters. I think this was a good choice based on the T-SNE Results graph (the PCA graph is also pretty good, but probably could be better). The colors are separated for the most part and the clusters are far away from each other.</p>
+<div id="cell-34" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the K-Means cluster labels back to the original DataFrame</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>songs[<span class="st">'Cluster'</span>] <span class="op">=</span> kmeans_labels</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Group songs by their clusters and display</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cluster_num <span class="kw">in</span> <span class="bu">sorted</span>(songs[<span class="st">'Cluster'</span>].unique()):</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Cluster </span><span class="sc">{</span>cluster_num<span class="sc">}</span><span class="ss">:"</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    display(songs[songs[<span class="st">'Cluster'</span>] <span class="op">==</span> cluster_num][[<span class="st">'Track Name'</span>, <span class="st">'Artists'</span>, <span class="st">'Album'</span>, <span class="st">'Genres'</span>, <span class="st">'Cluster'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 0:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Nasty</td>
+<td>Tinashe</td>
+<td>Nasty</td>
+<td>alternative r&amp;b, dance pop, metropopolis, pop,...</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">45</td>
+<td>TRYIN' MY HARDEST</td>
+<td>SiR</td>
+<td>HEAVY</td>
+<td>alternative r&amp;b, la pop</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">60</td>
+<td>Love Me JeJe</td>
+<td>Tems</td>
+<td>Born in the Wild</td>
+<td>afro r&amp;b, afrobeats, alte, nigerian pop</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">65</td>
+<td>DENIAL IS A RIVER</td>
+<td>Doechii</td>
+<td>Alligator Bites Never Heal</td>
+<td>alternative r&amp;b</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">69</td>
+<td>Lagos Love Story</td>
+<td>Ayra Starr</td>
+<td>The Year I Turned 21</td>
+<td>afrobeats</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 1:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>A Bar Song (Tipsy)</td>
+<td>Shaboozey</td>
+<td>A Bar Song (Tipsy)</td>
+<td>modern country pop, pop rap</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Espresso</td>
+<td>Sabrina Carpenter</td>
+<td>Short n' Sweet</td>
+<td>pop</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>YA YA</td>
+<td>Beyoncé</td>
+<td>COWBOY CARTER</td>
+<td>pop, r&amp;b</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>Genesis.</td>
+<td>RAYE</td>
+<td>Genesis.</td>
+<td>uk contemporary r&amp;b, uk pop</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">19</td>
+<td>Gata Only</td>
+<td>FloyyMenor</td>
+<td>Gata Only</td>
+<td>reggaeton chileno</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">24</td>
+<td>HISS</td>
+<td>Megan Thee Stallion</td>
+<td>HISS</td>
+<td>houston rap, pop, rap, trap queen</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">26</td>
+<td>I Had Some Help (Feat. Morgan Wallen)</td>
+<td>Post Malone</td>
+<td>F-1 Trillion</td>
+<td>dfw rap, melodic rap, pop, rap</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">29</td>
+<td>Modern Woman</td>
+<td>Eliza McLamb</td>
+<td>Going Through It</td>
+<td>gen z singer-songwriter</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">30</td>
+<td>Company Culture</td>
+<td>Lambrini Girls</td>
+<td>Company Culture</td>
+<td>None Listed</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">37</td>
+<td>obsessed</td>
+<td>Olivia Rodrigo</td>
+<td>GUTS (spilled)</td>
+<td>pop</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">39</td>
+<td>Enough (Miami)</td>
+<td>Cardi B</td>
+<td>Enough (Miami)</td>
+<td>pop, rap</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">41</td>
+<td>Bon Bon</td>
+<td>Fcukers</td>
+<td>Bon Bon</td>
+<td>None Listed</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">50</td>
+<td>Active</td>
+<td>Asake</td>
+<td>Active</td>
+<td>afrobeats, nigerian pop</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">56</td>
+<td>Get In With Me</td>
+<td>BossMan Dlow</td>
+<td>Mr Beat The Road</td>
+<td>None Listed</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">58</td>
+<td>I Love You, I'm Sorry</td>
+<td>Gracie Abrams</td>
+<td>The Secret of Us</td>
+<td>alt z</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">61</td>
+<td>Family Matters</td>
+<td>Drake</td>
+<td>Family Matters</td>
+<td>canadian hip hop, canadian pop, hip hop, pop r...</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">68</td>
+<td>JOYRIDE</td>
+<td>Kesha</td>
+<td>JOYRIDE</td>
+<td>dance pop, pop</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 2:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">46</td>
+<td>BYE BYE</td>
+<td>Kim Gordon</td>
+<td>The Collective</td>
+<td>no wave, noise rock</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">62</td>
+<td>The Lighthouse</td>
+<td>Stevie Nicks</td>
+<td>The Lighthouse</td>
+<td>heartland rock</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">70</td>
+<td>Wanting and Waiting</td>
+<td>The Black Crowes</td>
+<td>Happiness Bastards</td>
+<td>album rock, blues rock, classic rock, electric...</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">88</td>
+<td>On The Game</td>
+<td>The Black Keys</td>
+<td>Ohio Players</td>
+<td>alternative rock, blues rock, garage rock, ind...</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 3:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Not Like Us</td>
+<td>Kendrick Lamar</td>
+<td>Not Like Us</td>
+<td>conscious hip hop, hip hop, rap, west coast rap</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>Type Shit</td>
+<td>Future</td>
+<td>WE DON'T TRUST YOU</td>
+<td>atl hip hop, hip hop, rap, southern hip hop, trap</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>euphoria</td>
+<td>Kendrick Lamar</td>
+<td>euphoria</td>
+<td>conscious hip hop, hip hop, rap, west coast rap</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">27</td>
+<td>Tough</td>
+<td>Quavo</td>
+<td>Tough</td>
+<td>atl hip hop, melodic rap, rap, trap</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">28</td>
+<td>TGIF</td>
+<td>GloRilla</td>
+<td>GLORIOUS</td>
+<td>southern hip hop</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">35</td>
+<td>Never Lose Me (feat. SZA &amp; Cardi B)</td>
+<td>Flo Milli</td>
+<td>Fine Ho, Stay</td>
+<td>viral rap</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">49</td>
+<td>Get It Sexyy</td>
+<td>Sexyy Red</td>
+<td>In Sexyy We Trust</td>
+<td>trap queen</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">64</td>
+<td>Fine Art</td>
+<td>KNEECAP</td>
+<td>Fine Art</td>
+<td>irish hip hop</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">72</td>
+<td>No One Else (feat. Jeremih)</td>
+<td>Lola Brooke</td>
+<td>No One Else (feat. Jeremih)</td>
+<td>trap queen</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">84</td>
+<td>KEHLANI (REMIX) [feat. Kehlani]</td>
+<td>Jordan Adetunji</td>
+<td>KEHLANI (REMIX) [feat. Kehlani]</td>
+<td>irish hip hop</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">87</td>
+<td>Big Dawgs</td>
+<td>Hanumankind</td>
+<td>Big Dawgs</td>
+<td>desi hip hop, indian underground rap, malayala...</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">92</td>
+<td>ADIVINO</td>
+<td>Myke Towers</td>
+<td>ADIVINO</td>
+<td>reggaeton, trap latino, urbano latino</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 4:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>BIRDS OF A FEATHER</td>
+<td>Billie Eilish</td>
+<td>HIT ME HARD AND SOFT</td>
+<td>art pop, pop</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">8</td>
+<td>Girl, so confusing featuring lorde</td>
+<td>Charli xcx</td>
+<td>Brat and it’s completely different but also st...</td>
+<td>art pop, candy pop, metropopolis, pop, uk pop</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>Disease</td>
+<td>Lady Gaga</td>
+<td>Disease</td>
+<td>art pop, dance pop, pop</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">25</td>
+<td>Von dutch</td>
+<td>Charli xcx</td>
+<td>BRAT</td>
+<td>art pop, candy pop, metropopolis, pop, uk pop</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">31</td>
+<td>Always and Forever (feat. Hannah Diamond)</td>
+<td>SOPHIE</td>
+<td>SOPHIE</td>
+<td>art pop, bubblegum bass, deconstructed club, e...</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">33</td>
+<td>Fisherrr - Remix</td>
+<td>Cash Cobain</td>
+<td>Fisherrr (Remix)</td>
+<td>jersey club</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">42</td>
+<td>Driver</td>
+<td>Soccer Mommy</td>
+<td>Evergreen</td>
+<td>art pop, bubblegrunge, indie pop, indie rock, ...</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">47</td>
+<td>In The Wawa (Convinced I Am God)</td>
+<td>Lip Critic</td>
+<td>Hex Dealer</td>
+<td>digital hardcore</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">53</td>
+<td>World on a String</td>
+<td>Jessica Pratt</td>
+<td>Here in the Pitch</td>
+<td>ambient folk, art pop, freak folk</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">55</td>
+<td>Starburster</td>
+<td>Fontaines D.C.</td>
+<td>Romance</td>
+<td>crank wave, irish indie rock, irish post-punk</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">57</td>
+<td>Like I Say (I runaway)</td>
+<td>Nilüfer Yanya</td>
+<td>My Method Actor</td>
+<td>art pop, experimental pop, uk alternative pop</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">78</td>
+<td>Ajhussi</td>
+<td>Flying Lotus</td>
+<td>Spirit Box</td>
+<td>afrofuturism, alternative hip hop, electronica...</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">91</td>
+<td>Britpop</td>
+<td>A. G. Cook</td>
+<td>Britpop</td>
+<td>bubblegum bass, escape room, hyperpop, proto-h...</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 5:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Good Luck, Babe!</td>
+<td>Chappell Roan</td>
+<td>Good Luck, Babe!</td>
+<td>indie pop</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>Right Back to It</td>
+<td>Waxahatchee</td>
+<td>Tigers Blood</td>
+<td>alabama indie, bubblegrunge, chamber pop, coun...</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">13</td>
+<td>Docket (feat. Bully)</td>
+<td>Blondshell</td>
+<td>Docket (feat. Bully)</td>
+<td>bubblegrunge, indie pop</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>Juna</td>
+<td>Clairo</td>
+<td>Charm</td>
+<td>bedroom pop, indie pop, pov: indie</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">52</td>
+<td>Never Need Me</td>
+<td>Rachel Chinouriri</td>
+<td>What A Devastating Turn of Events</td>
+<td>indie pop, uk pop</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">63</td>
+<td>Soup</td>
+<td>Remi Wolf</td>
+<td>Big Ideas</td>
+<td>indie pop, modern alternative pop</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">67</td>
+<td>Beaches</td>
+<td>beabadoobee</td>
+<td>This Is How Tomorrow Moves</td>
+<td>bedroom pop, bubblegrunge, indie pop, pov: indie</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">76</td>
+<td>Can't Be Still</td>
+<td>illuminati hotties</td>
+<td>POWER</td>
+<td>bubblegrunge</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">79</td>
+<td>California Highway 99</td>
+<td>The Softies</td>
+<td>The Bed I Made</td>
+<td>sacramento indie, tape club, twee pop</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">82</td>
+<td>Milk</td>
+<td>Abby Sage</td>
+<td>The Rot</td>
+<td>modern indie pop</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 6:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Pink Skies</td>
+<td>Zach Bryan</td>
+<td>Pink Skies</td>
+<td>classic oklahoma country</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">22</td>
+<td>Angel Of My Dreams</td>
+<td>JADE</td>
+<td>Angel Of My Dreams</td>
+<td>None Listed</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">23</td>
+<td>She's Leaving You</td>
+<td>MJ Lenderman</td>
+<td>Manning Fireworks</td>
+<td>asheville indie, countrygaze, slacker rock</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">36</td>
+<td>Darkest Hour (Helene Edit)</td>
+<td>Eric Church</td>
+<td>Darkest Hour (Helene Edit)</td>
+<td>contemporary country, country, country road</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">40</td>
+<td>Si Antes Te Hubiera Conocido</td>
+<td>KAROL G</td>
+<td>Si Antes Te Hubiera Conocido</td>
+<td>reggaeton, reggaeton colombiano, urbano latino</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">48</td>
+<td>Perfume</td>
+<td>The Dare</td>
+<td>What's Wrong With New York?</td>
+<td>None Listed</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">51</td>
+<td>Cardinal</td>
+<td>Kacey Musgraves</td>
+<td>Deeper Well</td>
+<td>classic texas country, contemporary country, c...</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">71</td>
+<td>Carousel Horses</td>
+<td>Christian Lee Hutson</td>
+<td>Paradise Pop. 10</td>
+<td>countrygaze, deep new americana</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">74</td>
+<td>Midas</td>
+<td>Wunderhorse</td>
+<td>Midas</td>
+<td>None Listed</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">77</td>
+<td>Radio Wave</td>
+<td>Silverada</td>
+<td>Silverada</td>
+<td>classic texas country, red dirt, roots americana</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">81</td>
+<td>Masquerade</td>
+<td>Original Cast of Stereophonic</td>
+<td>Stereophonic (Original Cast Recording)</td>
+<td>None Listed</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">83</td>
+<td>Dammit Randy</td>
+<td>Miranda Lambert</td>
+<td>Dammit Randy</td>
+<td>contemporary country, country, country dawn, c...</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 7:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Too Sweet</td>
+<td>Hozier</td>
+<td>Unreal Unearth: Unaired</td>
+<td>irish singer-songwriter, modern rock, pop, pov...</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">12</td>
+<td>we can't be friends (wait for your love)</td>
+<td>Ariana Grande</td>
+<td>eternal sunshine</td>
+<td>pop</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>Taste</td>
+<td>Sabrina Carpenter</td>
+<td>Short n' Sweet</td>
+<td>pop</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">20</td>
+<td>APT.</td>
+<td>ROSÉ</td>
+<td>APT.</td>
+<td>k-pop</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">21</td>
+<td>Diet Pepsi</td>
+<td>Addison Rae</td>
+<td>Diet Pepsi</td>
+<td>social media pop</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32</td>
+<td>The Prophecy</td>
+<td>Taylor Swift</td>
+<td>THE TORTURED POETS DEPARTMENT: THE ANTHOLOGY</td>
+<td>pop</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">34</td>
+<td>How Sweet</td>
+<td>NewJeans</td>
+<td>How Sweet</td>
+<td>k-pop, k-pop girl group</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">38</td>
+<td>Igual Que Un Ángel (with Peso Pluma)</td>
+<td>Kali Uchis</td>
+<td>ORQUÍDEAS</td>
+<td>colombian pop</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">43</td>
+<td>Anything</td>
+<td>Griff</td>
+<td>Vertigo</td>
+<td>alt z, uk pop</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">44</td>
+<td>Saturn</td>
+<td>SZA</td>
+<td>Saturn</td>
+<td>pop, r&amp;b, rap</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">54</td>
+<td>Cómo Dónde y Cuándo</td>
+<td>Shakira</td>
+<td>Las Mujeres Ya No Lloran</td>
+<td>colombian pop, dance pop, latin pop, pop</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">59</td>
+<td>215634</td>
+<td>Elvie Shane</td>
+<td>Damascus</td>
+<td>modern country pop</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">66</td>
+<td>New Woman (feat. ROSALÍA)</td>
+<td>LISA</td>
+<td>New Woman (feat. ROSALÍA)</td>
+<td>k-pop</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">73</td>
+<td>Training Season</td>
+<td>Dua Lipa</td>
+<td>Radical Optimism</td>
+<td>dance pop, pop, uk pop</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75</td>
+<td>Piece of My Heart (feat. Brent Faiyaz)</td>
+<td>Wizkid</td>
+<td>Piece of My Heart (feat. Brent Faiyaz)</td>
+<td>afrobeats, afropop, azonto, nigerian hip hop, ...</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">80</td>
+<td>Use Me</td>
+<td>Zach Top</td>
+<td>Cold Beer &amp; Country Music</td>
+<td>modern country pop</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">85</td>
+<td>That's My Floor</td>
+<td>Magdalena Bay</td>
+<td>Imaginal Disk</td>
+<td>la pop</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">86</td>
+<td>In Front of Me Now</td>
+<td>Nada Surf</td>
+<td>Moon Mirror</td>
+<td>power pop</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">89</td>
+<td>After Hours</td>
+<td>Kehlani</td>
+<td>CRASH</td>
+<td>pop, r&amp;b, rap</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">90</td>
+<td>XO (Only If You Say Yes)</td>
+<td>ENHYPEN</td>
+<td>ROMANCE : UNTOLD</td>
+<td>anime, k-pop boy group</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">93</td>
+<td>Beautiful Things</td>
+<td>Benson Boone</td>
+<td>Fireworks &amp; Rollerblades</td>
+<td>singer-songwriter pop</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>I decided to display the playlists that would be made from these clusters. Looking at them, I can see that genre had a huge influence on the clusters, but there is also some variation that came from the other features. A manual overview of these playlists make me think that the algorithm did a good job. A lot of these artists (like Sabrina Carpenter, Taylor Swift, Ariana Grande, and DUa Lipa in cluster 7) are often listened to together. Overall, this method was strong.</p>
 </section>
 </section>
 <section id="clustering-methods" class="level3">
@@ -520,6 +1738,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Summarize the key findings and their real-world implications in a non-technical way. Focus on the most important results and how they could apply to practical situations.</li>
 </ul></li>
 </ol>
+<section id="dbscan" class="level4">
+<h4 class="anchored" data-anchor-id="dbscan">DBSCAN</h4>
+<p>DBSCAN is also a method for unsupervised learning where labels aren’t provided to the model so it tries to figure out the underlying patterns in the data. DBSCAN stands for density-based spatial clustering of applications with noise. DBSCAN is special because it doesn’t require clear shapes for the clusters and does not require optimization for the number of clusters. It also does a good job with noise. The main concept is the density of points, where we look for spaces that have a high density of p</p>
+<p>Source: <a href="https://www.datacamp.com/tutorial/dbscan-clustering-algorithm">Data Camp</a></p>
+</section>
+<section id="hierarchical-agglomerative-clustering" class="level4">
+<h4 class="anchored" data-anchor-id="hierarchical-agglomerative-clustering">Hierarchical (Agglomerative) Clustering</h4>
+</section>
 </section>
 </section>
 <section id="summary-and-interpretation-of-results" class="level2">
