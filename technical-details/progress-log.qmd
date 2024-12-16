@@ -98,12 +98,12 @@ This page was used to track our progress and keep a log of our contributions to 
 
 #### Report:
 
-* [ ] Write executive summary
-* [ ] Write about key insights provided by EDA
-* [ ] Write about key insights provided by unsupervised learning
-* [ ] Provide informative visualizations
-* [ ] Write about Business Implications of key findings
-* [ ] Write about Recommendations
+* [x] Write executive summary
+* [x] Write about key insights provided by EDA
+* [x] Write about key insights provided by unsupervised learning
+* [x] Provide informative visualizations
+* [x] Write about Business Implications of key findings
+* [x] Write about Recommendations
 
 #### Overall:
 
