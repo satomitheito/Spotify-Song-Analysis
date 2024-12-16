@@ -10,6 +10,7 @@ LLM tools were used in the following way for the tasks below
 * Help coming up with catchy title for project
 * Ideas for multivariate eda graph types given the variables that I wanted to compare
 * Comparison of PCA and T-SNE
+* Help with writing the conclusion and considering next steps in the report
 
 ## Code: 
 
