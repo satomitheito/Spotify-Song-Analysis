@@ -189,7 +189,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a>
   <ul class="collapse">
   <li><a href="#dimensionality-reduction" id="toc-dimensionality-reduction" class="nav-link" data-scroll-target="#dimensionality-reduction">Dimensionality Reduction</a></li>
-  <li><a href="#clustering-methods" id="toc-clustering-methods" class="nav-link" data-scroll-target="#clustering-methods">Clustering Methods</a></li>
   </ul></li>
   <li><a href="#summary-and-interpretation-of-results" id="toc-summary-and-interpretation-of-results" class="nav-link" data-scroll-target="#summary-and-interpretation-of-results">Summary and Interpretation of Results</a></li>
   </ul>
@@ -3120,35 +3119,13 @@ Cluster 13:</code></pre>
 </div>
 <p>Again, after looking at the playlists, I can see how genre has the biggest influence on these clusters. These actually seem to be a bit more accurate with the playlists. However, none of the top-10 songs were clustered together. That means that this was not optimal in identifying hit songs.</p>
 </section>
-</section>
-<section id="clustering-methods" class="level3">
-<h3 class="anchored" data-anchor-id="clustering-methods">Clustering Methods</h3>
-<p>Apply clustering techniques (K-Means, DBSCAN, and Hierarchical clustering) to a selected dataset. The goal is to understand how each method works, compare their performance, and interpret the results.</p>
-<ol type="1">
-<li>Clustering Methods:
-<ul>
-<li>Apply K-Means, DBSCAN, and Hierarchical clustering to your dataset.</li>
-<li>Write a technical summary for each method (2–4 paragraphs per method) explaining how it works, its purpose, and any model selection methods used (e.g., Elbow, Silhouette).</li>
-</ul></li>
-<li>Results Section:
-<ul>
-<li>Discuss and visualize the results of each clustering analysis.</li>
-<li>Compare the performance of different clustering methods, noting any insights gained from the analysis.</li>
-<li>Visualize cluster patterns and how they relate (if at all) to existing labels in the dataset.</li>
-<li>Use professional, labeled, and clear visualizations that support your discussion.</li>
-</ul></li>
-<li>Conclusion:
-<ul>
-<li>Summarize the key findings and their real-world implications in a non-technical way. Focus on the most important results and how they could apply to practical situations.</li>
-</ul></li>
-</ol>
 <section id="hierarchical-agglomerative-clustering" class="level4">
 <h4 class="anchored" data-anchor-id="hierarchical-agglomerative-clustering">Hierarchical (Agglomerative) Clustering</h4>
 <p>Hierarchical clustering is a way to build a hierarchy of clusters when we don’t know how many clusters we should make. The goal is to get nested groupings of data points that progressively increase the number of points assigned to the clusters. I am planning on using agglomerative clustering which is also known as a “bottom-up” approach. The final clusters can be visualized in a tree called a dendogram that shows how the different levels of clusters changes.</p>
 <p>Agglomerative clustering starts by assuming every data point is its own cluster and then progressively adding more points. The method first finds the distance between each pair of points using Euclidean distance. It then finds the two closest clusters and merges them into a new cluster. It then finds the new distance between this cluster and the other clusters. This goes on until all of the data points are put into one cluster or there is some other stopping criteria (max iterations, num clusters).</p>
 <p>We can find the optimal number of clusters using the silhouette scores. By finding the number of clusters that provided the maximum average silhouette score, we find the optimal that should be used.</p>
 <p>Source: <a href="https://www.geeksforgeeks.org/hierarchical-clustering-with-scikit-learn/">Geeks for Geeks</a></p>
-<div id="cell-46" class="cell" data-execution_count="25">
+<div id="cell-45" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>scores_analysis <span class="op">=</span> songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>])</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># holders to fill in with chosen scores</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>best_cs <span class="op">=</span><span class="va">None</span></span>
@@ -3195,7 +3172,7 @@ Cluster 13:</code></pre>
 </div>
 </div>
 <p>These clusters are extremely clear in the T-SNE graph. They are all distinct and separated from each other. The PCA graph also has good clusters on the left side, but the right side is not as clear. Overall, I think this is the best method for clustering.</p>
-<div id="cell-48" class="cell" data-execution_count="26">
+<div id="cell-47" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>songs[<span class="st">'agg_Cluster'</span>] <span class="op">=</span> agg_labels</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Group songs by their clusters and display</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cluster_num <span class="kw">in</span> <span class="bu">sorted</span>(songs[<span class="st">'agg_Cluster'</span>].unique()):</span>
@@ -4284,11 +4261,19 @@ Cluster 8:</code></pre>
 </div>
 <p>Again, this clustering method put a lot of weight on the genre of the songs. The top 10 songs are not clustered together. I think these playlists are also very strong and represent good groupings of songs.</p>
 </section>
+<section id="results" class="level4">
+<h4 class="anchored" data-anchor-id="results">Results</h4>
+<p>I looked at the results of clustering through the t-sne and pca graphs. Kmeans struggled the most with clustering, with clusters that blended together and were spread out. However. this ended up with pretty good, much longer playlists. DBSCAN did a much better job with producing tight clusters, but the algorithm ended up identifying 23/94 songs as “noise” and didn’t assign them a cluster. This resulted in short playlists. Agglomerative did the best overall with clear, non-overlapping clusters. The playlists were good, but a major focus was placed on genre.</p>
+<p>None of the clustering methods were able to group top 10 songs or any ranking group songs together. This suggests that top 10 songs don’t have a huge shared set of characteristics and more features need to be added int to this model in order to get more promising results. The emphasis on genre when making these clusters makes sense and mighta also indicate that songs within a genre share characteristics like song length, explicitness, and sentiment to a concerningly high degree.</p>
+</section>
 </section>
 </section>
 <section id="summary-and-interpretation-of-results" class="level2">
 <h2 class="anchored" data-anchor-id="summary-and-interpretation-of-results">Summary and Interpretation of Results</h2>
-<p>Summarize your findings, interpret the results, and discuss their technical implications.</p>
+<p>This page ran dimensionality reduction and clustering on the music data. PCA and T-SNE allowed me to visualize this very high-dimensional data and pulled out clusters that I didn’t see before.</p>
+<p>Clustering had some interesting results, with the 9 clusters created by hierarchical clustering yielding the best results both visually and through the created playlists.</p>
+<p>None of these clustering methods grouped the top 10 songs together. This suggests that their success may depend on factors outside of what we considered in this dataset. However, all clustering methods seemed to place a lot of importance on the genre of the song, indicating that songs within the same genre tend to have very strongly measurable similarities. I’m curious to know if this has been a trend over time, where genres have grown into these unique identities or if music has always been this easily groupable.</p>
+<p>Some practical applications of these clusters could be interesting. The clusters could be used as I did to curate playlists that follow specific themes or trends. It could also be used to uplift other, non top-10 songs. Since the top-10 songs were dispersed throughout clusters, perhaps the songs in their individual clusters could be recommended to listeners who enjoyed that particular top-10 song. This would help expose consumers to new music and give different artists a chance at success.</p>
 
 
 </section>
