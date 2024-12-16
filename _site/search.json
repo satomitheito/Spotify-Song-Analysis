@@ -277,35 +277,28 @@
     "href": "report/report.html",
     "title": "Decoding Song Success - Final Report",
     "section": "",
-    "text": "Summarize key findings and their relevance to business goals. Example: “This report predicts customer churn and offers strategies to reduce churn by 15%.”\n\n\n\nDefine the problem or question addressed. Example: “This project aims to identify the drivers of customer churn.”\n\n\n\nPresent the most important, actionable insights. Example: “Customers who interact with support twice within 30 days are 25% less likely to churn.”\n\n\n\nUse clear graphs to convey key insights. Example: A bar chart showing churn likelihood based on engagement.\n\n\n\nExplain how findings impact business outcomes and offer specific recommendations. Example: “Focus retention efforts on low-engagement customers.”\n\n\n\nProvide clear, actionable steps with projections. Example: “Implement an automated retention campaign, reducing churn by 10%.”\n\n\n\nSummarize findings and suggest next steps. Example: “Addressing churn drivers can reduce loss and improve profitability.”\n\n\n\n(Optional): Additional charts or explanations for further insights.\n\n\n\n\nClear Purpose: Define the core message or objective early on.\nKnow Your Audience: Adjust language, tone, and detail based on the audience’s understanding.\nStrong Opening: Start with a hook that sets context and stakes.\nLogical Flow: Structure with a clear beginning, middle, and end.\nKey Insights: Highlight the most important points; avoid unnecessary details or jargon.\nData Support: Use data to enhance the narrative without overwhelming.\nVisuals: Incorporate charts to simplify ideas and engage the audience.\nActionable Takeaways: Conclude with recommendations or next steps.\nAuthenticity: Use storytelling to make the content engaging and relatable.\nRevise: Edit for clarity and impact, removing unnecessary content.\n\n\n\n\n\nSimplicity: Avoid jargon; focus on business-relevant insights.\nVisual Focus: Prioritize charts and graphs over dense text.\nEmphasize Impact: Always link data insights to business outcomes."
+    "text": "This report, Decoding Song Success, uses a wide range of data visualization and machine learning tools to study the factors that make the hit songs hits. Successful songs were measured by their rank on the Rolling Stone Top 100 songs. By integrating natural language processing (NLP), sentiment anlaysis, and machine learning models, we explored the relationship between lyrical, musical, and artist-specific characteristics of the top songs in the country to identify the key drivers of song success.\nSome of the key findings outlined in this report can be found below: 1. Artist popularity plays an important role in song success, with highly popular artists being more likely to have a song at the top of the charts. 2. Emotionally extreme sentiments are strongly correlated with popularity, while neutral sentiments cause songs to not perform as well. 3. Genre features are key drivers in clustering songs, with methods like hierarchical clustering revealing strong patterns within genres. 4. External factors such as social media popularity and marketing likely have an impact on top-ranked songs, which don’t form distinct clusters based on the features studied in this report alone.\nThese findings have important implications for the music industry, from songwriting strategies to playlist curation and personalized song recommendations.\n\n\n\nThis project aims to identify the key factors that contribute to a song’s popularity. We focused on how sentiment, genre, and artist popularity influence success. By analyzing a dataset of Rolling Stone’s top 100 songs, we were able to uncover patterns and relationships that can provide rising artists, music producers, and music platforms with strategies and a deeper understanding of what makes a hit song.\n\n\n\nPresent the most important, actionable insights. Example: “Customers who interact with support twice within 30 days are 25% less likely to churn.”\n\n\n\nExplain how findings impact business outcomes and offer specific recommendations. Example: “Focus retention efforts on low-engagement customers.”\n\n\n\nProvide clear, actionable steps with projections. Example: “Implement an automated retention campaign, reducing churn by 10%.”\n\n\n\nSummarize findings and suggest next steps. Example: “Addressing churn drivers can reduce loss and improve profitability.”\n\n\n\n(Optional): Additional charts or explanations for further insights.\n\n\n\n\nClear Purpose: Define the core message or objective early on.\nKnow Your Audience: Adjust language, tone, and detail based on the audience’s understanding.\nStrong Opening: Start with a hook that sets context and stakes.\nLogical Flow: Structure with a clear beginning, middle, and end.\nKey Insights: Highlight the most important points; avoid unnecessary details or jargon.\nData Support: Use data to enhance the narrative without overwhelming.\nVisuals: Incorporate charts to simplify ideas and engage the audience.\nActionable Takeaways: Conclude with recommendations or next steps.\nAuthenticity: Use storytelling to make the content engaging and relatable.\nRevise: Edit for clarity and impact, removing unnecessary content.\n\n\n\n\n\nSimplicity: Avoid jargon; focus on business-relevant insights.\nVisual Focus: Prioritize charts and graphs over dense text.\nEmphasize Impact: Always link data insights to business outcomes."
   },
   {
     "objectID": "report/report.html#executive-summary",
     "href": "report/report.html#executive-summary",
     "title": "Decoding Song Success - Final Report",
     "section": "",
-    "text": "Summarize key findings and their relevance to business goals. Example: “This report predicts customer churn and offers strategies to reduce churn by 15%.”"
+    "text": "This report, Decoding Song Success, uses a wide range of data visualization and machine learning tools to study the factors that make the hit songs hits. Successful songs were measured by their rank on the Rolling Stone Top 100 songs. By integrating natural language processing (NLP), sentiment anlaysis, and machine learning models, we explored the relationship between lyrical, musical, and artist-specific characteristics of the top songs in the country to identify the key drivers of song success.\nSome of the key findings outlined in this report can be found below: 1. Artist popularity plays an important role in song success, with highly popular artists being more likely to have a song at the top of the charts. 2. Emotionally extreme sentiments are strongly correlated with popularity, while neutral sentiments cause songs to not perform as well. 3. Genre features are key drivers in clustering songs, with methods like hierarchical clustering revealing strong patterns within genres. 4. External factors such as social media popularity and marketing likely have an impact on top-ranked songs, which don’t form distinct clusters based on the features studied in this report alone.\nThese findings have important implications for the music industry, from songwriting strategies to playlist curation and personalized song recommendations."
   },
   {
     "objectID": "report/report.html#objective",
     "href": "report/report.html#objective",
     "title": "Decoding Song Success - Final Report",
     "section": "",
-    "text": "Define the problem or question addressed. Example: “This project aims to identify the drivers of customer churn.”"
+    "text": "This project aims to identify the key factors that contribute to a song’s popularity. We focused on how sentiment, genre, and artist popularity influence success. By analyzing a dataset of Rolling Stone’s top 100 songs, we were able to uncover patterns and relationships that can provide rising artists, music producers, and music platforms with strategies and a deeper understanding of what makes a hit song."
   },
   {
-    "objectID": "report/report.html#key-insights",
-    "href": "report/report.html#key-insights",
+    "objectID": "report/report.html#key-insights-and-visualizations",
+    "href": "report/report.html#key-insights-and-visualizations",
     "title": "Decoding Song Success - Final Report",
     "section": "",
     "text": "Present the most important, actionable insights. Example: “Customers who interact with support twice within 30 days are 25% less likely to churn.”"
-  },
-  {
-    "objectID": "report/report.html#visualizations",
-    "href": "report/report.html#visualizations",
-    "title": "Decoding Song Success - Final Report",
-    "section": "",
-    "text": "Use clear graphs to convey key insights. Example: A bar chart showing churn likelihood based on engagement."
   },
   {
     "objectID": "report/report.html#business-implications",
@@ -361,13 +354,13 @@
     "href": "technical-details/llm-usage-log.html#brainstorming",
     "title": "LLM usage log",
     "section": "Brainstorming",
-    "text": "Brainstorming\n\nBrainstorm ideas for further quantitative columns we could make from the data after finding out the limitations of the Spotify API\nHelp coming up with catchy title for project\nIdeas for multivariate eda graph types given the variables that I wanted to compare"
+    "text": "Brainstorming\n\nBrainstorm ideas for further quantitative columns we could make from the data after finding out the limitations of the Spotify API\nHelp coming up with catchy title for project\nIdeas for multivariate eda graph types given the variables that I wanted to compare\nComparison of PCA and T-SNE"
   },
   {
     "objectID": "technical-details/llm-usage-log.html#code",
     "href": "technical-details/llm-usage-log.html#code",
     "title": "LLM usage log",
     "section": "Code:",
-    "text": "Code:\n\nHelp understand the Genius API and understand how to get a key to search the API\nHelp write webscraping function for Genius Lyric API\nExplanation of github usage through branches and merging\nGrouping genres into simplified groups for analysis\nAsked for information about pd crosstab and how to use it in eda\nProvided results from skewness and kurtosis and asked for suggestion on transformations that would be appropriate for the dataset."
+    "text": "Code:\n\nHelp understand the Genius API and understand how to get a key to search the API\nHelp write webscraping function for Genius Lyric API\nExplanation of github usage through branches and merging\nGrouping genres into simplified groups for analysis\nAsked for information about pd crosstab and how to use it in eda\nProvided results from skewness and kurtosis and asked for suggestion on transformations that would be appropriate for the dataset.\nError with T-SNE clustering\nMake playlists from clusters"
   }
 ]

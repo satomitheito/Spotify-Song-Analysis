@@ -9,6 +9,7 @@ LLM tools were used in the following way for the tasks below
 * Brainstorm ideas for further quantitative columns we could make from the data after finding out the limitations of the Spotify API
 * Help coming up with catchy title for project
 * Ideas for multivariate eda graph types given the variables that I wanted to compare
+* Comparison of PCA and T-SNE
 
 ## Code: 
 
@@ -18,3 +19,5 @@ LLM tools were used in the following way for the tasks below
 * Grouping genres into simplified groups for analysis
 * Asked for information about pd crosstab and how to use it in eda
 * Provided results from skewness and kurtosis and asked for suggestion on transformations that would be appropriate for the dataset.
+* Error with T-SNE clustering
+* Make playlists from clusters
