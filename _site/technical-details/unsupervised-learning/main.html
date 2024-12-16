@@ -754,13 +754,13 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <p>Based on the silhouette score and elbow graph, I decided to choose 8 clusters as the optimal number of clusters. I think this was a good choice based on the T-SNE Results graph (the PCA graph is also pretty good, but probably could be better). The colors are separated for the most part and the clusters are far away from each other.</p>
-<div id="cell-34" class="cell" data-execution_count="15">
+<div id="cell-34" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the K-Means cluster labels back to the original DataFrame</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>songs[<span class="st">'Cluster'</span>] <span class="op">=</span> kmeans_labels</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Group songs by their clusters and display</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cluster_num <span class="kw">in</span> <span class="bu">sorted</span>(songs[<span class="st">'Cluster'</span>].unique()):</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Cluster </span><span class="sc">{</span>cluster_num<span class="sc">}</span><span class="ss">:"</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    display(songs[songs[<span class="st">'Cluster'</span>] <span class="op">==</span> cluster_num][[<span class="st">'Track Name'</span>, <span class="st">'Artists'</span>, <span class="st">'Album'</span>, <span class="st">'Genres'</span>, <span class="st">'Cluster'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    display(songs[songs[<span class="st">'Cluster'</span>] <span class="op">==</span> cluster_num][[<span class="st">'Track Name'</span>, <span class="st">'Artists'</span>, <span class="st">'Album'</span>, <span class="st">'Genres'</span>, <span class="st">'Top 10 Song'</span>, <span class="st">'Cluster'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Cluster 0:</code></pre>
@@ -777,6 +777,7 @@ Cluster 0:</code></pre>
 <th data-quarto-table-cell-role="th">Artists</th>
 <th data-quarto-table-cell-role="th">Album</th>
 <th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
 <th data-quarto-table-cell-role="th">Cluster</th>
 </tr>
 </thead>
@@ -787,6 +788,7 @@ Cluster 0:</code></pre>
 <td>Tinashe</td>
 <td>Nasty</td>
 <td>alternative r&amp;b, dance pop, metropopolis, pop,...</td>
+<td>1</td>
 <td>0</td>
 </tr>
 <tr class="even">
@@ -796,6 +798,7 @@ Cluster 0:</code></pre>
 <td>HEAVY</td>
 <td>alternative r&amp;b, la pop</td>
 <td>0</td>
+<td>0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">60</td>
@@ -803,6 +806,7 @@ Cluster 0:</code></pre>
 <td>Tems</td>
 <td>Born in the Wild</td>
 <td>afro r&amp;b, afrobeats, alte, nigerian pop</td>
+<td>0</td>
 <td>0</td>
 </tr>
 <tr class="even">
@@ -812,6 +816,7 @@ Cluster 0:</code></pre>
 <td>Alligator Bites Never Heal</td>
 <td>alternative r&amp;b</td>
 <td>0</td>
+<td>0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">69</td>
@@ -819,6 +824,7 @@ Cluster 0:</code></pre>
 <td>Ayra Starr</td>
 <td>The Year I Turned 21</td>
 <td>afrobeats</td>
+<td>0</td>
 <td>0</td>
 </tr>
 </tbody>
@@ -842,6 +848,7 @@ Cluster 1:</code></pre>
 <th data-quarto-table-cell-role="th">Artists</th>
 <th data-quarto-table-cell-role="th">Album</th>
 <th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
 <th data-quarto-table-cell-role="th">Cluster</th>
 </tr>
 </thead>
@@ -853,6 +860,7 @@ Cluster 1:</code></pre>
 <td>A Bar Song (Tipsy)</td>
 <td>modern country pop, pop rap</td>
 <td>1</td>
+<td>1</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
@@ -861,6 +869,7 @@ Cluster 1:</code></pre>
 <td>Short n' Sweet</td>
 <td>pop</td>
 <td>1</td>
+<td>1</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">10</td>
@@ -868,6 +877,7 @@ Cluster 1:</code></pre>
 <td>Beyoncé</td>
 <td>COWBOY CARTER</td>
 <td>pop, r&amp;b</td>
+<td>0</td>
 <td>1</td>
 </tr>
 <tr class="even">
@@ -876,6 +886,7 @@ Cluster 1:</code></pre>
 <td>RAYE</td>
 <td>Genesis.</td>
 <td>uk contemporary r&amp;b, uk pop</td>
+<td>0</td>
 <td>1</td>
 </tr>
 <tr class="odd">
@@ -884,6 +895,7 @@ Cluster 1:</code></pre>
 <td>FloyyMenor</td>
 <td>Gata Only</td>
 <td>reggaeton chileno</td>
+<td>0</td>
 <td>1</td>
 </tr>
 <tr class="even">
@@ -892,6 +904,7 @@ Cluster 1:</code></pre>
 <td>Megan Thee Stallion</td>
 <td>HISS</td>
 <td>houston rap, pop, rap, trap queen</td>
+<td>0</td>
 <td>1</td>
 </tr>
 <tr class="odd">
@@ -900,6 +913,7 @@ Cluster 1:</code></pre>
 <td>Post Malone</td>
 <td>F-1 Trillion</td>
 <td>dfw rap, melodic rap, pop, rap</td>
+<td>0</td>
 <td>1</td>
 </tr>
 <tr class="even">
@@ -908,6 +922,7 @@ Cluster 1:</code></pre>
 <td>Eliza McLamb</td>
 <td>Going Through It</td>
 <td>gen z singer-songwriter</td>
+<td>0</td>
 <td>1</td>
 </tr>
 <tr class="odd">
@@ -916,6 +931,7 @@ Cluster 1:</code></pre>
 <td>Lambrini Girls</td>
 <td>Company Culture</td>
 <td>None Listed</td>
+<td>0</td>
 <td>1</td>
 </tr>
 <tr class="even">
@@ -924,6 +940,7 @@ Cluster 1:</code></pre>
 <td>Olivia Rodrigo</td>
 <td>GUTS (spilled)</td>
 <td>pop</td>
+<td>0</td>
 <td>1</td>
 </tr>
 <tr class="odd">
@@ -932,6 +949,7 @@ Cluster 1:</code></pre>
 <td>Cardi B</td>
 <td>Enough (Miami)</td>
 <td>pop, rap</td>
+<td>0</td>
 <td>1</td>
 </tr>
 <tr class="even">
@@ -940,6 +958,7 @@ Cluster 1:</code></pre>
 <td>Fcukers</td>
 <td>Bon Bon</td>
 <td>None Listed</td>
+<td>0</td>
 <td>1</td>
 </tr>
 <tr class="odd">
@@ -948,6 +967,7 @@ Cluster 1:</code></pre>
 <td>Asake</td>
 <td>Active</td>
 <td>afrobeats, nigerian pop</td>
+<td>0</td>
 <td>1</td>
 </tr>
 <tr class="even">
@@ -956,6 +976,7 @@ Cluster 1:</code></pre>
 <td>BossMan Dlow</td>
 <td>Mr Beat The Road</td>
 <td>None Listed</td>
+<td>0</td>
 <td>1</td>
 </tr>
 <tr class="odd">
@@ -964,6 +985,7 @@ Cluster 1:</code></pre>
 <td>Gracie Abrams</td>
 <td>The Secret of Us</td>
 <td>alt z</td>
+<td>0</td>
 <td>1</td>
 </tr>
 <tr class="even">
@@ -972,6 +994,7 @@ Cluster 1:</code></pre>
 <td>Drake</td>
 <td>Family Matters</td>
 <td>canadian hip hop, canadian pop, hip hop, pop r...</td>
+<td>0</td>
 <td>1</td>
 </tr>
 <tr class="odd">
@@ -980,6 +1003,7 @@ Cluster 1:</code></pre>
 <td>Kesha</td>
 <td>JOYRIDE</td>
 <td>dance pop, pop</td>
+<td>0</td>
 <td>1</td>
 </tr>
 </tbody>
@@ -1003,6 +1027,7 @@ Cluster 2:</code></pre>
 <th data-quarto-table-cell-role="th">Artists</th>
 <th data-quarto-table-cell-role="th">Album</th>
 <th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
 <th data-quarto-table-cell-role="th">Cluster</th>
 </tr>
 </thead>
@@ -1013,6 +1038,7 @@ Cluster 2:</code></pre>
 <td>Kim Gordon</td>
 <td>The Collective</td>
 <td>no wave, noise rock</td>
+<td>0</td>
 <td>2</td>
 </tr>
 <tr class="even">
@@ -1021,6 +1047,7 @@ Cluster 2:</code></pre>
 <td>Stevie Nicks</td>
 <td>The Lighthouse</td>
 <td>heartland rock</td>
+<td>0</td>
 <td>2</td>
 </tr>
 <tr class="odd">
@@ -1029,6 +1056,7 @@ Cluster 2:</code></pre>
 <td>The Black Crowes</td>
 <td>Happiness Bastards</td>
 <td>album rock, blues rock, classic rock, electric...</td>
+<td>0</td>
 <td>2</td>
 </tr>
 <tr class="even">
@@ -1037,6 +1065,7 @@ Cluster 2:</code></pre>
 <td>The Black Keys</td>
 <td>Ohio Players</td>
 <td>alternative rock, blues rock, garage rock, ind...</td>
+<td>0</td>
 <td>2</td>
 </tr>
 </tbody>
@@ -1060,6 +1089,7 @@ Cluster 3:</code></pre>
 <th data-quarto-table-cell-role="th">Artists</th>
 <th data-quarto-table-cell-role="th">Album</th>
 <th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
 <th data-quarto-table-cell-role="th">Cluster</th>
 </tr>
 </thead>
@@ -1070,6 +1100,7 @@ Cluster 3:</code></pre>
 <td>Kendrick Lamar</td>
 <td>Not Like Us</td>
 <td>conscious hip hop, hip hop, rap, west coast rap</td>
+<td>1</td>
 <td>3</td>
 </tr>
 <tr class="even">
@@ -1078,6 +1109,7 @@ Cluster 3:</code></pre>
 <td>Future</td>
 <td>WE DON'T TRUST YOU</td>
 <td>atl hip hop, hip hop, rap, southern hip hop, trap</td>
+<td>0</td>
 <td>3</td>
 </tr>
 <tr class="odd">
@@ -1086,6 +1118,7 @@ Cluster 3:</code></pre>
 <td>Kendrick Lamar</td>
 <td>euphoria</td>
 <td>conscious hip hop, hip hop, rap, west coast rap</td>
+<td>0</td>
 <td>3</td>
 </tr>
 <tr class="even">
@@ -1094,6 +1127,7 @@ Cluster 3:</code></pre>
 <td>Quavo</td>
 <td>Tough</td>
 <td>atl hip hop, melodic rap, rap, trap</td>
+<td>0</td>
 <td>3</td>
 </tr>
 <tr class="odd">
@@ -1102,6 +1136,7 @@ Cluster 3:</code></pre>
 <td>GloRilla</td>
 <td>GLORIOUS</td>
 <td>southern hip hop</td>
+<td>0</td>
 <td>3</td>
 </tr>
 <tr class="even">
@@ -1110,6 +1145,7 @@ Cluster 3:</code></pre>
 <td>Flo Milli</td>
 <td>Fine Ho, Stay</td>
 <td>viral rap</td>
+<td>0</td>
 <td>3</td>
 </tr>
 <tr class="odd">
@@ -1118,6 +1154,7 @@ Cluster 3:</code></pre>
 <td>Sexyy Red</td>
 <td>In Sexyy We Trust</td>
 <td>trap queen</td>
+<td>0</td>
 <td>3</td>
 </tr>
 <tr class="even">
@@ -1126,6 +1163,7 @@ Cluster 3:</code></pre>
 <td>KNEECAP</td>
 <td>Fine Art</td>
 <td>irish hip hop</td>
+<td>0</td>
 <td>3</td>
 </tr>
 <tr class="odd">
@@ -1134,6 +1172,7 @@ Cluster 3:</code></pre>
 <td>Lola Brooke</td>
 <td>No One Else (feat. Jeremih)</td>
 <td>trap queen</td>
+<td>0</td>
 <td>3</td>
 </tr>
 <tr class="even">
@@ -1142,6 +1181,7 @@ Cluster 3:</code></pre>
 <td>Jordan Adetunji</td>
 <td>KEHLANI (REMIX) [feat. Kehlani]</td>
 <td>irish hip hop</td>
+<td>0</td>
 <td>3</td>
 </tr>
 <tr class="odd">
@@ -1150,6 +1190,7 @@ Cluster 3:</code></pre>
 <td>Hanumankind</td>
 <td>Big Dawgs</td>
 <td>desi hip hop, indian underground rap, malayala...</td>
+<td>0</td>
 <td>3</td>
 </tr>
 <tr class="even">
@@ -1158,6 +1199,7 @@ Cluster 3:</code></pre>
 <td>Myke Towers</td>
 <td>ADIVINO</td>
 <td>reggaeton, trap latino, urbano latino</td>
+<td>0</td>
 <td>3</td>
 </tr>
 </tbody>
@@ -1181,6 +1223,7 @@ Cluster 4:</code></pre>
 <th data-quarto-table-cell-role="th">Artists</th>
 <th data-quarto-table-cell-role="th">Album</th>
 <th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
 <th data-quarto-table-cell-role="th">Cluster</th>
 </tr>
 </thead>
@@ -1191,6 +1234,7 @@ Cluster 4:</code></pre>
 <td>Billie Eilish</td>
 <td>HIT ME HARD AND SOFT</td>
 <td>art pop, pop</td>
+<td>1</td>
 <td>4</td>
 </tr>
 <tr class="even">
@@ -1199,6 +1243,7 @@ Cluster 4:</code></pre>
 <td>Charli xcx</td>
 <td>Brat and it’s completely different but also st...</td>
 <td>art pop, candy pop, metropopolis, pop, uk pop</td>
+<td>1</td>
 <td>4</td>
 </tr>
 <tr class="odd">
@@ -1207,6 +1252,7 @@ Cluster 4:</code></pre>
 <td>Lady Gaga</td>
 <td>Disease</td>
 <td>art pop, dance pop, pop</td>
+<td>0</td>
 <td>4</td>
 </tr>
 <tr class="even">
@@ -1215,6 +1261,7 @@ Cluster 4:</code></pre>
 <td>Charli xcx</td>
 <td>BRAT</td>
 <td>art pop, candy pop, metropopolis, pop, uk pop</td>
+<td>0</td>
 <td>4</td>
 </tr>
 <tr class="odd">
@@ -1223,6 +1270,7 @@ Cluster 4:</code></pre>
 <td>SOPHIE</td>
 <td>SOPHIE</td>
 <td>art pop, bubblegum bass, deconstructed club, e...</td>
+<td>0</td>
 <td>4</td>
 </tr>
 <tr class="even">
@@ -1231,6 +1279,7 @@ Cluster 4:</code></pre>
 <td>Cash Cobain</td>
 <td>Fisherrr (Remix)</td>
 <td>jersey club</td>
+<td>0</td>
 <td>4</td>
 </tr>
 <tr class="odd">
@@ -1239,6 +1288,7 @@ Cluster 4:</code></pre>
 <td>Soccer Mommy</td>
 <td>Evergreen</td>
 <td>art pop, bubblegrunge, indie pop, indie rock, ...</td>
+<td>0</td>
 <td>4</td>
 </tr>
 <tr class="even">
@@ -1247,6 +1297,7 @@ Cluster 4:</code></pre>
 <td>Lip Critic</td>
 <td>Hex Dealer</td>
 <td>digital hardcore</td>
+<td>0</td>
 <td>4</td>
 </tr>
 <tr class="odd">
@@ -1255,6 +1306,7 @@ Cluster 4:</code></pre>
 <td>Jessica Pratt</td>
 <td>Here in the Pitch</td>
 <td>ambient folk, art pop, freak folk</td>
+<td>0</td>
 <td>4</td>
 </tr>
 <tr class="even">
@@ -1263,6 +1315,7 @@ Cluster 4:</code></pre>
 <td>Fontaines D.C.</td>
 <td>Romance</td>
 <td>crank wave, irish indie rock, irish post-punk</td>
+<td>0</td>
 <td>4</td>
 </tr>
 <tr class="odd">
@@ -1271,6 +1324,7 @@ Cluster 4:</code></pre>
 <td>Nilüfer Yanya</td>
 <td>My Method Actor</td>
 <td>art pop, experimental pop, uk alternative pop</td>
+<td>0</td>
 <td>4</td>
 </tr>
 <tr class="even">
@@ -1279,6 +1333,7 @@ Cluster 4:</code></pre>
 <td>Flying Lotus</td>
 <td>Spirit Box</td>
 <td>afrofuturism, alternative hip hop, electronica...</td>
+<td>0</td>
 <td>4</td>
 </tr>
 <tr class="odd">
@@ -1287,6 +1342,7 @@ Cluster 4:</code></pre>
 <td>A. G. Cook</td>
 <td>Britpop</td>
 <td>bubblegum bass, escape room, hyperpop, proto-h...</td>
+<td>0</td>
 <td>4</td>
 </tr>
 </tbody>
@@ -1310,6 +1366,7 @@ Cluster 5:</code></pre>
 <th data-quarto-table-cell-role="th">Artists</th>
 <th data-quarto-table-cell-role="th">Album</th>
 <th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
 <th data-quarto-table-cell-role="th">Cluster</th>
 </tr>
 </thead>
@@ -1320,6 +1377,7 @@ Cluster 5:</code></pre>
 <td>Chappell Roan</td>
 <td>Good Luck, Babe!</td>
 <td>indie pop</td>
+<td>1</td>
 <td>5</td>
 </tr>
 <tr class="even">
@@ -1328,6 +1386,7 @@ Cluster 5:</code></pre>
 <td>Waxahatchee</td>
 <td>Tigers Blood</td>
 <td>alabama indie, bubblegrunge, chamber pop, coun...</td>
+<td>1</td>
 <td>5</td>
 </tr>
 <tr class="odd">
@@ -1336,6 +1395,7 @@ Cluster 5:</code></pre>
 <td>Blondshell</td>
 <td>Docket (feat. Bully)</td>
 <td>bubblegrunge, indie pop</td>
+<td>0</td>
 <td>5</td>
 </tr>
 <tr class="even">
@@ -1344,6 +1404,7 @@ Cluster 5:</code></pre>
 <td>Clairo</td>
 <td>Charm</td>
 <td>bedroom pop, indie pop, pov: indie</td>
+<td>0</td>
 <td>5</td>
 </tr>
 <tr class="odd">
@@ -1352,6 +1413,7 @@ Cluster 5:</code></pre>
 <td>Rachel Chinouriri</td>
 <td>What A Devastating Turn of Events</td>
 <td>indie pop, uk pop</td>
+<td>0</td>
 <td>5</td>
 </tr>
 <tr class="even">
@@ -1360,6 +1422,7 @@ Cluster 5:</code></pre>
 <td>Remi Wolf</td>
 <td>Big Ideas</td>
 <td>indie pop, modern alternative pop</td>
+<td>0</td>
 <td>5</td>
 </tr>
 <tr class="odd">
@@ -1368,6 +1431,7 @@ Cluster 5:</code></pre>
 <td>beabadoobee</td>
 <td>This Is How Tomorrow Moves</td>
 <td>bedroom pop, bubblegrunge, indie pop, pov: indie</td>
+<td>0</td>
 <td>5</td>
 </tr>
 <tr class="even">
@@ -1376,6 +1440,7 @@ Cluster 5:</code></pre>
 <td>illuminati hotties</td>
 <td>POWER</td>
 <td>bubblegrunge</td>
+<td>0</td>
 <td>5</td>
 </tr>
 <tr class="odd">
@@ -1384,6 +1449,7 @@ Cluster 5:</code></pre>
 <td>The Softies</td>
 <td>The Bed I Made</td>
 <td>sacramento indie, tape club, twee pop</td>
+<td>0</td>
 <td>5</td>
 </tr>
 <tr class="even">
@@ -1392,6 +1458,7 @@ Cluster 5:</code></pre>
 <td>Abby Sage</td>
 <td>The Rot</td>
 <td>modern indie pop</td>
+<td>0</td>
 <td>5</td>
 </tr>
 </tbody>
@@ -1415,6 +1482,7 @@ Cluster 6:</code></pre>
 <th data-quarto-table-cell-role="th">Artists</th>
 <th data-quarto-table-cell-role="th">Album</th>
 <th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
 <th data-quarto-table-cell-role="th">Cluster</th>
 </tr>
 </thead>
@@ -1425,6 +1493,7 @@ Cluster 6:</code></pre>
 <td>Zach Bryan</td>
 <td>Pink Skies</td>
 <td>classic oklahoma country</td>
+<td>1</td>
 <td>6</td>
 </tr>
 <tr class="even">
@@ -1433,6 +1502,7 @@ Cluster 6:</code></pre>
 <td>JADE</td>
 <td>Angel Of My Dreams</td>
 <td>None Listed</td>
+<td>0</td>
 <td>6</td>
 </tr>
 <tr class="odd">
@@ -1441,6 +1511,7 @@ Cluster 6:</code></pre>
 <td>MJ Lenderman</td>
 <td>Manning Fireworks</td>
 <td>asheville indie, countrygaze, slacker rock</td>
+<td>0</td>
 <td>6</td>
 </tr>
 <tr class="even">
@@ -1449,6 +1520,7 @@ Cluster 6:</code></pre>
 <td>Eric Church</td>
 <td>Darkest Hour (Helene Edit)</td>
 <td>contemporary country, country, country road</td>
+<td>0</td>
 <td>6</td>
 </tr>
 <tr class="odd">
@@ -1457,6 +1529,7 @@ Cluster 6:</code></pre>
 <td>KAROL G</td>
 <td>Si Antes Te Hubiera Conocido</td>
 <td>reggaeton, reggaeton colombiano, urbano latino</td>
+<td>0</td>
 <td>6</td>
 </tr>
 <tr class="even">
@@ -1465,6 +1538,7 @@ Cluster 6:</code></pre>
 <td>The Dare</td>
 <td>What's Wrong With New York?</td>
 <td>None Listed</td>
+<td>0</td>
 <td>6</td>
 </tr>
 <tr class="odd">
@@ -1473,6 +1547,7 @@ Cluster 6:</code></pre>
 <td>Kacey Musgraves</td>
 <td>Deeper Well</td>
 <td>classic texas country, contemporary country, c...</td>
+<td>0</td>
 <td>6</td>
 </tr>
 <tr class="even">
@@ -1481,6 +1556,7 @@ Cluster 6:</code></pre>
 <td>Christian Lee Hutson</td>
 <td>Paradise Pop. 10</td>
 <td>countrygaze, deep new americana</td>
+<td>0</td>
 <td>6</td>
 </tr>
 <tr class="odd">
@@ -1489,6 +1565,7 @@ Cluster 6:</code></pre>
 <td>Wunderhorse</td>
 <td>Midas</td>
 <td>None Listed</td>
+<td>0</td>
 <td>6</td>
 </tr>
 <tr class="even">
@@ -1497,6 +1574,7 @@ Cluster 6:</code></pre>
 <td>Silverada</td>
 <td>Silverada</td>
 <td>classic texas country, red dirt, roots americana</td>
+<td>0</td>
 <td>6</td>
 </tr>
 <tr class="odd">
@@ -1505,6 +1583,7 @@ Cluster 6:</code></pre>
 <td>Original Cast of Stereophonic</td>
 <td>Stereophonic (Original Cast Recording)</td>
 <td>None Listed</td>
+<td>0</td>
 <td>6</td>
 </tr>
 <tr class="even">
@@ -1513,6 +1592,7 @@ Cluster 6:</code></pre>
 <td>Miranda Lambert</td>
 <td>Dammit Randy</td>
 <td>contemporary country, country, country dawn, c...</td>
+<td>0</td>
 <td>6</td>
 </tr>
 </tbody>
@@ -1536,6 +1616,7 @@ Cluster 7:</code></pre>
 <th data-quarto-table-cell-role="th">Artists</th>
 <th data-quarto-table-cell-role="th">Album</th>
 <th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
 <th data-quarto-table-cell-role="th">Cluster</th>
 </tr>
 </thead>
@@ -1546,6 +1627,7 @@ Cluster 7:</code></pre>
 <td>Hozier</td>
 <td>Unreal Unearth: Unaired</td>
 <td>irish singer-songwriter, modern rock, pop, pov...</td>
+<td>1</td>
 <td>7</td>
 </tr>
 <tr class="even">
@@ -1554,6 +1636,7 @@ Cluster 7:</code></pre>
 <td>Ariana Grande</td>
 <td>eternal sunshine</td>
 <td>pop</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="odd">
@@ -1562,6 +1645,7 @@ Cluster 7:</code></pre>
 <td>Sabrina Carpenter</td>
 <td>Short n' Sweet</td>
 <td>pop</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="even">
@@ -1570,6 +1654,7 @@ Cluster 7:</code></pre>
 <td>ROSÉ</td>
 <td>APT.</td>
 <td>k-pop</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="odd">
@@ -1578,6 +1663,7 @@ Cluster 7:</code></pre>
 <td>Addison Rae</td>
 <td>Diet Pepsi</td>
 <td>social media pop</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="even">
@@ -1586,6 +1672,7 @@ Cluster 7:</code></pre>
 <td>Taylor Swift</td>
 <td>THE TORTURED POETS DEPARTMENT: THE ANTHOLOGY</td>
 <td>pop</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="odd">
@@ -1594,6 +1681,7 @@ Cluster 7:</code></pre>
 <td>NewJeans</td>
 <td>How Sweet</td>
 <td>k-pop, k-pop girl group</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="even">
@@ -1602,6 +1690,7 @@ Cluster 7:</code></pre>
 <td>Kali Uchis</td>
 <td>ORQUÍDEAS</td>
 <td>colombian pop</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="odd">
@@ -1610,6 +1699,7 @@ Cluster 7:</code></pre>
 <td>Griff</td>
 <td>Vertigo</td>
 <td>alt z, uk pop</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="even">
@@ -1618,6 +1708,7 @@ Cluster 7:</code></pre>
 <td>SZA</td>
 <td>Saturn</td>
 <td>pop, r&amp;b, rap</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="odd">
@@ -1626,6 +1717,7 @@ Cluster 7:</code></pre>
 <td>Shakira</td>
 <td>Las Mujeres Ya No Lloran</td>
 <td>colombian pop, dance pop, latin pop, pop</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="even">
@@ -1634,6 +1726,7 @@ Cluster 7:</code></pre>
 <td>Elvie Shane</td>
 <td>Damascus</td>
 <td>modern country pop</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="odd">
@@ -1642,6 +1735,7 @@ Cluster 7:</code></pre>
 <td>LISA</td>
 <td>New Woman (feat. ROSALÍA)</td>
 <td>k-pop</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="even">
@@ -1650,6 +1744,7 @@ Cluster 7:</code></pre>
 <td>Dua Lipa</td>
 <td>Radical Optimism</td>
 <td>dance pop, pop, uk pop</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="odd">
@@ -1658,6 +1753,7 @@ Cluster 7:</code></pre>
 <td>Wizkid</td>
 <td>Piece of My Heart (feat. Brent Faiyaz)</td>
 <td>afrobeats, afropop, azonto, nigerian hip hop, ...</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="even">
@@ -1666,6 +1762,7 @@ Cluster 7:</code></pre>
 <td>Zach Top</td>
 <td>Cold Beer &amp; Country Music</td>
 <td>modern country pop</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="odd">
@@ -1674,6 +1771,7 @@ Cluster 7:</code></pre>
 <td>Magdalena Bay</td>
 <td>Imaginal Disk</td>
 <td>la pop</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="even">
@@ -1682,6 +1780,7 @@ Cluster 7:</code></pre>
 <td>Nada Surf</td>
 <td>Moon Mirror</td>
 <td>power pop</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="odd">
@@ -1690,6 +1789,7 @@ Cluster 7:</code></pre>
 <td>Kehlani</td>
 <td>CRASH</td>
 <td>pop, r&amp;b, rap</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="even">
@@ -1698,6 +1798,7 @@ Cluster 7:</code></pre>
 <td>ENHYPEN</td>
 <td>ROMANCE : UNTOLD</td>
 <td>anime, k-pop boy group</td>
+<td>0</td>
 <td>7</td>
 </tr>
 <tr class="odd">
@@ -1706,6 +1807,7 @@ Cluster 7:</code></pre>
 <td>Benson Boone</td>
 <td>Fireworks &amp; Rollerblades</td>
 <td>singer-songwriter pop</td>
+<td>0</td>
 <td>7</td>
 </tr>
 </tbody>
@@ -1714,7 +1816,1309 @@ Cluster 7:</code></pre>
 </div>
 </div>
 </div>
-<p>I decided to display the playlists that would be made from these clusters. Looking at them, I can see that genre had a huge influence on the clusters, but there is also some variation that came from the other features. A manual overview of these playlists make me think that the algorithm did a good job. A lot of these artists (like Sabrina Carpenter, Taylor Swift, Ariana Grande, and DUa Lipa in cluster 7) are often listened to together. Overall, this method was strong.</p>
+<p>I decided to display the playlists that would be made from these clusters. Looking at them, I can see that genre had a huge influence on the clusters, but there is also some variation that came from the other features. A manual overview of these playlists make me think that the algorithm did a good job. A lot of these artists (like Sabrina Carpenter, Taylor Swift, Ariana Grande, and Dua Lipa in cluster 7) are often listened to together. Overall, this method was strong. The top 10 songs were not clustered together, however. In regards to this as a known class, this method did not do a great job.</p>
+</section>
+<section id="dbscan" class="level4">
+<h4 class="anchored" data-anchor-id="dbscan">DBSCAN</h4>
+<p>DBSCAN is also a method for unsupervised learning where labels aren’t provided to the model so it tries to figure out the underlying patterns in the data. DBSCAN stands for density-based spatial clustering of applications with noise. DBSCAN is special because it doesn’t require clear shapes for the clusters and does not require optimization for the number of clusters. It also does a good job with noise. The main concept is the density of points, where we look for spaces that have a high density of points separated by spaces with a low density of points.</p>
+<p>By separating points into core points (points with a min num of points in a specified range), border points (points within the specified range to the cores but don’t achieve the min num points), and noise points (points that don’t fit into either category and aren’t really able to be included in a cluster), DBSCAN can make clusters that are arbitrary shapes and identify outliers. We can choose the max distance between points to be considered in the same cluster and the num points required to be considered a core point. The algorithm starts with a random point, finds all points that are close to it, counts how many there are, and labels the point a core or noise. If it is chosen as a core, then it creates a cluster and begins adding points to those clusters. It keeps adding core points until it hits a point classified as a border. Then, we go to another point that hasn’t been classified yet. This is repeated until all points have been classified and analyzed. Finally, noise points are revisited to see if they are in a cluster. Anything left over is called noise.</p>
+<p>We optimize the parameters (distance, min neighbors) using the silhouette score. We check for the max silhouette score by checking different possibilities for epsilon and min_samples and then calculating the average silhouette. The pair that gave us this max allows us to get the optimal parameters.</p>
+<p>Source: <a href="https://www.datacamp.com/tutorial/dbscan-clustering-algorithm">Data Camp</a></p>
+<p>Code below is adapted from lab 4.2. I needed to add functionality for different numbers of clusters and pick what options to loop through to test different values for eps and min samples. I also added the new graphing functionality.</p>
+<div id="cell-39" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>scores_analysis <span class="op">=</span> songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>])</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># holders to fill in with chosen scores</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>best_eps <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>best_min_samples <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>best_score <span class="op">=</span> <span class="op">-</span><span class="dv">1</span> <span class="co"># lowest possible score is -1 so look for a bigger score than that</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># loop through different options of eps and min_samples</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> eps <span class="kw">in</span> np.arange(<span class="fl">0.1</span>, <span class="fl">1.0</span>, <span class="fl">0.1</span>):</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> min_samples <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">10</span>):</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>        dbscan <span class="op">=</span> DBSCAN(eps<span class="op">=</span>eps, min_samples<span class="op">=</span>min_samples) <span class="co"># build model</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>        cluster_labels <span class="op">=</span> dbscan.fit_predict(scores_analysis) <span class="co"># get label</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>        n_clusters <span class="op">=</span> <span class="bu">len</span>(<span class="bu">set</span>(cluster_labels)) <span class="op">-</span> (<span class="dv">1</span> <span class="cf">if</span> <span class="op">-</span><span class="dv">1</span> <span class="kw">in</span> cluster_labels <span class="cf">else</span> <span class="dv">0</span>)  <span class="co"># Exclude noise points (-1)</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n_clusters <span class="op">&lt;</span> <span class="dv">2</span>:</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>        score <span class="op">=</span> silhouette_score(scores_analysis, cluster_labels) <span class="co"># calculate score</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> score <span class="op">&gt;</span> best_score: <span class="co"># if score improved</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>            best_eps <span class="op">=</span> eps <span class="co"># save current eps</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>            best_min_samples <span class="op">=</span> min_samples <span class="co"># save current min_samples</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>            best_score <span class="op">=</span> score <span class="co"># save current best score</span></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="co"># create model with chosen optimal values</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>dbscan <span class="op">=</span> DBSCAN(eps<span class="op">=</span>best_eps, min_samples<span class="op">=</span>best_min_samples)</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>dbscan_labels <span class="op">=</span> dbscan.fit_predict(scores_analysis)</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>X_pca <span class="op">=</span> pca.fit_transform(scores_analysis)</span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>plot_2D(X_pca, dbscan_labels, <span class="st">'PCA'</span>)</span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>tsne <span class="op">=</span> TSNE(n_components<span class="op">=</span><span class="dv">2</span>, perplexity<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>X_tsne <span class="op">=</span> tsne.fit_transform(scores_analysis)</span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>plot_2D(X_tsne, dbscan_labels, <span class="st">'T-SNE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-14-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The above are the results of DBSCAN clustering after optimizing the parameters. The T-SNE graph shows some very promising clusters. The purple cluster seems to be a bit concerning, but other clusters are separated from each other and do a good job collect nearby points are a bit more spread out. The clusters aren’t quite so clear in this case.</p>
+<div id="cell-41" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>songs[<span class="st">'dbscan_Cluster'</span>] <span class="op">=</span> dbscan_labels</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Group songs by their clusters and display</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cluster_num <span class="kw">in</span> <span class="bu">sorted</span>(songs[<span class="st">'dbscan_Cluster'</span>].unique()):</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Cluster </span><span class="sc">{</span>cluster_num<span class="sc">}</span><span class="ss">:"</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    display(songs[songs[<span class="st">'dbscan_Cluster'</span>] <span class="op">==</span> cluster_num][[<span class="st">'Track Name'</span>, <span class="st">'Artists'</span>, <span class="st">'Album'</span>, <span class="st">'Genres'</span>, <span class="st">'Top 10 Song'</span>, <span class="st">'dbscan_Cluster'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster -1:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">dbscan_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Too Sweet</td>
+<td>Hozier</td>
+<td>Unreal Unearth: Unaired</td>
+<td>irish singer-songwriter, modern rock, pop, pov...</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Nasty</td>
+<td>Tinashe</td>
+<td>Nasty</td>
+<td>alternative r&amp;b, dance pop, metropopolis, pop,...</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9</td>
+<td>Right Back to It</td>
+<td>Waxahatchee</td>
+<td>Tigers Blood</td>
+<td>alabama indie, bubblegrunge, chamber pop, coun...</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>Gata Only</td>
+<td>FloyyMenor</td>
+<td>Gata Only</td>
+<td>reggaeton chileno</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">23</td>
+<td>She's Leaving You</td>
+<td>MJ Lenderman</td>
+<td>Manning Fireworks</td>
+<td>asheville indie, countrygaze, slacker rock</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">25</td>
+<td>Von dutch</td>
+<td>Charli xcx</td>
+<td>BRAT</td>
+<td>art pop, candy pop, metropopolis, pop, uk pop</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">27</td>
+<td>Tough</td>
+<td>Quavo</td>
+<td>Tough</td>
+<td>atl hip hop, melodic rap, rap, trap</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">33</td>
+<td>Fisherrr - Remix</td>
+<td>Cash Cobain</td>
+<td>Fisherrr (Remix)</td>
+<td>jersey club</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">40</td>
+<td>Si Antes Te Hubiera Conocido</td>
+<td>KAROL G</td>
+<td>Si Antes Te Hubiera Conocido</td>
+<td>reggaeton, reggaeton colombiano, urbano latino</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">42</td>
+<td>Driver</td>
+<td>Soccer Mommy</td>
+<td>Evergreen</td>
+<td>art pop, bubblegrunge, indie pop, indie rock, ...</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">47</td>
+<td>In The Wawa (Convinced I Am God)</td>
+<td>Lip Critic</td>
+<td>Hex Dealer</td>
+<td>digital hardcore</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50</td>
+<td>Active</td>
+<td>Asake</td>
+<td>Active</td>
+<td>afrobeats, nigerian pop</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">54</td>
+<td>Cómo Dónde y Cuándo</td>
+<td>Shakira</td>
+<td>Las Mujeres Ya No Lloran</td>
+<td>colombian pop, dance pop, latin pop, pop</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">55</td>
+<td>Starburster</td>
+<td>Fontaines D.C.</td>
+<td>Romance</td>
+<td>crank wave, irish indie rock, irish post-punk</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">57</td>
+<td>Like I Say (I runaway)</td>
+<td>Nilüfer Yanya</td>
+<td>My Method Actor</td>
+<td>art pop, experimental pop, uk alternative pop</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">63</td>
+<td>Soup</td>
+<td>Remi Wolf</td>
+<td>Big Ideas</td>
+<td>indie pop, modern alternative pop</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">65</td>
+<td>DENIAL IS A RIVER</td>
+<td>Doechii</td>
+<td>Alligator Bites Never Heal</td>
+<td>alternative r&amp;b</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">69</td>
+<td>Lagos Love Story</td>
+<td>Ayra Starr</td>
+<td>The Year I Turned 21</td>
+<td>afrobeats</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75</td>
+<td>Piece of My Heart (feat. Brent Faiyaz)</td>
+<td>Wizkid</td>
+<td>Piece of My Heart (feat. Brent Faiyaz)</td>
+<td>afrobeats, afropop, azonto, nigerian hip hop, ...</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">76</td>
+<td>Can't Be Still</td>
+<td>illuminati hotties</td>
+<td>POWER</td>
+<td>bubblegrunge</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">78</td>
+<td>Ajhussi</td>
+<td>Flying Lotus</td>
+<td>Spirit Box</td>
+<td>afrofuturism, alternative hip hop, electronica...</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">88</td>
+<td>On The Game</td>
+<td>The Black Keys</td>
+<td>Ohio Players</td>
+<td>alternative rock, blues rock, garage rock, ind...</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">92</td>
+<td>ADIVINO</td>
+<td>Myke Towers</td>
+<td>ADIVINO</td>
+<td>reggaeton, trap latino, urbano latino</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 0:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">dbscan_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Good Luck, Babe!</td>
+<td>Chappell Roan</td>
+<td>Good Luck, Babe!</td>
+<td>indie pop</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>Docket (feat. Bully)</td>
+<td>Blondshell</td>
+<td>Docket (feat. Bully)</td>
+<td>bubblegrunge, indie pop</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">17</td>
+<td>Juna</td>
+<td>Clairo</td>
+<td>Charm</td>
+<td>bedroom pop, indie pop, pov: indie</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">52</td>
+<td>Never Need Me</td>
+<td>Rachel Chinouriri</td>
+<td>What A Devastating Turn of Events</td>
+<td>indie pop, uk pop</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">67</td>
+<td>Beaches</td>
+<td>beabadoobee</td>
+<td>This Is How Tomorrow Moves</td>
+<td>bedroom pop, bubblegrunge, indie pop, pov: indie</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">79</td>
+<td>California Highway 99</td>
+<td>The Softies</td>
+<td>The Bed I Made</td>
+<td>sacramento indie, tape club, twee pop</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">82</td>
+<td>Milk</td>
+<td>Abby Sage</td>
+<td>The Rot</td>
+<td>modern indie pop</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 1:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">dbscan_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Not Like Us</td>
+<td>Kendrick Lamar</td>
+<td>Not Like Us</td>
+<td>conscious hip hop, hip hop, rap, west coast rap</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>Type Shit</td>
+<td>Future</td>
+<td>WE DON'T TRUST YOU</td>
+<td>atl hip hop, hip hop, rap, southern hip hop, trap</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>euphoria</td>
+<td>Kendrick Lamar</td>
+<td>euphoria</td>
+<td>conscious hip hop, hip hop, rap, west coast rap</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">28</td>
+<td>TGIF</td>
+<td>GloRilla</td>
+<td>GLORIOUS</td>
+<td>southern hip hop</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">35</td>
+<td>Never Lose Me (feat. SZA &amp; Cardi B)</td>
+<td>Flo Milli</td>
+<td>Fine Ho, Stay</td>
+<td>viral rap</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">49</td>
+<td>Get It Sexyy</td>
+<td>Sexyy Red</td>
+<td>In Sexyy We Trust</td>
+<td>trap queen</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">64</td>
+<td>Fine Art</td>
+<td>KNEECAP</td>
+<td>Fine Art</td>
+<td>irish hip hop</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">72</td>
+<td>No One Else (feat. Jeremih)</td>
+<td>Lola Brooke</td>
+<td>No One Else (feat. Jeremih)</td>
+<td>trap queen</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">84</td>
+<td>KEHLANI (REMIX) [feat. Kehlani]</td>
+<td>Jordan Adetunji</td>
+<td>KEHLANI (REMIX) [feat. Kehlani]</td>
+<td>irish hip hop</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">87</td>
+<td>Big Dawgs</td>
+<td>Hanumankind</td>
+<td>Big Dawgs</td>
+<td>desi hip hop, indian underground rap, malayala...</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 2:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">dbscan_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>A Bar Song (Tipsy)</td>
+<td>Shaboozey</td>
+<td>A Bar Song (Tipsy)</td>
+<td>modern country pop, pop rap</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">24</td>
+<td>HISS</td>
+<td>Megan Thee Stallion</td>
+<td>HISS</td>
+<td>houston rap, pop, rap, trap queen</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">26</td>
+<td>I Had Some Help (Feat. Morgan Wallen)</td>
+<td>Post Malone</td>
+<td>F-1 Trillion</td>
+<td>dfw rap, melodic rap, pop, rap</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">39</td>
+<td>Enough (Miami)</td>
+<td>Cardi B</td>
+<td>Enough (Miami)</td>
+<td>pop, rap</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">61</td>
+<td>Family Matters</td>
+<td>Drake</td>
+<td>Family Matters</td>
+<td>canadian hip hop, canadian pop, hip hop, pop r...</td>
+<td>0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 3:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">dbscan_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Espresso</td>
+<td>Sabrina Carpenter</td>
+<td>Short n' Sweet</td>
+<td>pop</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">29</td>
+<td>Modern Woman</td>
+<td>Eliza McLamb</td>
+<td>Going Through It</td>
+<td>gen z singer-songwriter</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">37</td>
+<td>obsessed</td>
+<td>Olivia Rodrigo</td>
+<td>GUTS (spilled)</td>
+<td>pop</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">58</td>
+<td>I Love You, I'm Sorry</td>
+<td>Gracie Abrams</td>
+<td>The Secret of Us</td>
+<td>alt z</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">68</td>
+<td>JOYRIDE</td>
+<td>Kesha</td>
+<td>JOYRIDE</td>
+<td>dance pop, pop</td>
+<td>0</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 4:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">dbscan_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>BIRDS OF A FEATHER</td>
+<td>Billie Eilish</td>
+<td>HIT ME HARD AND SOFT</td>
+<td>art pop, pop</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">8</td>
+<td>Girl, so confusing featuring lorde</td>
+<td>Charli xcx</td>
+<td>Brat and it’s completely different but also st...</td>
+<td>art pop, candy pop, metropopolis, pop, uk pop</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>Disease</td>
+<td>Lady Gaga</td>
+<td>Disease</td>
+<td>art pop, dance pop, pop</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">31</td>
+<td>Always and Forever (feat. Hannah Diamond)</td>
+<td>SOPHIE</td>
+<td>SOPHIE</td>
+<td>art pop, bubblegum bass, deconstructed club, e...</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">53</td>
+<td>World on a String</td>
+<td>Jessica Pratt</td>
+<td>Here in the Pitch</td>
+<td>ambient folk, art pop, freak folk</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">91</td>
+<td>Britpop</td>
+<td>A. G. Cook</td>
+<td>Britpop</td>
+<td>bubblegum bass, escape room, hyperpop, proto-h...</td>
+<td>0</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 5:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">dbscan_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Pink Skies</td>
+<td>Zach Bryan</td>
+<td>Pink Skies</td>
+<td>classic oklahoma country</td>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">36</td>
+<td>Darkest Hour (Helene Edit)</td>
+<td>Eric Church</td>
+<td>Darkest Hour (Helene Edit)</td>
+<td>contemporary country, country, country road</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">51</td>
+<td>Cardinal</td>
+<td>Kacey Musgraves</td>
+<td>Deeper Well</td>
+<td>classic texas country, contemporary country, c...</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">71</td>
+<td>Carousel Horses</td>
+<td>Christian Lee Hutson</td>
+<td>Paradise Pop. 10</td>
+<td>countrygaze, deep new americana</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">77</td>
+<td>Radio Wave</td>
+<td>Silverada</td>
+<td>Silverada</td>
+<td>classic texas country, red dirt, roots americana</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">83</td>
+<td>Dammit Randy</td>
+<td>Miranda Lambert</td>
+<td>Dammit Randy</td>
+<td>contemporary country, country, country dawn, c...</td>
+<td>0</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 6:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">dbscan_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>YA YA</td>
+<td>Beyoncé</td>
+<td>COWBOY CARTER</td>
+<td>pop, r&amp;b</td>
+<td>0</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>Genesis.</td>
+<td>RAYE</td>
+<td>Genesis.</td>
+<td>uk contemporary r&amp;b, uk pop</td>
+<td>0</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 7:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">dbscan_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>we can't be friends (wait for your love)</td>
+<td>Ariana Grande</td>
+<td>eternal sunshine</td>
+<td>pop</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">18</td>
+<td>Taste</td>
+<td>Sabrina Carpenter</td>
+<td>Short n' Sweet</td>
+<td>pop</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">21</td>
+<td>Diet Pepsi</td>
+<td>Addison Rae</td>
+<td>Diet Pepsi</td>
+<td>social media pop</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32</td>
+<td>The Prophecy</td>
+<td>Taylor Swift</td>
+<td>THE TORTURED POETS DEPARTMENT: THE ANTHOLOGY</td>
+<td>pop</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">38</td>
+<td>Igual Que Un Ángel (with Peso Pluma)</td>
+<td>Kali Uchis</td>
+<td>ORQUÍDEAS</td>
+<td>colombian pop</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">43</td>
+<td>Anything</td>
+<td>Griff</td>
+<td>Vertigo</td>
+<td>alt z, uk pop</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">59</td>
+<td>215634</td>
+<td>Elvie Shane</td>
+<td>Damascus</td>
+<td>modern country pop</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">73</td>
+<td>Training Season</td>
+<td>Dua Lipa</td>
+<td>Radical Optimism</td>
+<td>dance pop, pop, uk pop</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">80</td>
+<td>Use Me</td>
+<td>Zach Top</td>
+<td>Cold Beer &amp; Country Music</td>
+<td>modern country pop</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">85</td>
+<td>That's My Floor</td>
+<td>Magdalena Bay</td>
+<td>Imaginal Disk</td>
+<td>la pop</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">86</td>
+<td>In Front of Me Now</td>
+<td>Nada Surf</td>
+<td>Moon Mirror</td>
+<td>power pop</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">93</td>
+<td>Beautiful Things</td>
+<td>Benson Boone</td>
+<td>Fireworks &amp; Rollerblades</td>
+<td>singer-songwriter pop</td>
+<td>0</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 8:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">dbscan_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>APT.</td>
+<td>ROSÉ</td>
+<td>APT.</td>
+<td>k-pop</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">34</td>
+<td>How Sweet</td>
+<td>NewJeans</td>
+<td>How Sweet</td>
+<td>k-pop, k-pop girl group</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">66</td>
+<td>New Woman (feat. ROSALÍA)</td>
+<td>LISA</td>
+<td>New Woman (feat. ROSALÍA)</td>
+<td>k-pop</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">90</td>
+<td>XO (Only If You Say Yes)</td>
+<td>ENHYPEN</td>
+<td>ROMANCE : UNTOLD</td>
+<td>anime, k-pop boy group</td>
+<td>0</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 9:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">dbscan_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">22</td>
+<td>Angel Of My Dreams</td>
+<td>JADE</td>
+<td>Angel Of My Dreams</td>
+<td>None Listed</td>
+<td>0</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">48</td>
+<td>Perfume</td>
+<td>The Dare</td>
+<td>What's Wrong With New York?</td>
+<td>None Listed</td>
+<td>0</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">74</td>
+<td>Midas</td>
+<td>Wunderhorse</td>
+<td>Midas</td>
+<td>None Listed</td>
+<td>0</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">81</td>
+<td>Masquerade</td>
+<td>Original Cast of Stereophonic</td>
+<td>Stereophonic (Original Cast Recording)</td>
+<td>None Listed</td>
+<td>0</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 10:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">dbscan_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">30</td>
+<td>Company Culture</td>
+<td>Lambrini Girls</td>
+<td>Company Culture</td>
+<td>None Listed</td>
+<td>0</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">41</td>
+<td>Bon Bon</td>
+<td>Fcukers</td>
+<td>Bon Bon</td>
+<td>None Listed</td>
+<td>0</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">56</td>
+<td>Get In With Me</td>
+<td>BossMan Dlow</td>
+<td>Mr Beat The Road</td>
+<td>None Listed</td>
+<td>0</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 11:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">dbscan_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">44</td>
+<td>Saturn</td>
+<td>SZA</td>
+<td>Saturn</td>
+<td>pop, r&amp;b, rap</td>
+<td>0</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">89</td>
+<td>After Hours</td>
+<td>Kehlani</td>
+<td>CRASH</td>
+<td>pop, r&amp;b, rap</td>
+<td>0</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 12:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">dbscan_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">45</td>
+<td>TRYIN' MY HARDEST</td>
+<td>SiR</td>
+<td>HEAVY</td>
+<td>alternative r&amp;b, la pop</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">60</td>
+<td>Love Me JeJe</td>
+<td>Tems</td>
+<td>Born in the Wild</td>
+<td>afro r&amp;b, afrobeats, alte, nigerian pop</td>
+<td>0</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 13:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">dbscan_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">46</td>
+<td>BYE BYE</td>
+<td>Kim Gordon</td>
+<td>The Collective</td>
+<td>no wave, noise rock</td>
+<td>0</td>
+<td>13</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">62</td>
+<td>The Lighthouse</td>
+<td>Stevie Nicks</td>
+<td>The Lighthouse</td>
+<td>heartland rock</td>
+<td>0</td>
+<td>13</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">70</td>
+<td>Wanting and Waiting</td>
+<td>The Black Crowes</td>
+<td>Happiness Bastards</td>
+<td>album rock, blues rock, classic rock, electric...</td>
+<td>0</td>
+<td>13</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Again, after looking at the playlists, I can see how genre has the biggest influence on these clusters. These actually seem to be a bit more accurate with the playlists. However, none of the top-10 songs were clustered together. That means that this was not optimal in identifying hit songs.</p>
 </section>
 </section>
 <section id="clustering-methods" class="level3">
@@ -1738,13 +3142,1147 @@ Cluster 7:</code></pre>
 <li>Summarize the key findings and their real-world implications in a non-technical way. Focus on the most important results and how they could apply to practical situations.</li>
 </ul></li>
 </ol>
-<section id="dbscan" class="level4">
-<h4 class="anchored" data-anchor-id="dbscan">DBSCAN</h4>
-<p>DBSCAN is also a method for unsupervised learning where labels aren’t provided to the model so it tries to figure out the underlying patterns in the data. DBSCAN stands for density-based spatial clustering of applications with noise. DBSCAN is special because it doesn’t require clear shapes for the clusters and does not require optimization for the number of clusters. It also does a good job with noise. The main concept is the density of points, where we look for spaces that have a high density of p</p>
-<p>Source: <a href="https://www.datacamp.com/tutorial/dbscan-clustering-algorithm">Data Camp</a></p>
-</section>
 <section id="hierarchical-agglomerative-clustering" class="level4">
 <h4 class="anchored" data-anchor-id="hierarchical-agglomerative-clustering">Hierarchical (Agglomerative) Clustering</h4>
+<p>Hierarchical clustering is a way to build a hierarchy of clusters when we don’t know how many clusters we should make. The goal is to get nested groupings of data points that progressively increase the number of points assigned to the clusters. I am planning on using agglomerative clustering which is also known as a “bottom-up” approach. The final clusters can be visualized in a tree called a dendogram that shows how the different levels of clusters changes.</p>
+<p>Agglomerative clustering starts by assuming every data point is its own cluster and then progressively adding more points. The method first finds the distance between each pair of points using Euclidean distance. It then finds the two closest clusters and merges them into a new cluster. It then finds the new distance between this cluster and the other clusters. This goes on until all of the data points are put into one cluster or there is some other stopping criteria (max iterations, num clusters).</p>
+<p>We can find the optimal number of clusters using the silhouette scores. By finding the number of clusters that provided the maximum average silhouette score, we find the optimal that should be used.</p>
+<p>Source: <a href="https://www.geeksforgeeks.org/hierarchical-clustering-with-scikit-learn/">Geeks for Geeks</a></p>
+<div id="cell-46" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>scores_analysis <span class="op">=</span> songs_num.drop(columns<span class="op">=</span>[<span class="st">'Song Popularity'</span>, <span class="st">'Total Artists On Song'</span>, <span class="st">'compound'</span>])</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># holders to fill in with chosen scores</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>best_cs <span class="op">=</span><span class="va">None</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>best_score <span class="op">=</span> <span class="op">-</span><span class="dv">1</span> <span class="co"># lowest possible score is -1 so look for a bigger score than that</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co"># loop through different options of n_clusters</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n_cs <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">10</span>):</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    agg_clust <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span>n_cs) <span class="co"># build model</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    cluster_labels <span class="op">=</span> agg_clust.fit_predict(scores_analysis) <span class="co"># get label</span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>    n_clusters <span class="op">=</span> <span class="bu">len</span>(<span class="bu">set</span>(cluster_labels)) <span class="op">-</span> (<span class="dv">1</span> <span class="cf">if</span> <span class="op">-</span><span class="dv">1</span> <span class="kw">in</span> cluster_labels <span class="cf">else</span> <span class="dv">0</span>)  <span class="co"># Exclude noise points (-1)</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n_clusters <span class="op">&lt;</span> <span class="dv">2</span>:</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> silhouette_score(scores_analysis, cluster_labels) <span class="co"># calculate score</span></span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> score <span class="op">&gt;</span> best_score: <span class="co"># if score improved</span></span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>        best_cs <span class="op">=</span> n_cs</span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>        best_score <span class="op">=</span> score <span class="co"># save current best score</span></span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a><span class="co"># create model with chosen optimal values</span></span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>agg_clust <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span>best_cs)</span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a>agg_labels <span class="op">=</span> agg_clust.fit_predict(scores_analysis)</span>
+<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>X_pca <span class="op">=</span> pca.fit_transform(scores_analysis)</span>
+<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>plot_2D(X_pca, agg_labels, <span class="st">'PCA'</span>)</span>
+<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>tsne <span class="op">=</span> TSNE(n_components<span class="op">=</span><span class="dv">2</span>, perplexity<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a>X_tsne <span class="op">=</span> tsne.fit_transform(scores_analysis)</span>
+<span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a>plot_2D(X_tsne, agg_labels, <span class="st">'T-SNE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-16-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>These clusters are extremely clear in the T-SNE graph. They are all distinct and separated from each other. The PCA graph also has good clusters on the left side, but the right side is not as clear. Overall, I think this is the best method for clustering.</p>
+<div id="cell-48" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>songs[<span class="st">'agg_Cluster'</span>] <span class="op">=</span> agg_labels</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Group songs by their clusters and display</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cluster_num <span class="kw">in</span> <span class="bu">sorted</span>(songs[<span class="st">'agg_Cluster'</span>].unique()):</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Cluster </span><span class="sc">{</span>cluster_num<span class="sc">}</span><span class="ss">:"</span>)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    display(songs[songs[<span class="st">'agg_Cluster'</span>] <span class="op">==</span> cluster_num][[<span class="st">'Track Name'</span>, <span class="st">'Artists'</span>, <span class="st">'Album'</span>, <span class="st">'Genres'</span>, <span class="st">'Top 10 Song'</span>, <span class="st">'agg_Cluster'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 0:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">agg_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>A Bar Song (Tipsy)</td>
+<td>Shaboozey</td>
+<td>A Bar Song (Tipsy)</td>
+<td>modern country pop, pop rap</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Espresso</td>
+<td>Sabrina Carpenter</td>
+<td>Short n' Sweet</td>
+<td>pop</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>YA YA</td>
+<td>Beyoncé</td>
+<td>COWBOY CARTER</td>
+<td>pop, r&amp;b</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>Genesis.</td>
+<td>RAYE</td>
+<td>Genesis.</td>
+<td>uk contemporary r&amp;b, uk pop</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">24</td>
+<td>HISS</td>
+<td>Megan Thee Stallion</td>
+<td>HISS</td>
+<td>houston rap, pop, rap, trap queen</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">25</td>
+<td>Von dutch</td>
+<td>Charli xcx</td>
+<td>BRAT</td>
+<td>art pop, candy pop, metropopolis, pop, uk pop</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">26</td>
+<td>I Had Some Help (Feat. Morgan Wallen)</td>
+<td>Post Malone</td>
+<td>F-1 Trillion</td>
+<td>dfw rap, melodic rap, pop, rap</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">29</td>
+<td>Modern Woman</td>
+<td>Eliza McLamb</td>
+<td>Going Through It</td>
+<td>gen z singer-songwriter</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">37</td>
+<td>obsessed</td>
+<td>Olivia Rodrigo</td>
+<td>GUTS (spilled)</td>
+<td>pop</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">39</td>
+<td>Enough (Miami)</td>
+<td>Cardi B</td>
+<td>Enough (Miami)</td>
+<td>pop, rap</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">44</td>
+<td>Saturn</td>
+<td>SZA</td>
+<td>Saturn</td>
+<td>pop, r&amp;b, rap</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50</td>
+<td>Active</td>
+<td>Asake</td>
+<td>Active</td>
+<td>afrobeats, nigerian pop</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">57</td>
+<td>Like I Say (I runaway)</td>
+<td>Nilüfer Yanya</td>
+<td>My Method Actor</td>
+<td>art pop, experimental pop, uk alternative pop</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">58</td>
+<td>I Love You, I'm Sorry</td>
+<td>Gracie Abrams</td>
+<td>The Secret of Us</td>
+<td>alt z</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">61</td>
+<td>Family Matters</td>
+<td>Drake</td>
+<td>Family Matters</td>
+<td>canadian hip hop, canadian pop, hip hop, pop r...</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">68</td>
+<td>JOYRIDE</td>
+<td>Kesha</td>
+<td>JOYRIDE</td>
+<td>dance pop, pop</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75</td>
+<td>Piece of My Heart (feat. Brent Faiyaz)</td>
+<td>Wizkid</td>
+<td>Piece of My Heart (feat. Brent Faiyaz)</td>
+<td>afrobeats, afropop, azonto, nigerian hip hop, ...</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">89</td>
+<td>After Hours</td>
+<td>Kehlani</td>
+<td>CRASH</td>
+<td>pop, r&amp;b, rap</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 1:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">agg_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Too Sweet</td>
+<td>Hozier</td>
+<td>Unreal Unearth: Unaired</td>
+<td>irish singer-songwriter, modern rock, pop, pov...</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>Gata Only</td>
+<td>FloyyMenor</td>
+<td>Gata Only</td>
+<td>reggaeton chileno</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">40</td>
+<td>Si Antes Te Hubiera Conocido</td>
+<td>KAROL G</td>
+<td>Si Antes Te Hubiera Conocido</td>
+<td>reggaeton, reggaeton colombiano, urbano latino</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">46</td>
+<td>BYE BYE</td>
+<td>Kim Gordon</td>
+<td>The Collective</td>
+<td>no wave, noise rock</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">54</td>
+<td>Cómo Dónde y Cuándo</td>
+<td>Shakira</td>
+<td>Las Mujeres Ya No Lloran</td>
+<td>colombian pop, dance pop, latin pop, pop</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">62</td>
+<td>The Lighthouse</td>
+<td>Stevie Nicks</td>
+<td>The Lighthouse</td>
+<td>heartland rock</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">70</td>
+<td>Wanting and Waiting</td>
+<td>The Black Crowes</td>
+<td>Happiness Bastards</td>
+<td>album rock, blues rock, classic rock, electric...</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">92</td>
+<td>ADIVINO</td>
+<td>Myke Towers</td>
+<td>ADIVINO</td>
+<td>reggaeton, trap latino, urbano latino</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 2:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">agg_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>we can't be friends (wait for your love)</td>
+<td>Ariana Grande</td>
+<td>eternal sunshine</td>
+<td>pop</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">18</td>
+<td>Taste</td>
+<td>Sabrina Carpenter</td>
+<td>Short n' Sweet</td>
+<td>pop</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>APT.</td>
+<td>ROSÉ</td>
+<td>APT.</td>
+<td>k-pop</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">21</td>
+<td>Diet Pepsi</td>
+<td>Addison Rae</td>
+<td>Diet Pepsi</td>
+<td>social media pop</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32</td>
+<td>The Prophecy</td>
+<td>Taylor Swift</td>
+<td>THE TORTURED POETS DEPARTMENT: THE ANTHOLOGY</td>
+<td>pop</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">34</td>
+<td>How Sweet</td>
+<td>NewJeans</td>
+<td>How Sweet</td>
+<td>k-pop, k-pop girl group</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">38</td>
+<td>Igual Que Un Ángel (with Peso Pluma)</td>
+<td>Kali Uchis</td>
+<td>ORQUÍDEAS</td>
+<td>colombian pop</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">43</td>
+<td>Anything</td>
+<td>Griff</td>
+<td>Vertigo</td>
+<td>alt z, uk pop</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">59</td>
+<td>215634</td>
+<td>Elvie Shane</td>
+<td>Damascus</td>
+<td>modern country pop</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">66</td>
+<td>New Woman (feat. ROSALÍA)</td>
+<td>LISA</td>
+<td>New Woman (feat. ROSALÍA)</td>
+<td>k-pop</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">73</td>
+<td>Training Season</td>
+<td>Dua Lipa</td>
+<td>Radical Optimism</td>
+<td>dance pop, pop, uk pop</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">80</td>
+<td>Use Me</td>
+<td>Zach Top</td>
+<td>Cold Beer &amp; Country Music</td>
+<td>modern country pop</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">85</td>
+<td>That's My Floor</td>
+<td>Magdalena Bay</td>
+<td>Imaginal Disk</td>
+<td>la pop</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">86</td>
+<td>In Front of Me Now</td>
+<td>Nada Surf</td>
+<td>Moon Mirror</td>
+<td>power pop</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">90</td>
+<td>XO (Only If You Say Yes)</td>
+<td>ENHYPEN</td>
+<td>ROMANCE : UNTOLD</td>
+<td>anime, k-pop boy group</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">93</td>
+<td>Beautiful Things</td>
+<td>Benson Boone</td>
+<td>Fireworks &amp; Rollerblades</td>
+<td>singer-songwriter pop</td>
+<td>0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 3:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">agg_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Nasty</td>
+<td>Tinashe</td>
+<td>Nasty</td>
+<td>alternative r&amp;b, dance pop, metropopolis, pop,...</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">45</td>
+<td>TRYIN' MY HARDEST</td>
+<td>SiR</td>
+<td>HEAVY</td>
+<td>alternative r&amp;b, la pop</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">60</td>
+<td>Love Me JeJe</td>
+<td>Tems</td>
+<td>Born in the Wild</td>
+<td>afro r&amp;b, afrobeats, alte, nigerian pop</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">65</td>
+<td>DENIAL IS A RIVER</td>
+<td>Doechii</td>
+<td>Alligator Bites Never Heal</td>
+<td>alternative r&amp;b</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">69</td>
+<td>Lagos Love Story</td>
+<td>Ayra Starr</td>
+<td>The Year I Turned 21</td>
+<td>afrobeats</td>
+<td>0</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 4:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">agg_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>BIRDS OF A FEATHER</td>
+<td>Billie Eilish</td>
+<td>HIT ME HARD AND SOFT</td>
+<td>art pop, pop</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">8</td>
+<td>Girl, so confusing featuring lorde</td>
+<td>Charli xcx</td>
+<td>Brat and it’s completely different but also st...</td>
+<td>art pop, candy pop, metropopolis, pop, uk pop</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>Disease</td>
+<td>Lady Gaga</td>
+<td>Disease</td>
+<td>art pop, dance pop, pop</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">31</td>
+<td>Always and Forever (feat. Hannah Diamond)</td>
+<td>SOPHIE</td>
+<td>SOPHIE</td>
+<td>art pop, bubblegum bass, deconstructed club, e...</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">33</td>
+<td>Fisherrr - Remix</td>
+<td>Cash Cobain</td>
+<td>Fisherrr (Remix)</td>
+<td>jersey club</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">42</td>
+<td>Driver</td>
+<td>Soccer Mommy</td>
+<td>Evergreen</td>
+<td>art pop, bubblegrunge, indie pop, indie rock, ...</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">47</td>
+<td>In The Wawa (Convinced I Am God)</td>
+<td>Lip Critic</td>
+<td>Hex Dealer</td>
+<td>digital hardcore</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">53</td>
+<td>World on a String</td>
+<td>Jessica Pratt</td>
+<td>Here in the Pitch</td>
+<td>ambient folk, art pop, freak folk</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">55</td>
+<td>Starburster</td>
+<td>Fontaines D.C.</td>
+<td>Romance</td>
+<td>crank wave, irish indie rock, irish post-punk</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">78</td>
+<td>Ajhussi</td>
+<td>Flying Lotus</td>
+<td>Spirit Box</td>
+<td>afrofuturism, alternative hip hop, electronica...</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">88</td>
+<td>On The Game</td>
+<td>The Black Keys</td>
+<td>Ohio Players</td>
+<td>alternative rock, blues rock, garage rock, ind...</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">91</td>
+<td>Britpop</td>
+<td>A. G. Cook</td>
+<td>Britpop</td>
+<td>bubblegum bass, escape room, hyperpop, proto-h...</td>
+<td>0</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 5:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">agg_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Good Luck, Babe!</td>
+<td>Chappell Roan</td>
+<td>Good Luck, Babe!</td>
+<td>indie pop</td>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>Right Back to It</td>
+<td>Waxahatchee</td>
+<td>Tigers Blood</td>
+<td>alabama indie, bubblegrunge, chamber pop, coun...</td>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">13</td>
+<td>Docket (feat. Bully)</td>
+<td>Blondshell</td>
+<td>Docket (feat. Bully)</td>
+<td>bubblegrunge, indie pop</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>Juna</td>
+<td>Clairo</td>
+<td>Charm</td>
+<td>bedroom pop, indie pop, pov: indie</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">23</td>
+<td>She's Leaving You</td>
+<td>MJ Lenderman</td>
+<td>Manning Fireworks</td>
+<td>asheville indie, countrygaze, slacker rock</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">52</td>
+<td>Never Need Me</td>
+<td>Rachel Chinouriri</td>
+<td>What A Devastating Turn of Events</td>
+<td>indie pop, uk pop</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">63</td>
+<td>Soup</td>
+<td>Remi Wolf</td>
+<td>Big Ideas</td>
+<td>indie pop, modern alternative pop</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">67</td>
+<td>Beaches</td>
+<td>beabadoobee</td>
+<td>This Is How Tomorrow Moves</td>
+<td>bedroom pop, bubblegrunge, indie pop, pov: indie</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">76</td>
+<td>Can't Be Still</td>
+<td>illuminati hotties</td>
+<td>POWER</td>
+<td>bubblegrunge</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">79</td>
+<td>California Highway 99</td>
+<td>The Softies</td>
+<td>The Bed I Made</td>
+<td>sacramento indie, tape club, twee pop</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">82</td>
+<td>Milk</td>
+<td>Abby Sage</td>
+<td>The Rot</td>
+<td>modern indie pop</td>
+<td>0</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 6:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">agg_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">22</td>
+<td>Angel Of My Dreams</td>
+<td>JADE</td>
+<td>Angel Of My Dreams</td>
+<td>None Listed</td>
+<td>0</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">30</td>
+<td>Company Culture</td>
+<td>Lambrini Girls</td>
+<td>Company Culture</td>
+<td>None Listed</td>
+<td>0</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">41</td>
+<td>Bon Bon</td>
+<td>Fcukers</td>
+<td>Bon Bon</td>
+<td>None Listed</td>
+<td>0</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">48</td>
+<td>Perfume</td>
+<td>The Dare</td>
+<td>What's Wrong With New York?</td>
+<td>None Listed</td>
+<td>0</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">56</td>
+<td>Get In With Me</td>
+<td>BossMan Dlow</td>
+<td>Mr Beat The Road</td>
+<td>None Listed</td>
+<td>0</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">74</td>
+<td>Midas</td>
+<td>Wunderhorse</td>
+<td>Midas</td>
+<td>None Listed</td>
+<td>0</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">81</td>
+<td>Masquerade</td>
+<td>Original Cast of Stereophonic</td>
+<td>Stereophonic (Original Cast Recording)</td>
+<td>None Listed</td>
+<td>0</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 7:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">agg_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Not Like Us</td>
+<td>Kendrick Lamar</td>
+<td>Not Like Us</td>
+<td>conscious hip hop, hip hop, rap, west coast rap</td>
+<td>1</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>Type Shit</td>
+<td>Future</td>
+<td>WE DON'T TRUST YOU</td>
+<td>atl hip hop, hip hop, rap, southern hip hop, trap</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>euphoria</td>
+<td>Kendrick Lamar</td>
+<td>euphoria</td>
+<td>conscious hip hop, hip hop, rap, west coast rap</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">27</td>
+<td>Tough</td>
+<td>Quavo</td>
+<td>Tough</td>
+<td>atl hip hop, melodic rap, rap, trap</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">28</td>
+<td>TGIF</td>
+<td>GloRilla</td>
+<td>GLORIOUS</td>
+<td>southern hip hop</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">35</td>
+<td>Never Lose Me (feat. SZA &amp; Cardi B)</td>
+<td>Flo Milli</td>
+<td>Fine Ho, Stay</td>
+<td>viral rap</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">49</td>
+<td>Get It Sexyy</td>
+<td>Sexyy Red</td>
+<td>In Sexyy We Trust</td>
+<td>trap queen</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">64</td>
+<td>Fine Art</td>
+<td>KNEECAP</td>
+<td>Fine Art</td>
+<td>irish hip hop</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">72</td>
+<td>No One Else (feat. Jeremih)</td>
+<td>Lola Brooke</td>
+<td>No One Else (feat. Jeremih)</td>
+<td>trap queen</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">84</td>
+<td>KEHLANI (REMIX) [feat. Kehlani]</td>
+<td>Jordan Adetunji</td>
+<td>KEHLANI (REMIX) [feat. Kehlani]</td>
+<td>irish hip hop</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">87</td>
+<td>Big Dawgs</td>
+<td>Hanumankind</td>
+<td>Big Dawgs</td>
+<td>desi hip hop, indian underground rap, malayala...</td>
+<td>0</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Cluster 8:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Track Name</th>
+<th data-quarto-table-cell-role="th">Artists</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Genres</th>
+<th data-quarto-table-cell-role="th">Top 10 Song</th>
+<th data-quarto-table-cell-role="th">agg_Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Pink Skies</td>
+<td>Zach Bryan</td>
+<td>Pink Skies</td>
+<td>classic oklahoma country</td>
+<td>1</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">36</td>
+<td>Darkest Hour (Helene Edit)</td>
+<td>Eric Church</td>
+<td>Darkest Hour (Helene Edit)</td>
+<td>contemporary country, country, country road</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">51</td>
+<td>Cardinal</td>
+<td>Kacey Musgraves</td>
+<td>Deeper Well</td>
+<td>classic texas country, contemporary country, c...</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">71</td>
+<td>Carousel Horses</td>
+<td>Christian Lee Hutson</td>
+<td>Paradise Pop. 10</td>
+<td>countrygaze, deep new americana</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">77</td>
+<td>Radio Wave</td>
+<td>Silverada</td>
+<td>Silverada</td>
+<td>classic texas country, red dirt, roots americana</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">83</td>
+<td>Dammit Randy</td>
+<td>Miranda Lambert</td>
+<td>Dammit Randy</td>
+<td>contemporary country, country, country dawn, c...</td>
+<td>0</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Again, this clustering method put a lot of weight on the genre of the songs. The top 10 songs are not clustered together. I think these playlists are also very strong and represent good groupings of songs.</p>
 </section>
 </section>
 </section>
